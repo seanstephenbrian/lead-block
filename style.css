@@ -478,8 +478,7 @@ footer {
     .hamburger,
     .previous,
     .next,
-    .search-input,
-    .logo {
+    .search-input {
         transition: transform 0.15s ease-in-out;
     }
     .tag:hover,
@@ -494,9 +493,15 @@ footer {
     }
 
     .tag:hover,
-    .recent-link:hover,
-    .logo:hover {
+    .recent-link:hover {
         transform: scale(1.05);
+    }
+
+    .logo {
+        transition: transform 0.15s ease-in-out;
+    }
+    .logo:hover {
+        transform: scale(1.05) rotate(330deg);
     }
 
     .tag:hover,
