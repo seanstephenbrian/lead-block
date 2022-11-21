@@ -38,14 +38,19 @@ async function searchTag(search) {
         });
 }
 
-function reverseChron(posts) {
-    posts.sort(function(a, b) {
+function reverseChron(items) {
+    items.sort(function(a, b) {
         return new Date(b.date) - new Date(a.date);
     });
 }
 
-function renderHome() {
-    console.log('home');
+function getAll() {
+    fetch('blog.json')
+        .then((response) => response.json())
+        .then((blog) => {
+            reverseChron(blog);
+            console.log(blog);
+        })
 }
 
 // script to run on page load; if URL parameters are present, the correct search function is fired:
@@ -59,7 +64,7 @@ if (id) {
     searchAuthor(author);
 } else if (tag) {
     searchTag(tag);
-    // if there are no search params, just render the homepage:
+// if there are no search params, just render the homepage:
 } else {
-    renderHome();
+    getAll();
 }
