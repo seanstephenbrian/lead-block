@@ -22,19 +22,27 @@ time, mark, audio, video {
 :root {
     --rvv: calc(1rem + 1vh + 1vw);
 
+    --top-matter-height: 30%;
+
     --main-gap: calc(0.5*var(--rvv));
+}
+
+@font-face {
+    font-family: 'Sublima';
+    src: url('font/sublima/sublima-light.otf');
 }
 
 html,
 body {
+    font-family: 'Sublima';
     box-sizing: border-box;
     max-width: 100vw;
     min-height: 100vh;
 }
-
+/* 
 body * {
     border: 0.5px solid black;
-}
+} */
 
 body {
     display: flex;
@@ -44,13 +52,19 @@ body {
 header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 8vh;
+    grid-template-rows: 1fr;
     grid-template-areas: "logo top-matter";
 }
 
 .logo {
+    margin-right: auto;
     grid-area: logo;
     min-width: calc(4*var(--rvv));
+    padding: calc(0.2*var(--rvv)) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-matter {
@@ -68,11 +82,12 @@ header {
 }
 
 .search-img img {
-    height: 40%;
+    height: var(--top-matter-height);
 }
 
 .search-input {
-    height: 40%;
+    margin-left: calc(0.2*var(--rvv));
+    height: var(--top-matter-height);
 }
 
 .hamburger {
@@ -84,7 +99,7 @@ header {
 }
 
 .hamburger img {
-    height: 40%;
+    height: var(--top-matter-height);
 }
 
 main {
@@ -116,16 +131,49 @@ main {
 
 .blog-post {
     flex: auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5*var(--rvv));
+    margin-bottom: calc(var(--rvv));
 }
 
 .bottom-info {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: calc(var(--rvv));
 }
 
+.previous,
+.next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.previous img,
+.next img {
+    height: 20%;
+}
+
+.tags {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(0.1*var(--rvv));
+}
+
+
+
 .recent-posts {
-    height: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.recent-links {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.1*var(--rvv));
 }
 
 footer {
