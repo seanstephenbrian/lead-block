@@ -75,6 +75,16 @@ time, mark, audio, video {
     font-weight: 800;
 }
 
+@font-face {
+    font-family: 'Beon';
+    src: url('font/beon/fonts/webfonts/Beon-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Neoneon';
+    src: url('font/neoneon/Neoneon.otf');
+}
+
 html,
 body {
     box-sizing: border-box;
@@ -94,6 +104,7 @@ body {
 }
 
 header {
+    margin-top: calc(0.3*var(--rvv));
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -101,6 +112,8 @@ header {
 }
 
 .logo {
+    font-family: 'Neoneon';
+    font-size: calc(0.7*var(--rvv));
     margin-right: auto;
     grid-area: logo;
     min-width: calc(4*var(--rvv));
