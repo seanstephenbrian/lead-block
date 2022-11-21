@@ -56,7 +56,7 @@ function getAll() {
 function fillFooterText() {
     const footer = document.querySelector('footer');
     const year = new Date().getFullYear();
-    footer.textContent = `copyright © lead block sports ${year}`;
+    footer.textContent = `Copyright © Lead Block Sports ${year}`;
 }
 
 // script to run on page load; if URL parameters are present, the correct search function is fired:

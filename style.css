@@ -28,16 +28,60 @@ time, mark, audio, video {
 }
 
 @font-face {
-    font-family: 'Sublima';
-    src: url('font/sublima/sublima-light.otf');
+    font-family: 'Interop';
+    src: url('font/interop/otf/100-thin.otf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'Interop';
+    src: url('font/interop/otf/200-extra-light.otf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Interop';
+    src: url('font/interop/otf/300-light.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Interop';
+    src: url('font/interop/otf/400-medium.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Interop';
+    src: url('font/interop/otf/500-regular.otf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Interop';
+    src: url('font/interop/otf/600-semi-bold.otf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Interop';
+    src: url('font/interop/otf/700-bold.otf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Interop';
+    src: url('font/interop/otf/800-extra-bold.otf');
+    font-weight: 800;
 }
 
 html,
 body {
-    font-family: 'Sublima';
     box-sizing: border-box;
     max-width: 100vw;
     min-height: 100vh;
+    font-family: 'Interop';
+    font-weight: 500;
 }
 /* 
 body * {
@@ -88,6 +132,14 @@ header {
 .search-input {
     margin-left: calc(0.2*var(--rvv));
     height: var(--top-matter-height);
+    border-radius: 15rem;
+    border: 0.5px solid black;
+    padding-left: calc(0.3*var(--rvv));
+}
+
+.search-input:focus {
+    outline: none;
+    text-decoration: none;
 }
 
 .hamburger {
@@ -130,24 +182,57 @@ main {
 
 .author {
     margin-right: calc(var(--rvv));
+    font-size: calc(0.6*var(--rvv));
 }
 
-.blog-post {
+.date {
+    font-size: calc(0.6*var(--rvv));
+}
+
+.post-body {
+    font-size: calc(0.6*var(--rvv));
     flex: auto;
     display: flex;
     flex-direction: column;
     gap: calc(0.5*var(--rvv));
-    margin-bottom: calc(var(--rvv));
+    margin-bottom: calc(0.6*var(--rvv));
 }
 
 .bottom-info {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "tags tags"
+        "previous next";
+}
+
+.tags {
+    grid-area: tags;
     display: flex;
-    justify-content: space-around;
-    gap: calc(var(--rvv));
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(0.3*var(--rvv));
+    margin-bottom: calc(0.25*var(--rvv));
+}
+
+.tag {
+    font-size: calc(0.45*var(--rvv));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(var(--rvv));
+    border: 0.5px solid black;
+    padding: 0 0.65rem 0.1rem 0.8rem;
+    border-radius: 1.2rem;
+    text-align: center;
 }
 
 .previous,
 .next {
+    justify-self: center;
+    height: calc(2*var(--rvv));
+    width: calc(2*var(--rvv));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,31 +240,65 @@ main {
 
 .previous img,
 .next img {
-    height: 20%;
+    height: 50%;
+    border: 0.5px solid black;
+    padding: 0.5rem;
+    border-radius: 50%;
 }
 
-.tags {
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: calc(0.1*var(--rvv));
+.previous {
+    grid-area: previous;
 }
 
-
+.next {
+    grid-area: next;
+}
 
 .recent-posts {
     display: flex;
     flex-direction: column;
+    margin: 0 calc(0.5*var(--rvv));
+}
+
+.recent-title {
+    font-size: calc(0.8*var(--rvv));
+    margin-bottom: calc(0.2*var(--rvv));
 }
 
 .recent-links {
     display: flex;
-    flex-direction: column;
-    gap: calc(0.1*var(--rvv));
+    flex-wrap: wrap;
+    gap: calc(0.2*var(--rvv));
+}
+
+.recent-link {
+    border: 0.5px solid black;
+    border-radius: 1rem;
+    padding: 0.4rem;
+    width: 45%;
+}
+
+.link-title {
+    width: 100%;
+    font-size: calc(0.45*var(--rvv));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.link-description {
+    width: 100%;
+    font-style: italic;
+    font-size: calc(0.4*var(--rvv));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 footer {
+    font-size: calc(0.4*var(--rvv));
+    margin-top: calc(var(--rvv));
+    border-top: 0.5px solid black;
     height: 5vh;
     display: flex;
     justify-content: center;
@@ -200,6 +319,15 @@ footer {
     }
     .recent-posts {
         grid-area: recent;
+        width: 25vw;
+    }
+    .recent-links {
+        gap: calc(0.4*var(--rvv));
+    }
+    .recent-link {
+        width: 80%;
+        max-width: 80%;
+        padding: 0.7rem;
     }
 }
 
