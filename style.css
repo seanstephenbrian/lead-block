@@ -346,8 +346,6 @@ main {
 
 .previous,
 .next {
-    border: 1px solid var(--text);
-    border-radius: 50%;
     cursor: pointer;
     justify-self: center;
     height: calc(2*var(--rvv));
@@ -360,7 +358,6 @@ main {
 .previous img,
 .next img {
     height: 50%;
-    padding: 0.6rem;
 }
 
 .previous {
@@ -394,6 +391,7 @@ main {
     border-radius: 1rem;
     padding: 0.4rem;
     width: 45%;
+    
 }
 
 .link-title {
