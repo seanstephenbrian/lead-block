@@ -25,6 +25,9 @@ time, mark, audio, video {
     --top-matter-height: 30%;
 
     --main-gap: calc(0.5*var(--rvv));
+
+    --button-bg: #e2e2e2;
+    --button-text: #0d0d0deb;
 }
 
 .svg-dark-mode {
@@ -246,7 +249,7 @@ header {
     margin-left: calc(0.2*var(--rvv));
     height: var(--top-matter-height);
     border-radius: 15rem;
-    border: 1px solid var(--text);
+    border: 0.5px solid var(--text);
     padding-left: calc(0.3*var(--rvv));
 }
 
@@ -322,6 +325,12 @@ main {
         "previous next";
 }
 
+.tag,
+.recent-link,
+.search-input {
+    box-shadow: 1.0px 1.9px 1.9px hsl(0deg 0% 0% / 0.47);
+}
+
 .tags {
     grid-area: tags;
     display: flex;
@@ -338,10 +347,12 @@ main {
     justify-content: center;
     align-items: center;
     height: calc(var(--rvv));
-    border: 1px solid var(--text);
+    /* border: 1px solid var(--text); */
     padding: 0 0.65rem 0.1rem 0.8rem;
     border-radius: 1.2rem;
     text-align: center;
+    background-color: var(--button-bg);
+    color: var(--button-text);
 }
 
 .previous,
@@ -387,11 +398,12 @@ main {
 
 .recent-link {
     cursor: pointer;
-    border: 1px solid var(--text);
+    /* border: 1px solid var(--text); */
     border-radius: 1rem;
     padding: 0.4rem;
     width: 45%;
-    
+    background-color: var(--button-bg);
+    color: var(--button-text)
 }
 
 .link-title {
@@ -423,6 +435,9 @@ footer {
 
 /* desktop styles: */
 @media screen and (min-width: 750px) {
+    header {
+        margin-right: calc(0.5*var(--rvv));
+    }
     main {
         flex: auto;
         display: grid;
@@ -444,6 +459,31 @@ footer {
         width: 80%;
         max-width: 80%;
         padding: 0.7rem;
+    }
+    .tag,
+    .recent-link,
+    .light-icon,
+    .dark,
+    .light
+    .hamburger,
+    .previous,
+    .next {
+        transition: transform 0.15s ease-in-out;
+    }
+    .tag:hover,
+    .recent-link:hover,
+    .light-icon:hover,
+    .dark:hover,
+    .light:hover,
+    .hamburger:hover,
+    .previous:hover,
+    .next:hover {
+        transform: scale(1.2);
+    }
+
+    .tag:hover,
+    .recent-link:hover {
+        transform: scale(1.05);
     }
 }
 

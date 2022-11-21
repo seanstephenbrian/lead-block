@@ -85,6 +85,8 @@ function changeToDark() {
     const dark = document.querySelector('.dark');
     dark.classList.add('selected');
 
+
+
 }
 
 function changeToLight() {
