@@ -111,6 +111,7 @@ main {
 }
 
 .content {
+    margin: 0 calc(0.5*var(--rvv));
     flex: auto;
     display: flex;
     flex-direction: column;   
@@ -119,10 +120,12 @@ main {
 .top-info {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: calc(0.5*var(--rvv));
 }
 
 .title {
     width: 100%;
+    font-size: calc(0.9*var(--rvv));
 }
 
 .author {
