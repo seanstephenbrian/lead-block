@@ -53,6 +53,12 @@ function getAll() {
         })
 }
 
+function fillFooterText() {
+    const footer = document.querySelector('footer');
+    const year = new Date().getFullYear();
+    footer.textContent = `copyright © lead block sports ${year}`;
+}
+
 // script to run on page load; if URL parameters are present, the correct search function is fired:
 let params = (new URL(document.location)).searchParams;
 const id = params.get('id');
@@ -68,3 +74,5 @@ if (id) {
 } else {
     getAll();
 }
+
+fillFooterText();

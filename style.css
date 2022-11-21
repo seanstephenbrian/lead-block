@@ -23,8 +23,6 @@ time, mark, audio, video {
     --rvv: calc(1rem + 1vh + 1vw);
 
     --main-gap: calc(0.5*var(--rvv));
-
-    --grid-columns: 3fr 1fr;
 }
 
 html,
@@ -35,7 +33,7 @@ body {
 }
 
 body * {
-    border: 1px solid blue;
+    border: 0.5px solid black;
 }
 
 body {
@@ -45,17 +43,48 @@ body {
 
 header {
     display: grid;
-    grid-template-columns: var(--grid-columns);
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 8vh;
-    grid-template-areas: "logo hamburger";
+    grid-template-areas: "logo top-matter";
 }
 
 .logo {
     grid-area: logo;
+    min-width: calc(4*var(--rvv));
+}
+
+.top-matter {
+    grid-area: top-matter;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search-img {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-img img {
+    height: 40%;
+}
+
+.search-input {
+    height: 40%;
 }
 
 .hamburger {
-    grid-area: hamburger;
+    margin: 0 calc(var(--rvv));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger img {
+    height: 40%;
 }
 
 main {
@@ -101,6 +130,9 @@ main {
 
 footer {
     height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* desktop styles: */
@@ -108,7 +140,7 @@ footer {
     main {
         flex: auto;
         display: grid;
-        grid-template-columns: var(--grid-columns);
+        grid-template-columns: 3fr 1fr;
         grid-template-rows: 1fr;
         grid-template-areas: "content recent";
     }
