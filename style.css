@@ -120,7 +120,7 @@ body {
 
 header {
     position: relative;
-    margin-top: calc(0.3*var(--rvv));
+    margin: calc(0.5*var(--rvv)) 0 ;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -160,7 +160,8 @@ header {
     cursor: pointer;
     font-family: 'Neoneon';
     color: var(--text);
-    font-size: calc(0.7*var(--rvv));
+    font-size: calc(0.9*var(--rvv));
+    margin-left: calc(0.25*var(--rvv));
     margin-right: auto;
     grid-area: logo;
     min-width: calc(4*var(--rvv));
@@ -300,21 +301,21 @@ main {
 
 .title {
     width: 100%;
-    font-size: calc(0.8*var(--rvv));
+    font-size: calc(0.6*var(--rvv));
+}
+
+.author,
+.date {
+    font-size: calc(0.5*var(--rvv));
 }
 
 .author {
     cursor: pointer;
     margin-right: calc(var(--rvv));
-    font-size: calc(0.65*var(--rvv));
-}
-
-.date {
-    font-size: calc(0.65*var(--rvv));
 }
 
 .post-body {
-    font-size: calc(0.5*var(--rvv));
+    font-size: calc(0.4*var(--rvv));
     flex: auto;
     display: flex;
     flex-direction: column;
@@ -351,7 +352,7 @@ main {
 
 .tag {
     cursor: pointer;
-    font-size: calc(0.45*var(--rvv));
+    font-size: calc(0.35*var(--rvv));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -395,7 +396,7 @@ main {
 }
 
 .recent-title {
-    font-size: calc(0.8*var(--rvv));
+    font-size: calc(0.6*var(--rvv));
     margin-bottom: calc(0.2*var(--rvv));
 }
 
@@ -409,7 +410,7 @@ main {
     cursor: pointer;
     /* border: 1px solid var(--text); */
     border-radius: 1rem;
-    padding: 0.4rem;
+    padding: 0.6rem;
     width: 45%;
     background-color: var(--button-bg);
     color: var(--button-text)
@@ -417,7 +418,7 @@ main {
 
 .link-title {
     width: 100%;
-    font-size: calc(0.45*var(--rvv));
+    font-size: calc(0.4*var(--rvv));
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -426,7 +427,7 @@ main {
 .link-description {
     width: 100%;
     font-style: italic;
-    font-size: calc(0.4*var(--rvv));
+    font-size: calc(0.35*var(--rvv));
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

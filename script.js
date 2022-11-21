@@ -131,5 +131,6 @@ function changeToLight() {
 
     addInitialListeners();
 
+    // dark is the default theme:
     changeToDark();
 })();
