@@ -26,7 +26,13 @@ time, mark, audio, video {
 
     --main-gap: calc(0.5*var(--rvv));
 
-    --button-bg: #e2e2e2;
+    --input-shadow: 1.0px 1.9px 1.9px rgba(0, 0, 0, 0.262);
+    --focus-input-shadow: 2.0px 4.0px 4.0px rgba(0, 0, 0, 0.337);
+
+    --shallow-shadow: 1.0px 1.9px 1.9px hsl(0deg 0% 0% / 0.47);
+    --elevated-shadow: 2.0px 4.0px 4.0px hsl(0deg 0% 0% / 0.44);
+
+    --button-bg: #ffc67c98;
     --button-text: #0d0d0deb;
 }
 
@@ -326,9 +332,12 @@ main {
 }
 
 .tag,
-.recent-link,
+.recent-link {
+    box-shadow: var(--shallow-shadow);
+}
+
 .search-input {
-    box-shadow: 1.0px 1.9px 1.9px hsl(0deg 0% 0% / 0.47);
+    box-shadow: var(--input-shadow);
 }
 
 .tags {
@@ -467,7 +476,9 @@ footer {
     .light
     .hamburger,
     .previous,
-    .next {
+    .next,
+    .search-input,
+    .logo {
         transition: transform 0.15s ease-in-out;
     }
     .tag:hover,
@@ -482,8 +493,24 @@ footer {
     }
 
     .tag:hover,
-    .recent-link:hover {
+    .recent-link:hover,
+    .logo:hover {
         transform: scale(1.05);
+    }
+
+    .tag:hover,
+    .recent-link:hover {
+        box-shadow: var(--elevated-shadow);
+    }
+
+    .search-input {
+        transition: box-shadow 0.15s ease-in-out;
+    }
+
+    .search-input:focus,
+    .search-input:hover {
+        box-shadow: var(--focus-input-shadow);
+        transform: scale(1.03);
     }
 }
 
