@@ -75,21 +75,29 @@ function changeToDark() {
     });
     const logoWords = document.querySelectorAll('.logo-word');
     logoWords.forEach(logoWord => {
-        logoWord.classList.add('dark');
+        logoWord.classList.add('dark-logo');
     });
+    const light = document.querySelector('.light');
+    light.classList.remove('selected');
+    const dark = document.querySelector('.dark');
+    dark.classList.add('selected');
 }
 
 function changeToLight() {
-    document.documentElement.style.setProperty('--bg', '#ffffff');
-    document.documentElement.style.setProperty('--text', '#000000');
+    document.documentElement.style.setProperty('--bg', '#f8f8f816');
+    document.documentElement.style.setProperty('--text', '#171717');
     const svgs = document.querySelectorAll('.svg');
     svgs.forEach(svg => {
         svg.classList.remove('svg-dark-mode');
     });
     const logoWords = document.querySelectorAll('.logo-word');
     logoWords.forEach(logoWord => {
-        logoWord.classList.remove('dark');
-    })
+        logoWord.classList.remove('dark-logo');
+    });
+    const dark = document.querySelector('.dark');
+    dark.classList.remove('selected');
+    const light = document.querySelector('.light');
+    light.classList.add('selected');
 }
 
 // script to run on page load; if URL parameters are present, the correct search function is fired:
