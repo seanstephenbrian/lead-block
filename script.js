@@ -32,3 +32,17 @@ async function searchTag(search) {
             }
         });
 }
+
+
+
+let params = (new URL(document.location)).searchParams;
+const id = params.get('id');
+const author = params.get('author');
+const tag = params.get('tag');
+if (id) {
+    getPost(id);
+} else if (author) {
+    searchAuthor(author);
+} else if (tag) {
+    searchTag(tag);
+}
