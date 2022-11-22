@@ -4,7 +4,7 @@
         "title": "first post title",
         "date": "2022-11-17",
         "author": "author one",
-        "description": "first post description",
+        "description": "first post description first post description first post description first post description first post description",
         "content": "first post content",
         "tags": [
             "first tag",
@@ -55,7 +55,7 @@
     },
     {
         "id": 5,
-        "title": "fifth post title",
+        "title": "fifth post title fifth post title fifth post title fifth post title fifth post title  fifth post title fifth post title fifth post title fifth post title",
         "date": "2022-11-21",
         "author": "author two",
         "description": "fifth post description",

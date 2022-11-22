@@ -157,6 +157,7 @@ const Render = (function () {
         postBody.innerHTML = '';
 
         const searchTitle = document.createElement('div');
+        searchTitle.classList.add('search-title');
         searchTitle.textContent = `${results.length} results for "${query}":`;
         postBody.appendChild(searchTitle);
 

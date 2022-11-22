@@ -34,6 +34,11 @@ time, mark, audio, video {
 
     --button-bg: #ffc67c98;
     --button-text: #0d0d0deb;
+
+    --search-bg: #c56265b0;
+    --search-text: #0d0d0deb;
+
+    --tag-bg: #80adcbc6;
 }
 
 .svg-dark-mode {
@@ -197,7 +202,7 @@ header {
 }
 
 .top-matter {
-    margin: calc(0.6*var(--rvv)) calc(2*var(--rvv)) 0 auto;
+    margin: calc(0.6*var(--rvv)) calc(1*var(--rvv)) 0 auto;
     grid-area: top-matter;
     display: grid;
     grid-template-rows: var(--icon) var(--icon);
@@ -293,6 +298,41 @@ main {
     margin-bottom: calc(0.6*var(--rvv));
 }
 
+.search-title {
+    width: 100%;
+    font-size: calc(0.6*var(--rvv));
+}
+
+.search-result {
+    font-size: calc(0.4*var(--rvv));
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.7rem;
+    padding-right: 0.9rem;
+    min-width: calc(5*var(--rvv));
+    width: fit-content;
+    max-width: calc(10*var(--rvv));
+    background-color: var(--search-bg);
+    color: var(--search-text);
+}
+
+.result-title {
+    width: 100%;
+    font-size: calc(0.4*var(--rvv));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.result-description {
+    width: 100%;
+    font-style: italic;
+    font-size: calc(0.35*var(--rvv));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .bottom-info {
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -303,7 +343,8 @@ main {
 }
 
 .tag,
-.recent-link {
+.recent-link,
+.search-result {
     box-shadow: var(--shallow-shadow);
 }
 
@@ -331,7 +372,7 @@ main {
     padding: 0 0.65rem 0.1rem 0.8rem;
     border-radius: 1.2rem;
     text-align: center;
-    background-color: var(--button-bg);
+    background-color: var(--tag-bg);
     color: var(--button-text);
 }
 
@@ -491,6 +532,10 @@ main {
         animation: sports-flicker 1.2s infinite alternate;
     }
 
+    .top-matter {
+        margin-right: calc(2*var(--rvv));
+    }
+
     main {
         flex: auto;
         display: grid;
@@ -535,7 +580,8 @@ main {
     .next,
     .search-input,
     .search-img,
-    .twitter {
+    .twitter,
+    .search-result {
         transition: transform 0.15s ease-in-out;
     }
     .tag:hover,
@@ -552,12 +598,14 @@ main {
     }
 
     .tag:hover,
-    .recent-link:hover {
+    .recent-link:hover,
+    .search-result:hover {
         transform: scale(1.05);
     }
 
     .tag:hover,
-    .recent-link:hover {
+    .recent-link:hover,
+    .search-result:hover {
         box-shadow: var(--elevated-shadow);
     }
 
