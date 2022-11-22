@@ -210,11 +210,21 @@ header {
 }
 
 .dark,
-.light {
+.light,
+.search-img,
+.hamburger {
     cursor: pointer;
+    padding: calc(0.5*var(--rvv));
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dark img,
+.light img,
+.search-img img,
+.hamburger img {
+    height: var(--icon);
 }
 
 .dark {
@@ -225,20 +235,6 @@ header {
     grid-area: light;
 }
 
-.dark,
-.light,
-.search-img,
-.hamburger {
-    padding: calc(0.5*var(--rvv));
-}
-
-.dark img,
-.light img,
-.search-img img,
-.hamburger img {
-    height: var(--icon);
-}
-
 .selected {
     border-radius: 50%;
     border: 0.5px solid var(--text);
@@ -246,19 +242,11 @@ header {
 
 .search-img {
     grid-area: search;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .hamburger {
     grid-area: hamburger;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
-
 
 main {
     margin: var(--main-gap) 0 0 calc(0.2*var(--rvv));
@@ -385,15 +373,14 @@ main {
 .recent-links {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(0.2*var(--rvv));
+    gap: calc(0.6*var(--rvv));
 }
 
 .recent-link {
     cursor: pointer;
-    /* border: 1px solid var(--text); */
     border-radius: 1rem;
     padding: 0.6rem;
-    width: 45%;
+    width: 40%;
     background-color: var(--button-bg);
     color: var(--button-text)
 }
@@ -523,7 +510,8 @@ footer {
     .hamburger,
     .previous,
     .next,
-    .search-input {
+    .search-input,
+    .search-img {
         transition: transform 0.15s ease-in-out;
     }
     .tag:hover,
@@ -533,7 +521,8 @@ footer {
     .light:hover,
     .hamburger:hover,
     .previous:hover,
-    .next:hover {
+    .next:hover,
+    .search-img:hover {
         transform: scale(1.2);
     }
 
