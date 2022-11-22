@@ -402,13 +402,24 @@ main {
     text-overflow: ellipsis;
 }
 
-footer {
+.footer-content {
     font-size: calc(0.3*var(--rvv));
-    margin-top: calc(var(--rvv));
-    height: 5vh;
+    margin: calc(0.5*var(--rvv)) 0 calc(0.3*var(--rvv));
+    min-height: 5vh;
     display: flex;
+    flex-direction: column;
+    gap: calc(0.3*var(--rvv));
     justify-content: center;
     align-items: center;
+}
+
+.twitter {
+    cursor: pointer;
+    height: calc(0.5*var(--rvv));
+}
+
+.twitter img {
+    height: 100%;
 }
 
 /* desktop styles: */
@@ -502,6 +513,18 @@ footer {
         max-width: 80%;
         padding: 0.7rem;
     }
+
+    footer {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "footer-content empty";
+    }
+
+    .footer-content {
+        grid-area: footer-content;
+    }
+
     .tag,
     .recent-link,
     .light-icon,
@@ -511,7 +534,8 @@ footer {
     .previous,
     .next,
     .search-input,
-    .search-img {
+    .search-img,
+    .twitter {
         transition: transform 0.15s ease-in-out;
     }
     .tag:hover,
@@ -522,7 +546,8 @@ footer {
     .hamburger:hover,
     .previous:hover,
     .next:hover,
-    .search-img:hover {
+    .search-img:hover,
+    .twitter:hover {
         transform: scale(1.2);
     }
 

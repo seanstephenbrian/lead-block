@@ -53,10 +53,10 @@ function getAll() {
         })
 }
 
-function fillFooterText() {
-    const footer = document.querySelector('footer');
+function fillCopyright() {
+    const copyright = document.querySelector('.copyright');
     const year = new Date().getFullYear();
-    footer.textContent = `Copyright © Lead Block Sports ${year}`;
+    copyright.textContent = `Copyright © Lead Block Sports ${year}`;
 }
 
 function addInitialListeners() {
@@ -64,6 +64,13 @@ function addInitialListeners() {
     dark.addEventListener('click', changeToDark);
     const light = document.querySelector('.light');
     light.addEventListener('click', changeToLight);
+
+    const twitter = document.querySelector('.twitter');
+    twitter.addEventListener('click', goToTwitter);
+}
+
+function goToTwitter() {
+    window.open('https://twitter.com/lbkbear', '_blank');
 }
 
 function changeToDark() {
@@ -127,7 +134,7 @@ function changeToLight() {
         getAll();
     }
     
-    fillFooterText();
+    fillCopyright();
 
     addInitialListeners();
 
