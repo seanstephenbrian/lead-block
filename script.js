@@ -90,7 +90,7 @@ function changeToDark() {
 }
 
 function changeToLight() {
-    document.documentElement.style.setProperty('--bg', '#f8f8f816');
+    document.documentElement.style.setProperty('--bg', '#e6f0ff');
     document.documentElement.style.setProperty('--text', '#171717');
 
     const svgs = document.querySelectorAll('.svg');
