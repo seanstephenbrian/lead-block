@@ -25,18 +25,18 @@ const Blog = (function () {
             });
     }
 
-    async function searchTag(search) {
+    async function search(query) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
                 let results = [];
                 for (const post in blog) {
-                    if (blog[post].tags.includes(search)) {
+                    if (blog[post].tags.includes(query)) {
                         results.push(blog[post]);
                     }
                 }
                 reverseChron(results);
-                console.log(results);
+                Render.search(results, query);
             });
     }
     
@@ -79,7 +79,8 @@ const Blog = (function () {
 
     return {
         showPost,
-        fillRecents
+        fillRecents,
+        search
     }
 
 })();
@@ -139,9 +140,53 @@ const Render = (function () {
         })
     }
 
+    // render the results of a search:
+    function search(results, query) {
+
+        // clear out contents of top-info and tags:
+        const title = document.querySelector('.title');
+        title.innerHTML = '';
+        const author = document.querySelector('.author');
+        author.innerHTML = '';
+        const date = document.querySelector('.date');
+        date.innerHTML = '';
+        const tags = document.querySelector('.tags');
+        tags.innerHTML = '';
+
+        const postBody = document.querySelector('.post-body');
+        postBody.innerHTML = '';
+
+        const searchTitle = document.createElement('div');
+        searchTitle.textContent = `${results.length} results for "${query}":`;
+        postBody.appendChild(searchTitle);
+
+        for (const result in results) {
+            const searchResult = document.createElement('div');
+            searchResult.classList.add('search-result');
+            postBody.appendChild(searchResult);
+
+                const resultTitle = document.createElement('div');
+                resultTitle.classList.add('result-title');
+                resultTitle.textContent = results[result].title;
+                searchResult.appendChild(resultTitle);
+
+                const resultDescription = document.createElement('div');
+                resultDescription.classList.add('result-description');
+                resultDescription.textContent = results[result].description;
+                searchResult.appendChild(resultDescription);
+
+            // add click listener to render post:
+            searchResult.addEventListener('click', () => {
+                post(results[result]);
+            })
+        }
+
+    }
+
     return {
         post,
-        recent
+        recent,
+        search
     }
 })();
 
@@ -238,6 +283,8 @@ function changeToLight() {
     fillCopyright();
 
     addInitialListeners();
+
+    Blog.search('third tag');
 
     // check if user has a theme preference:
     if (localStorage.getItem('theme') === 'light') {
