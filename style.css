@@ -282,7 +282,7 @@ header {
 }
 
 main {
-    margin-top: var(--main-gap);
+    margin: var(--main-gap) 0 0 calc(0.2*var(--rvv));
     flex: auto;
     display: flex;
     flex-direction: column;
