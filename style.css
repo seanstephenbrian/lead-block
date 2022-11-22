@@ -437,9 +437,8 @@ main {
 }
 
 footer {
-    font-size: calc(0.4*var(--rvv));
+    font-size: calc(0.3*var(--rvv));
     margin-top: calc(var(--rvv));
-    border-top: 0.5px solid var(--text);
     height: 5vh;
     display: flex;
     justify-content: center;
