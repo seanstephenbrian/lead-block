@@ -157,6 +157,7 @@ header {
 }
 
 .logo {
+    
     cursor: pointer;
     font-family: 'Neoneon';
     color: var(--text);
@@ -165,7 +166,7 @@ header {
     margin-right: auto;
     grid-area: logo;
     min-width: calc(4*var(--rvv));
-    padding: calc(0.2*var(--rvv)) 0;
+    padding: calc(0.2*var(--rvv)) 0 calc(0.2*var(--rvv)) calc(0.11*var(--rvv));
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,63 +176,65 @@ header {
 .lead {
     text-shadow:
         0 0 1px #fff,
-        0 0 3px rgba(255, 255, 255, 0.795),
-        0 0 4px rgba(255, 255, 255, 0.499),
-        0 0 9px rgb(255, 247, 0);
-        
+        0 0 2px rgba(255, 255, 255, 0.795),
+        0 0 3px rgba(255, 255, 255, 0.499),
+        0 0 4px rgb(255, 247, 0);
 }
 
 .lead.dark-logo {
     text-shadow:
         0 0 1px #fff,
-        0 0 3px rgba(255, 255, 255, 0.795),
-        0 0 4px rgba(255, 255, 255, 0.499),
-        0 0 9px rgb(255, 247, 0),
-        0 0 15px rgba(255, 247, 0, 0.714),
-        0 0 20px rgba(255, 247, 0, 0.405),
-        0 0 25px rgba(255, 247, 0, 0.236),
-        0 0 30px rgba(255, 247, 0, 0.186);
+        0 0 2px rgba(255, 255, 255, 0.795),
+        0 0 3px rgba(255, 255, 255, 0.499),
+        0 0 4px rgb(255, 247, 0),
+        0 0 8px rgba(255, 247, 0, 0.714),
+        0 0 10px rgba(255, 247, 0, 0.405),
+        0 0 12px rgba(255, 247, 0, 0.236),
+        0 0 15px rgba(255, 247, 0, 0.186);
 }
 
 .block {
     text-shadow:
         0 0 1px #fff,
-        0 0 3px rgba(255, 255, 255, 0.795),
-        0 0 4px rgba(255, 255, 255, 0.499),
-        0 0 9px rgb(255, 145, 0);
+        0 0 2px rgba(255, 255, 255, 0.795),
+        0 0 3px rgba(255, 255, 255, 0.499),
+        0 0 4px rgb(255, 145, 0);
 }
 
 .block.dark-logo {
     text-shadow:
         0 0 1px #fff,
-        0 0 3px rgba(255, 255, 255, 0.795),
-        0 0 4px rgba(255, 255, 255, 0.499),
-        0 0 9px rgb(255, 145, 0),
-        0 0 15px rgba(255, 145, 0, 0.714),
-        0 0 20px rgba(255, 145, 0, 0.405),
-        0 0 25px rgba(255, 145, 0, 0.236),
-        0 0 30px rgba(255, 145, 0, 0.186);
+        0 0 2px rgba(255, 255, 255, 0.795),
+        0 0 3px rgba(255, 255, 255, 0.499),
+        0 0 4px rgb(255, 145, 0),
+        0 0 8px rgba(255, 145, 0, 0.714),
+        0 0 10px rgba(255, 145, 0, 0.405),
+        0 0 12px rgba(255, 145, 0, 0.236),
+        0 0 15px rgba(255, 145, 0, 0.186);
 }
 
 .sports {
     text-shadow:
         0 0 1px #fff,
-        0 0 3px rgba(255, 255, 255, 0.795),
-        0 0 4px rgba(255, 255, 255, 0.499),
-        0 0 9px rgb(255, 102, 0);
+        0 0 2px rgba(255, 255, 255, 0.795),
+        0 0 3px rgba(255, 255, 255, 0.499),
+        0 0 4px rgb(255, 102, 0);
 }
 
 .sports.dark-logo {
     text-shadow:
         0 0 1px #fff,
-        0 0 3px rgba(255, 255, 255, 0.795),
-        0 0 4px rgba(255, 255, 255, 0.499),
-        0 0 9px rgb(255, 102, 0),
-        0 0 15px rgba(255, 102, 0, 0.714),
-        0 0 20px rgba(255, 102, 0, 0.405),
-        0 0 25px rgba(255, 102, 0, 0.236),
-        0 0 30px rgba(255, 102, 0, 0.186);
+        0 0 2px rgba(255, 255, 255, 0.795),
+        0 0 3px rgba(255, 255, 255, 0.499),
+        0 0 4px rgb(255, 102, 0),
+        0 0 8px rgba(255, 102, 0, 0.714),
+        0 0 10px rgba(255, 102, 0, 0.405),
+        0 0 12px rgba(255, 102, 0, 0.236),
+        0 0 15px rgba(255, 102, 0, 0.186);
 }
+
+
+
 
 .top-matter {
     margin-top: calc(0.6*var(--rvv));
@@ -448,6 +451,70 @@ footer {
     header {
         margin-right: calc(0.5*var(--rvv));
     }
+
+    @keyframes lead-flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            text-shadow:
+            0 0 1px #fff,
+            0 0 2px rgba(255, 255, 255, 0.795),
+            0 0 3px rgba(255, 255, 255, 0.499),
+            0 0 4px rgb(255, 247, 0),
+            0 0 8px rgba(255, 247, 0, 0.714),
+            0 0 10px rgba(255, 247, 0, 0.405),
+            0 0 12px rgba(255, 247, 0, 0.236),
+            0 0 15px rgba(255, 247, 0, 0.186);
+        }
+        20%, 24%, 55% {       
+          text-shadow: none;
+        }
+    }
+    
+    .lead:hover {
+        animation: lead-flicker 1s infinite alternate;    
+    }
+    
+    @keyframes block-flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            text-shadow:
+                0 0 1px #fff,
+                0 0 2px rgba(255, 255, 255, 0.795),
+                0 0 3px rgba(255, 255, 255, 0.499),
+                0 0 4px rgb(255, 145, 0),
+                0 0 8px rgba(255, 145, 0, 0.714),
+                0 0 10px rgba(255, 145, 0, 0.405),
+                0 0 12px rgba(255, 145, 0, 0.236),
+                0 0 15px rgba(255, 145, 0, 0.186);
+        }
+        20%, 24%, 55% {       
+          text-shadow: none;
+        }
+    }
+    
+    .block:hover {
+        animation: block-flicker 1.5s infinite alternate;
+    }
+    
+    @keyframes sports-flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            text-shadow:
+                0 0 1px #fff,
+                0 0 2px rgba(255, 255, 255, 0.795),
+                0 0 3px rgba(255, 255, 255, 0.499),
+                0 0 4px rgb(255, 102, 0),
+                0 0 8px rgba(255, 102, 0, 0.714),
+                0 0 10px rgba(255, 102, 0, 0.405),
+                0 0 12px rgba(255, 102, 0, 0.236),
+                0 0 15px rgba(255, 102, 0, 0.186);
+        }
+        20%, 24%, 55% {       
+          text-shadow: none;
+        }
+    }
+    
+    .sports:hover {
+        animation: sports-flicker 1.2s infinite alternate;
+    }
+
     main {
         flex: auto;
         display: grid;
@@ -495,13 +562,6 @@ footer {
     .tag:hover,
     .recent-link:hover {
         transform: scale(1.05);
-    }
-
-    .logo {
-        transition: transform 0.15s ease-in-out;
-    }
-    .logo:hover {
-        transform: scale(1.05) rotate(330deg);
     }
 
     .tag:hover,
