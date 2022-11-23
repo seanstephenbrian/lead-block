@@ -275,6 +275,7 @@ function showSearchInput() {
     
         const searchInput = document.createElement('input');
         searchInput.setAttribute('type', 'text');
+        searchInput.setAttribute('placeholder', 'Search by tag (e.g. "football")');
         searchInput.classList.add('search-input');
         search.appendChild(searchInput);
         searchInput.addEventListener('keypress', (e) => {

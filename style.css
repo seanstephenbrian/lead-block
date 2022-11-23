@@ -37,7 +37,7 @@ time, mark, audio, video {
 
     --input-focus: #ffab3c;
 
-    --light-bg: #4d8db8a7;
+    --light-bg: #6a9ab9a7;
 
     --search-bg: #c56265b0;
     --search-text: #0d0d0deb;
@@ -377,6 +377,8 @@ main {
 
 
 .search-input {
+    width: calc(6*var(--rvv));
+    max-width: 20vw;
     font-family: 'Interop';
     right: calc(0.1*var(--rvv));
     top: calc(-0.4*var(--rvv));
@@ -607,7 +609,7 @@ main {
     .author:hover {
         font-style: italic;
     }
-    
+
     .content {
         grid-area: content;
     }
