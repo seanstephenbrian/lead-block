@@ -88,8 +88,12 @@ const Blog = (function () {
 // methods for rendering the retrieved blog content onto the page:
 const Render = (function () {
 
-    // render the latest post (this is what renders on initial page load):
+    // render a blog post to the page:
     function post(post) {
+
+        const currentId = post.id;
+        const previousId = parseInt(currentId);
+        const nextId = parseInt(currentId) + 1;
 
         const title = document.querySelector('.title');
         title.textContent = post.title;
@@ -111,7 +115,45 @@ const Render = (function () {
             newTag.classList.add('tag');
             newTag.textContent = post.tags[tag];
             tags.appendChild(newTag);
+            newTag.addEventListener('click', () => {
+                Blog.search(post.tags[tag]);
+            });
         }
+
+        // render the previous/next arrows:
+        // const bottomInfo = document.querySelector('.bottom-info');
+        // const theme = localStorage.getItem('theme');
+        
+        //     const previous = document.createElement('div');
+        //     previous.classList.add('previous');
+        //     bottomInfo.appendChild(previous);
+    
+        //         const previousIcon = document.createElement('img');
+        //         previousIcon.classList.add('svg');
+        //         if (theme === 'dark') {
+        //             previousIcon.classList.add('svg-dark-mode');
+        //         }
+        //         previousIcon.setAttribute('src', 'img/svg/previous.svg');
+        //         previousIcon.setAttribute('alt', 'previous post');
+        //         previous.appendChild(previousIcon);
+
+        //     previous.addEventListener('click', () => {
+        //         alert(previousId);
+        //         Blog.showPost(previousId);
+        //     });
+        
+        //     const next = document.createElement('div');
+        //     next.classList.add('next');
+        //     bottomInfo.appendChild(next);
+
+        //         const nextIcon = document.createElement('img');
+        //         nextIcon.classList.add('svg');
+        //         if (theme === 'dark') {
+        //             nextIcon.classList.add('svg-dark-mode');
+        //         }
+        //         nextIcon.setAttribute('src', 'img/svg/next.svg');
+        //         nextIcon.setAttribute('alt', 'next post');
+        //         next.appendChild(nextIcon);        
     }
 
     // render a preview of a recent post to the page:
@@ -143,7 +185,7 @@ const Render = (function () {
     // render the results of a search:
     function search(results, query) {
 
-        // clear out contents of top-info and tags:
+        // clear out contents of top-info, tags, and previous/next:
         const title = document.querySelector('.title');
         title.innerHTML = '';
         const author = document.querySelector('.author');
@@ -153,6 +195,16 @@ const Render = (function () {
         const tags = document.querySelector('.tags');
         tags.innerHTML = '';
 
+        const previous = document.querySelector('.previous');
+        if (previous) {
+            previous.remove();
+        }
+        const next = document.querySelector('.next');
+        if (next) {
+            next.remove();
+        }
+
+        // clear out post body inner html:
         const postBody = document.querySelector('.post-body');
         postBody.innerHTML = '';
 
