@@ -10,18 +10,18 @@ const Blog = (function () {
             });
     }
 
-    async function searchAuthor(search) {
+    async function searchAuthor(name) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
                 let results = [];
                 for (const post in blog) {
-                    if (blog[post].author === search) {
+                    if (blog[post].author === name) {
                         results.push(blog[post]);
                     }
                 }
                 reverseChron(results);
-                console.log(results);
+                Render.search(results, name);
             });
     }
 
@@ -80,7 +80,8 @@ const Blog = (function () {
     return {
         showPost,
         fillRecents,
-        search
+        search,
+        searchAuthor
     }
 
 })();
@@ -100,6 +101,9 @@ const Render = (function () {
 
         const author = document.querySelector('.author');
         author.textContent = post.author;
+        author.addEventListener('click', () => {
+            Blog.searchAuthor(post.author);
+        });
 
         const date = document.querySelector('.date');
         date.textContent = post.date;
@@ -195,14 +199,16 @@ const Render = (function () {
         const tags = document.querySelector('.tags');
         tags.innerHTML = '';
 
-        const previous = document.querySelector('.previous');
-        if (previous) {
-            previous.remove();
-        }
-        const next = document.querySelector('.next');
-        if (next) {
-            next.remove();
-        }
+
+            // will add the previous/next arrows later:
+                // const previous = document.querySelector('.previous');
+                // if (previous) {
+                //     previous.remove();
+                // }
+                // const next = document.querySelector('.next');
+                // if (next) {
+                //     next.remove();
+                // }
 
         // clear out post body inner html:
         const postBody = document.querySelector('.post-body');
@@ -363,20 +369,23 @@ function changeToLight() {
 
 // script to run on page load; if URL parameters are present, the correct search function is fired:
 (function() {
-    let params = (new URL(document.location)).searchParams;
-    const id = params.get('id');
-    const author = params.get('author');
-    const tag = params.get('tag');
-    if (id) {
-        Blog.showPost(id);
-    } else if (author) {
-        Blog.searchAuthor(author);
-    } else if (tag) {
-        Blog.searchTag(tag);
-    // if there are no search params, just render the homepage:
-    } else {
-        Blog.showPost(0);
-    }
+
+    // let params = (new URL(document.location)).searchParams;
+    // const id = params.get('id');
+    // const author = params.get('author');
+    // const tag = params.get('tag');
+    // if (id) {
+    //     Blog.showPost(id);
+    // } else if (author) {
+    //     Blog.searchAuthor(author);
+    // } else if (tag) {
+    //     Blog.searchTag(tag);
+    // // if there are no search params, just render the homepage:
+    // } else {
+    //     Blog.showPost(0);
+    // }
+
+    Blog.showPost(0);
     
     Blog.fillRecents();
 
