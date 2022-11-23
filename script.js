@@ -212,6 +212,29 @@ function addInitialListeners() {
 
     const twitter = document.querySelector('.twitter');
     twitter.addEventListener('click', goToTwitter);
+
+    const search = document.querySelector('.search-img');
+    search.addEventListener('click', showSearchInput);
+}
+
+function showSearchInput() {
+    const topMatter = document.querySelector('.top-matter');
+    const searchImg = document.querySelector('.search-img');
+
+    const search = document.createElement('div');
+    search.classList.add('search');
+    topMatter.insertBefore(search, searchImg);
+    searchImg.classList.add('hide');
+
+        const searchInput = document.createElement('input');
+        searchInput.classList.add('search-input');
+        search.appendChild(searchInput);
+
+        const closeIcon = document.createElement('img');
+        closeIcon.setAttribute('src', 'img/svg/close.svg');
+        closeIcon.setAttribute('alt', 'close the search bar');
+        search.appendChild(closeIcon);
+    
 }
 
 function goToTwitter() {
@@ -284,8 +307,6 @@ function changeToLight() {
     fillCopyright();
 
     addInitialListeners();
-
-    Blog.search('third tag');
 
     // check if user has a theme preference:
     if (localStorage.getItem('theme') === 'light') {

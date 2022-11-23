@@ -276,6 +276,8 @@ main {
 
 .title {
     width: 100%;
+    margin-right: 10%;
+    margin-bottom: calc(0.2*var(--rvv));
     font-size: calc(0.6*var(--rvv));
 }
 
@@ -347,6 +349,11 @@ main {
 .search-result {
     box-shadow: var(--shallow-shadow);
 }
+
+.search {
+
+}
+
 
 .search-input {
     box-shadow: var(--input-shadow);
