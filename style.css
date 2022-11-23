@@ -35,6 +35,8 @@ time, mark, audio, video {
     --button-bg: #ffc67c98;
     --button-text: #0d0d0deb;
 
+    --input-focus: #ffab3c;
+
     --search-bg: #c56265b0;
     --search-text: #0d0d0deb;
 
@@ -246,6 +248,7 @@ header {
 }
 
 .search-img {
+    position: relative;
     grid-area: search;
 }
 
@@ -351,12 +354,35 @@ main {
 }
 
 .search {
-
+    position: absolute;
+    right: calc(var(--rvv)); 
 }
 
 
 .search-input {
+    right: calc(0.1*var(--rvv));
+    top: calc(-0.4*var(--rvv));
+    position: absolute;
+    outline: none;
+    z-index: 3;
     box-shadow: var(--input-shadow);
+    border: none;
+    border-radius: 1rem;
+    padding-left: 0.5rem;
+}
+
+.search-input:focus {
+    outline: 1px solid var(--input-focus);
+}
+
+.search-submit {
+    text-decoration: underline;
+    position: absolute;
+    top: calc(0.47*var(--rvv));
+    right: calc(0.2*var(--rvv));
+    cursor: pointer;
+    color: var(--text);
+    font-size: calc(0.45*var(--rvv));
 }
 
 .tags {
@@ -375,7 +401,6 @@ main {
     justify-content: center;
     align-items: center;
     height: calc(var(--rvv));
-    /* border: 1px solid var(--text); */
     padding: 0 0.65rem 0.1rem 0.8rem;
     border-radius: 1.2rem;
     text-align: center;
@@ -540,7 +565,16 @@ main {
     }
 
     .top-matter {
+        position: relative;
         margin-right: calc(2*var(--rvv));
+    }
+
+    .search-input {
+        top: calc(-0.3*var(--rvv));
+    }
+
+    .search-submit:hover {
+        font-style: italic;
     }
 
     main {
@@ -586,9 +620,9 @@ main {
     .previous,
     .next,
     .search-input,
-    .search-img,
     .twitter,
-    .search-result {
+    .search-result,
+    .search-icon {
         transition: transform 0.15s ease-in-out;
     }
     .tag:hover,
@@ -599,8 +633,8 @@ main {
     .hamburger:hover,
     .previous:hover,
     .next:hover,
-    .search-img:hover,
-    .twitter:hover {
+    .twitter:hover,
+    .search-icon:hover {
         transform: scale(1.2);
     }
 
@@ -623,7 +657,7 @@ main {
     .search-input:focus,
     .search-input:hover {
         box-shadow: var(--focus-input-shadow);
-        transform: scale(1.03);
+        transform: scale(1.01);
     }
 }
 

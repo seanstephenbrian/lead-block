@@ -213,28 +213,52 @@ function addInitialListeners() {
     const twitter = document.querySelector('.twitter');
     twitter.addEventListener('click', goToTwitter);
 
-    const search = document.querySelector('.search-img');
-    search.addEventListener('click', showSearchInput);
+    const searchImg = document.querySelector('.search-img');
+    searchImg.addEventListener('click', showSearchInput, {once: true});
 }
 
 function showSearchInput() {
-    const topMatter = document.querySelector('.top-matter');
     const searchImg = document.querySelector('.search-img');
+    const searchIcon = document.querySelector('.search-icon');
+    searchIcon.setAttribute('src', 'img/svg/close.svg');
+    searchIcon.addEventListener('click', removeSearchInput, {once: true});
 
     const search = document.createElement('div');
     search.classList.add('search');
-    topMatter.insertBefore(search, searchImg);
-    searchImg.classList.add('hide');
-
+    searchImg.insertBefore(search, searchIcon);
+    
         const searchInput = document.createElement('input');
+        searchInput.setAttribute('type', 'text');
         searchInput.classList.add('search-input');
         search.appendChild(searchInput);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                submitSearch();
+            }
+        })
 
-        const closeIcon = document.createElement('img');
-        closeIcon.setAttribute('src', 'img/svg/close.svg');
-        closeIcon.setAttribute('alt', 'close the search bar');
-        search.appendChild(closeIcon);
-    
+        const submit = document.createElement('div');
+        submit.classList.add('search-submit');
+        submit.textContent = 'Search';
+        search.appendChild(submit);
+        submit.addEventListener('click', submitSearch);
+
+}
+
+function removeSearchInput() {
+    const search = document.querySelector('.search');
+    search.remove();
+
+    const searchIcon = document.querySelector('.search-icon');
+    searchIcon.setAttribute('src', 'img/svg/search.svg');
+    searchIcon.addEventListener('click', showSearchInput, {once: true});
+}
+
+function submitSearch() {
+    const query = document.querySelector('.search-input').value;
+    if (query) {
+        Blog.search(query);
+    }
 }
 
 function goToTwitter() {
