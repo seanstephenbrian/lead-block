@@ -334,7 +334,7 @@ function changeToDark() {
 }
 
 function changeToLight() {
-    document.documentElement.style.setProperty('--bg', '#e6f0ff');
+    document.documentElement.style.setProperty('--bg', 'var(--light-bg)');
     document.documentElement.style.setProperty('--text', '#171717');
 
     const svgs = document.querySelectorAll('.svg');
