@@ -1,12 +1,12 @@
-// methods for retrieving and working with the blog content:
+// methods for retrieving, processing, and rendering the blog content:
 const Blog = (function () {
 
+    // asynchronous functions to retrieve information from the blog file:
     async function getPost(id) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
                 const post = blog[id];
-                console.log(post);
             });
     }
 
@@ -21,11 +21,11 @@ const Blog = (function () {
                     }
                 }
                 reverseChron(results);
-                Render.search(results, name);
+                search(results, name);
             });
     }
 
-    async function search(query) {
+    async function searchTag(query) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
@@ -36,31 +36,24 @@ const Blog = (function () {
                     }
                 }
                 reverseChron(results);
-                Render.search(results, query);
+                search(results, query);
             });
     }
     
+    // sort an object containing blog items in reverse chronological order:
     function reverseChron(items) {
         items.sort(function(a, b) {
             return new Date(b.date) - new Date(a.date);
         });
     }
 
-    function getAll() {
-        fetch('blog.json')
-            .then((response) => response.json())
-            .then((blog) => {
-                reverseChron(blog);
-                console.log(blog);
-            })
-    }
     
     function showPost(id) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
                 reverseChron(blog);
-                Render.post(blog[id]);
+                post(blog[id]);
             })
     }
 
@@ -71,23 +64,14 @@ const Blog = (function () {
                 reverseChron(blog);
                 for (let i = 0; i < 6; i++) {
                     if (blog[i]) {
-                        Render.recent(blog[i]);
+                        recent(blog[i]);
                     }
                 }
             })
     }
 
-    return {
-        showPost,
-        fillRecents,
-        search,
-        searchAuthor
-    }
-
-})();
-
-// methods for rendering the retrieved blog content onto the page:
-const Render = (function () {
+    // methods for rendering the retrieved blog content onto the page:
+    
 
     // render a blog post to the page:
     function post(post) {
@@ -120,7 +104,7 @@ const Render = (function () {
             newTag.textContent = post.tags[tag];
             tags.appendChild(newTag);
             newTag.addEventListener('click', () => {
-                Blog.search(post.tags[tag]);
+                searchTag(post.tags[tag]);
             });
         }
 
@@ -243,11 +227,15 @@ const Render = (function () {
     }
 
     return {
-        post,
-        recent,
-        search
+        showPost,
+        fillRecents,
+        searchTag,
+        searchAuthor
     }
+
 })();
+
+
 
 
 // other page stuff:
@@ -385,7 +373,8 @@ function changeToLight() {
     //     Blog.showPost(0);
     // }
 
-    Blog.showPost(0);
+    // Blog.showPost(0);
+    Blog.searchTag('first tag');
     
     Blog.fillRecents();
 
