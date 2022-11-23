@@ -303,7 +303,7 @@ function removeSearchInput() {
 function submitSearch() {
     const query = document.querySelector('.search-input').value;
     if (query) {
-        Blog.search(query);
+        Blog.searchTag(query);
     }
 }
 
@@ -314,6 +314,7 @@ function goToTwitter() {
 function changeToDark() {
     document.documentElement.style.setProperty('--bg', '#0d0d0deb');
     document.documentElement.style.setProperty('--text', '#e2e2e2');
+    document.documentElement.style.setProperty('--tag-bg', 'var(--dark-tag-bg');
 
     const svgs = document.querySelectorAll('.svg');
     svgs.forEach(svg => {
@@ -336,6 +337,7 @@ function changeToDark() {
 function changeToLight() {
     document.documentElement.style.setProperty('--bg', 'var(--light-bg)');
     document.documentElement.style.setProperty('--text', '#171717');
+    document.documentElement.style.setProperty('--tag-bg', 'var(--light-tag-bg');
 
     const svgs = document.querySelectorAll('.svg');
     svgs.forEach(svg => {
@@ -373,8 +375,7 @@ function changeToLight() {
     //     Blog.showPost(0);
     // }
 
-    // Blog.showPost(0);
-    Blog.searchTag('first tag');
+    Blog.showPost(0);
     
     Blog.fillRecents();
 

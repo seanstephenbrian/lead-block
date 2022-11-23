@@ -42,7 +42,9 @@ time, mark, audio, video {
     --search-bg: #c56265b0;
     --search-text: #0d0d0deb;
 
-    --tag-bg: #80adcbc6;
+    --tag-bg: #d6efff9d;
+    --dark-tag-bg: #d6efff9d;
+    --light-tag-bg: #c56265b0;
 }
 
 .svg-dark-mode {
