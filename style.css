@@ -303,7 +303,7 @@ main {
 
 .author,
 .date {
-    font-size: calc(0.5*var(--rvv));
+    font-size: calc(0.4*var(--rvv));
 }
 
 .author {
@@ -377,6 +377,7 @@ main {
 
 
 .search-input {
+    font-family: 'Interop';
     right: calc(0.1*var(--rvv));
     top: calc(-0.4*var(--rvv));
     position: absolute;
@@ -385,6 +386,7 @@ main {
     box-shadow: var(--input-shadow);
     border: none;
     border-radius: 1rem;
+    padding: 0.2rem;
     padding-left: 0.5rem;
 }
 
@@ -601,6 +603,11 @@ main {
         grid-template-rows: 1fr;
         grid-template-areas: "content recent";
     }
+
+    .author:hover {
+        font-style: italic;
+    }
+    
     .content {
         grid-area: content;
     }
