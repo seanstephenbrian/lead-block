@@ -281,6 +281,45 @@ header {
     grid-area: hamburger;
 }
 
+.nav {
+    position: absolute;
+    top: calc(0.8*var(--rvv));
+    right: 0;
+    height: calc(3*var(--rvv));
+    min-width: calc(4*var(--rvv));
+    padding: calc(0.4*var(--rvv));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    font-family: 'Neoneon';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.2*var(--rvv));
+    padding: calc(0.2*var(--rvv));
+    margin: calc(var(--rvv));
+    border: 0.5px solid #fff;
+    border-radius: 1rem;
+    box-shadow: 
+        0 0 1px #fff,
+        0 0 2px rgba(255, 255, 255, 0.795),
+        0 0 3px rgba(255, 255, 255, 0.499),
+        0 0 4px rgb(255, 102, 0),
+        0 0 8px rgba(255, 102, 0, 0.714),
+        0 0 10px rgba(255, 102, 0, 0.405),
+        0 0 12px rgba(255, 102, 0, 0.236),
+        0 0 15px rgba(255, 102, 0, 0.186);;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
 main {
     margin: var(--main-gap) 0 0 calc(0.2*var(--rvv));
     flex: auto;
@@ -530,6 +569,7 @@ main {
 @media screen and (min-width: 750px) {
     header {
         margin-right: calc(0.5*var(--rvv));
+        margin-bottom: calc(var(--rvv));
     }
 
     @keyframes lead-flicker {
@@ -607,6 +647,54 @@ main {
 
     .search-submit:hover {
         font-style: italic;
+    }
+
+    .nav {
+        top: calc(0.5*var(--rvv));
+        right: calc(0.5*var(--rvv));
+
+    }
+
+    .nav-links {
+        min-width: calc(3.3*var(--rvv));
+    }
+
+    .about-link:hover,
+    .close-button:hover {
+        text-shadow:
+            0 0 1px #fff,
+            0 0 2px rgba(255, 255, 255, 0.795),
+            0 0 3px rgba(255, 255, 255, 0.499),
+            0 0 4px rgb(255, 247, 0),
+            0 0 8px rgba(255, 247, 0, 0.714),
+            0 0 10px rgba(255, 247, 0, 0.405),
+            0 0 12px rgba(255, 247, 0, 0.236),
+            0 0 15px rgba(255, 247, 0, 0.186);
+    }
+
+    .football-link:hover,
+    .contact-link:hover {
+        text-shadow:
+            0 0 1px #fff,
+            0 0 2px rgba(255, 255, 255, 0.795),
+            0 0 3px rgba(255, 255, 255, 0.499),
+            0 0 4px rgb(255, 145, 0),
+            0 0 8px rgba(255, 145, 0, 0.714),
+            0 0 10px rgba(255, 145, 0, 0.405),
+            0 0 12px rgba(255, 145, 0, 0.236),
+            0 0 15px rgba(255, 145, 0, 0.186);
+    }
+
+    .basketball-link:hover {
+        text-shadow:
+            0 0 1px #fff,
+            0 0 2px rgba(255, 255, 255, 0.795),
+            0 0 3px rgba(255, 255, 255, 0.499),
+            0 0 4px rgb(255, 102, 0),
+            0 0 8px rgba(255, 102, 0, 0.714),
+            0 0 10px rgba(255, 102, 0, 0.405),
+            0 0 12px rgba(255, 102, 0, 0.236),
+            0 0 15px rgba(255, 102, 0, 0.186);
     }
 
     main {

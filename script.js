@@ -244,128 +244,197 @@ const Blog = (function () {
 
 })();
 
-
-
-
-// other page stuff:
-
-function fillCopyright() {
-    const copyright = document.querySelector('.copyright');
-    const year = new Date().getFullYear();
-    copyright.textContent = `Copyright © Lead Block Sports ${year}`;
-}
-
-function addInitialListeners() {
-    const logo = document.querySelector('.logo');
-    logo.addEventListener('click', () => {
-        Blog.showPost(0);
-    });
-    const dark = document.querySelector('.dark');
-    dark.addEventListener('click', changeToDark);
-    const light = document.querySelector('.light');
-    light.addEventListener('click', changeToLight);
-
-    const twitter = document.querySelector('.twitter');
-    twitter.addEventListener('click', goToTwitter);
-
-    const searchImg = document.querySelector('.search-img');
-    searchImg.addEventListener('click', showSearchInput, {once: true});
-}
-
-function showSearchInput() {
-    const searchImg = document.querySelector('.search-img');
-    const searchIcon = document.querySelector('.search-icon');
-    searchIcon.setAttribute('src', 'img/svg/close.svg');
-    searchIcon.addEventListener('click', removeSearchInput, {once: true});
-
-    const search = document.createElement('div');
-    search.classList.add('search');
-    searchImg.insertBefore(search, searchIcon);
-    
-        const searchInput = document.createElement('input');
-        searchInput.setAttribute('type', 'text');
-        searchInput.setAttribute('placeholder', 'Search by tag (e.g. "football")');
-        searchInput.classList.add('search-input');
-        search.appendChild(searchInput);
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                submitSearch();
-            }
-        })
-
-        const submit = document.createElement('div');
-        submit.classList.add('search-submit');
-        submit.textContent = 'Search';
-        search.appendChild(submit);
-        submit.addEventListener('click', submitSearch);
-
-}
-
-function removeSearchInput() {
-    const search = document.querySelector('.search');
-    search.remove();
-
-    const searchIcon = document.querySelector('.search-icon');
-    searchIcon.setAttribute('src', 'img/svg/search.svg');
-    searchIcon.addEventListener('click', showSearchInput, {once: true});
-}
-
-function submitSearch() {
-    const query = document.querySelector('.search-input').value;
-    if (query) {
-        Blog.searchTag(query);
+const Page = (function() {
+    function fillCopyright() {
+        const copyright = document.querySelector('.copyright');
+        const year = new Date().getFullYear();
+        copyright.textContent = `Copyright © Lead Block Sports ${year}`;
     }
-}
+    
+    function addInitialListeners() {
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('click', () => {
+            Blog.showPost(0);
+        });
+        const dark = document.querySelector('.dark');
+        dark.addEventListener('click', changeToDark);
+        const light = document.querySelector('.light');
+        light.addEventListener('click', changeToLight);
+    
+        const twitter = document.querySelector('.twitter');
+        twitter.addEventListener('click', goToTwitter);
+    
+        const searchImg = document.querySelector('.search-img');
+        searchImg.addEventListener('click', showSearchInput, {once: true});
+    }
+    
+    function showSearchInput() {
+        const searchImg = document.querySelector('.search-img');
+        const searchIcon = document.querySelector('.search-icon');
+        searchIcon.setAttribute('src', 'img/svg/close.svg');
+        searchIcon.addEventListener('click', removeSearchInput, {once: true});
+    
+        const search = document.createElement('div');
+        search.classList.add('search');
+        searchImg.insertBefore(search, searchIcon);
+        
+            const searchInput = document.createElement('input');
+            searchInput.setAttribute('type', 'text');
+            searchInput.setAttribute('placeholder', 'Search by tag (e.g. "football")');
+            searchInput.classList.add('search-input');
+            search.appendChild(searchInput);
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    submitSearch();
+                }
+            })
+    
+            const submit = document.createElement('div');
+            submit.classList.add('search-submit');
+            submit.textContent = 'Search';
+            search.appendChild(submit);
+            submit.addEventListener('click', submitSearch);
+    
+    }
+    
+    function removeSearchInput() {
+        const search = document.querySelector('.search');
+        search.remove();
+    
+        const searchIcon = document.querySelector('.search-icon');
+        searchIcon.setAttribute('src', 'img/svg/search.svg');
+        searchIcon.addEventListener('click', showSearchInput, {once: true});
+    }
+    
+    function submitSearch() {
+        const query = document.querySelector('.search-input').value;
+        if (query) {
+            Blog.searchTag(query);
+        }
+    }
 
-function goToTwitter() {
-    window.open('https://twitter.com/lbkbear', '_blank');
-}
+    function renderNav() {
+        const body = document.querySelector('body');
 
-function changeToDark() {
-    document.documentElement.style.setProperty('--bg', '#0d0d0deb');
-    document.documentElement.style.setProperty('--text', '#e2e2e2');
-    document.documentElement.style.setProperty('--tag-bg', 'var(--dark-tag-bg');
+        const topMatter = document.querySelector('.top-matter');
+        topMatter.classList.add('hide');
 
-    const svgs = document.querySelectorAll('.svg');
-    svgs.forEach(svg => {
-        svg.classList.add('svg-dark-mode');
-    });
+        const nav = document.createElement('div');
+        nav.classList.add('nav');
+        body.appendChild(nav);
 
-    const logoWords = document.querySelectorAll('.logo-word');
-    logoWords.forEach(logoWord => {
-        logoWord.classList.add('dark-logo');
-    });
+        const navLinks = document.createElement('ul');
+        navLinks.classList.add('nav-links');
+        nav.appendChild(navLinks);
 
-    const light = document.querySelector('.light');
-    light.classList.remove('selected');
-    const dark = document.querySelector('.dark');
-    dark.classList.add('selected');
+            const aboutLink = document.createElement('li');
+            aboutLink.classList.add('about-link', 'nav-link');
+            aboutLink.textContent = 'About';
+            navLinks.appendChild(aboutLink);
 
-    localStorage.setItem('theme', 'dark');
-}
+            const footballLink = document.createElement('li');
+            footballLink.classList.add('football-link', 'nav-link');
+            footballLink.textContent = 'Football';
+            navLinks.appendChild(footballLink);
 
-function changeToLight() {
-    document.documentElement.style.setProperty('--bg', 'var(--light-bg)');
-    document.documentElement.style.setProperty('--text', '#171717');
-    document.documentElement.style.setProperty('--tag-bg', 'var(--light-tag-bg');
+            const basketballLink = document.createElement('li');
+            basketballLink.classList.add('basketball-link', 'nav-link');
+            basketballLink.textContent = 'Basketball';
+            navLinks.appendChild(basketballLink);
 
-    const svgs = document.querySelectorAll('.svg');
-    svgs.forEach(svg => {
-        svg.classList.remove('svg-dark-mode');
-    });
+            const contactLink = document.createElement('li');
+            contactLink.classList.add('contact-link', 'nav-link');
+            contactLink.textContent = 'Contact';
+            navLinks.appendChild(contactLink);
 
-    const logoWords = document.querySelectorAll('.logo-word');
-    logoWords.forEach(logoWord => {
-        logoWord.classList.remove('dark-logo');
-    });
+            const closeButton = document.createElement('li');
+            closeButton.classList.add('close-button', 'nav-link');
+            closeButton.textContent = 'X';
+            navLinks.appendChild(closeButton);
 
-    const dark = document.querySelector('.dark');
-    dark.classList.remove('selected');
-    const light = document.querySelector('.light');
-    light.classList.add('selected');
+        
 
-    localStorage.setItem('theme', 'light');
-}
+        // const displayMode = localStorage.getItem('theme');
+        // if (displayMode === 'dark') {
+        //     nav.style.backgroundColor = 'black';
+        // } else if (displayMode === 'light') {
+        //     nav.style.backgroundColor = 'white';
+        // }
+    }
+
+    renderNav();
+
+    function closeNav() {
+        const nav = document.querySelector('.nav');
+        nav.remove();
+
+        const topMatter = document.querySelector('.top-matter');
+        topMatter.classList.remove('hide');
+    }
+    
+    function goToTwitter() {
+        window.open('https://twitter.com/lbkbear', '_blank');
+    }
+    
+    function changeToDark() {
+        document.documentElement.style.setProperty('--bg', '#0d0d0deb');
+        document.documentElement.style.setProperty('--text', '#e2e2e2');
+        document.documentElement.style.setProperty('--tag-bg', 'var(--dark-tag-bg');
+    
+        const svgs = document.querySelectorAll('.svg');
+        svgs.forEach(svg => {
+            svg.classList.add('svg-dark-mode');
+        });
+    
+        const logoWords = document.querySelectorAll('.logo-word');
+        logoWords.forEach(logoWord => {
+            logoWord.classList.add('dark-logo');
+        });
+    
+        const light = document.querySelector('.light');
+        light.classList.remove('selected');
+        const dark = document.querySelector('.dark');
+        dark.classList.add('selected');
+    
+        localStorage.setItem('theme', 'dark');
+    }
+    
+    function changeToLight() {
+        document.documentElement.style.setProperty('--bg', 'var(--light-bg)');
+        document.documentElement.style.setProperty('--text', '#171717');
+        document.documentElement.style.setProperty('--tag-bg', 'var(--light-tag-bg');
+    
+        const svgs = document.querySelectorAll('.svg');
+        svgs.forEach(svg => {
+            svg.classList.remove('svg-dark-mode');
+        });
+    
+        const logoWords = document.querySelectorAll('.logo-word');
+        logoWords.forEach(logoWord => {
+            logoWord.classList.remove('dark-logo');
+        });
+    
+        const dark = document.querySelector('.dark');
+        dark.classList.remove('selected');
+        const light = document.querySelector('.light');
+        light.classList.add('selected');
+    
+        localStorage.setItem('theme', 'light');
+    }
+
+    return {
+        fillCopyright,
+        addInitialListeners,
+        changeToLight,
+        changeToDark
+    }
+})();
+
+
+
+
+
+
 
 // script to run on page load; if URL parameters are present, the correct search function is fired:
 (function() {
@@ -389,16 +458,16 @@ function changeToLight() {
     
     Blog.fillRecents();
 
-    fillCopyright();
+    Page.fillCopyright();
 
-    addInitialListeners();
+    Page.addInitialListeners();
 
     // check if user has a theme preference:
     if (localStorage.getItem('theme') === 'light') {
-        changeToLight();
+        Page.changeToLight();
     // dark is the default theme:
     } else {
-        changeToDark();
+        Page.changeToDark();
     }
     
 })();
