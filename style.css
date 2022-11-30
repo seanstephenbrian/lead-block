@@ -679,6 +679,8 @@ main {
     }
 
     .nav-links {
+        font-size: calc(0.5*var(--rvv));
+
         margin-right: calc(var(--rvv));
         min-width: calc(3.3*var(--rvv));
     }

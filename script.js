@@ -437,7 +437,7 @@ const Page = (function() {
         // clear out contents of top-info, tags, and previous/next:
         const title = document.querySelector('.title');
         title.innerHTML = '';
-        title.textContent = 'Contact Us';
+        title.textContent = 'Contact';
         const author = document.querySelector('.author');
         author.innerHTML = '';
         const date = document.querySelector('.date');
