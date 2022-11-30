@@ -1,6 +1,6 @@
 [
     {
-        "id": 0,
+        "article": 0,
         "title": "Oldest Article",
         "date": "2022-11-17",
         "author": "Kevin Leibforth",
@@ -14,7 +14,7 @@
         ]
     },
     {
-        "id": 1,
+        "article": 1,
         "title": "Second Article",
         "date": "2022-11-18",
         "author": "Kevin Leibforth",
@@ -29,7 +29,7 @@
         ]
     },
     {
-        "id": 2,
+        "article": 2,
         "title": "Third Article",
         "date": "2022-11-19",
         "author": "Sean Delanty",
@@ -44,7 +44,7 @@
         ]
     },
     {
-        "id": 3,
+        "article": 3,
         "title": "Fourth Article",
         "date": "2022-11-20",
         "author": "Sean Delanty",
@@ -56,7 +56,7 @@
         ]
     },
     {
-        "id": 4,
+        "article": 4,
         "title": "Latest Article",
         "date": "2022-11-21",
         "author": "Kevin Leibforth",

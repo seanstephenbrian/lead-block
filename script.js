@@ -4,11 +4,14 @@
 const Blog = (function () {
 
     // asynchronous functions to retrieve information from the blog file:
-    async function getPost(id) {
+
+    async function getArticleByNum(articleNum) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
-                const post = blog[id];
+                const result = blog.find(post => parseInt(post.article) === parseInt(articleNum))
+                console.log(result);
+                post(result);
             });
     }
 
@@ -56,7 +59,7 @@ const Blog = (function () {
             .then((blog) => {
                 reverseChron(blog);
                 post(blog[id]);
-            })
+            });
     }
 
     function fillRecents() {
@@ -69,7 +72,7 @@ const Blog = (function () {
                         recent(blog[i]);
                     }
                 }
-            })
+            });
     }
 
     // methods for rendering the retrieved blog content onto the page:
@@ -77,10 +80,6 @@ const Blog = (function () {
 
     // render a blog post to the page:
     function post(post) {
-
-        const currentId = post.id;
-        const previousId = parseInt(currentId);
-        const nextId = parseInt(currentId) + 1;
 
         const title = document.querySelector('.title');
         title.textContent = post.title;
@@ -239,7 +238,8 @@ const Blog = (function () {
         showPost,
         fillRecents,
         searchTag,
-        searchAuthor
+        searchAuthor,
+        getArticleByNum
     }
 
 })();
@@ -522,22 +522,20 @@ const Page = (function() {
 // script to run on page load; if URL parameters are present, the correct search function is fired:
 (function() {
 
-    // let params = (new URL(document.location)).searchParams;
-    // const id = params.get('id');
-    // const author = params.get('author');
-    // const tag = params.get('tag');
-    // if (id) {
-    //     Blog.showPost(id);
-    // } else if (author) {
-    //     Blog.searchAuthor(author);
-    // } else if (tag) {
-    //     Blog.searchTag(tag);
-    // // if there are no search params, just render the homepage:
-    // } else {
-    //     Blog.showPost(0);
-    // }
-
-    Blog.showPost(0);
+    let params = (new URL(document.location)).searchParams;
+    const articleNum = params.get('article');
+    const author = params.get('author');
+    const tag = params.get('tag');
+    if (articleNum) {
+        Blog.getArticleByNum(articleNum);
+    } else if (author) {
+        Blog.searchAuthor(author);
+    } else if (tag) {
+        Blog.searchTag(tag);
+    // if there are no search params, just render the homepage:
+    } else {
+        Blog.showPost(0);
+    }
     
     Blog.fillRecents();
 
