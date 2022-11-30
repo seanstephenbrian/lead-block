@@ -1,3 +1,5 @@
+(() => {
+
 // methods for retrieving, processing, and rendering the blog content:
 const Blog = (function () {
 
@@ -399,4 +401,6 @@ function changeToLight() {
         changeToDark();
     }
     
+})();
+
 })();
