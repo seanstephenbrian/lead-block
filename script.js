@@ -21,7 +21,7 @@ const Blog = (function () {
             .then((blog) => {
                 let results = [];
                 for (const post in blog) {
-                    if (blog[post].author === name) {
+                    if (blog[post].author.toLowerCase() === name.toLowerCase()) {
                         results.push(blog[post]);
                     }
                 }
@@ -36,12 +36,16 @@ const Blog = (function () {
             .then((blog) => {
                 let results = [];
                 for (const post in blog) {
-                    if (blog[post].tags.includes(query)) {
+                    if (blog[post].tags.includes(query.toLowerCase())) {
                         results.push(blog[post]);
                     }
                 }
-                reverseChron(results);
-                search(results, query);
+                if (results.length === 0) {
+                    searchAuthor(query);
+                } else {
+                    reverseChron(results);
+                    search(results, query.toLowerCase());
+                }
             });
     }
     
