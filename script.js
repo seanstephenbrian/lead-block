@@ -449,9 +449,6 @@ const Page = (function() {
             <p>You can reach us by email at <a href="mailto:leadblocksports@gmail.com" class="email-link">leadblocksports@gmail.com</a>.</p>
             <p>We're also on Twitter <a href="https://twitter.com/lbkbear" class="twitter-link" target="_blank" rel="noopener noreferrer">here!</a></p>
             `;
-
-        const emailLink = document.querySelector('.email-link');
-
     }
     
     function goToTwitter() {
@@ -509,7 +506,9 @@ const Page = (function() {
         addInitialListeners,
         changeToLight,
         changeToDark,
-        goToTwitter
+        goToTwitter,
+        renderAbout,
+        renderContact
     }
 })();
 
@@ -526,8 +525,15 @@ const Page = (function() {
     const articleNum = params.get('article');
     const author = params.get('author');
     const tag = params.get('tag');
+    const page = params.get('page');
     if (articleNum) {
         Blog.getArticleByNum(articleNum);
+    } else if (page) {
+        if (page === 'about') {
+            Page.renderAbout();
+        } else if (page === 'contact') {
+            Page.renderContact();
+        }
     } else if (author) {
         Blog.searchAuthor(author);
     } else if (tag) {
