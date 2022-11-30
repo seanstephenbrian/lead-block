@@ -24,6 +24,7 @@
             "second tag",
             "fourth tag",
             "fifth tag",
+            "football",
             "sixth tag"
         ]
     },
@@ -50,7 +51,8 @@
         "description": "Fourth post description",
         "content": "Donec sed rhoncus mi, nec accumsan mi. Fusce dictum elementum lectus, feugiat bibendum tortor faucibus id. Nunc vel scelerisque risus, eu pretium lorem. Aliquam ac dui sit amet felis dignissim efficitur non at lorem. Sed feugiat tellus vitae risus commodo, a euismod justo mattis. Duis ac metus cursus purus convallis interdum ornare sit amet nulla. Sed laoreet, nisi nec volutpat venenatis, libero nunc laoreet metus, quis interdum lacus nunc sed justo. Sed ut malesuada mi. Nulla eu tincidunt lacus. Integer eu ullamcorper lorem. Nunc fermentum porttitor libero, non malesuada eros tempor non.\nNulla sed felis sed turpis convallis commodo et non tellus. Nunc at orci at odio malesuada feugiat in tristique augue. Nulla euismod in risus quis semper. Phasellus elit sem, dignissim nec sagittis eget, feugiat sit amet quam. Aliquam efficitur rutrum metus, non elementum turpis commodo vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sit amet enim lectus. Pellentesque aliquam felis cursus, facilisis felis sit amet, ullamcorper nisi. Mauris auctor velit id feugiat maximus. Phasellus at dui quis felis suscipit placerat a a erat. Vivamus tristique mauris vel lacus egestas pharetra. Suspendisse potenti.",
         "tags": [
-            "second tag"
+            "second tag",
+            "football"
         ]
     },
     {
@@ -63,7 +65,8 @@
         "tags": [
             "first tag",
             "third tag",
-            "fifth tag"
+            "fifth tag",
+            "basketball"
         ]
     }
 ]

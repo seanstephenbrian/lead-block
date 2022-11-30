@@ -207,7 +207,7 @@ const Blog = (function () {
         } else if (results.length === 1) {
             searchTitle.textContent = `${results.length} result for "${query}":`;
         } else {
-            searchTitle.textContent = `No results found.`;
+            searchTitle.textContent = `No results found for "${query}".`;
         }
         
         postBody.appendChild(searchTitle);
@@ -256,10 +256,15 @@ const Page = (function() {
         logo.addEventListener('click', () => {
             Blog.showPost(0);
         });
+
         const dark = document.querySelector('.dark');
         dark.addEventListener('click', changeToDark);
+
         const light = document.querySelector('.light');
         light.addEventListener('click', changeToLight);
+
+        const hamburger = document.querySelector('.hamburger');
+        hamburger.addEventListener('click', renderNav);
     
         const twitter = document.querySelector('.twitter');
         twitter.addEventListener('click', goToTwitter);
@@ -331,28 +336,36 @@ const Page = (function() {
             aboutLink.classList.add('about-link', 'nav-link');
             aboutLink.textContent = 'About';
             navLinks.appendChild(aboutLink);
+            aboutLink.addEventListener('click', renderAbout);
 
             const footballLink = document.createElement('li');
             footballLink.classList.add('football-link', 'nav-link');
             footballLink.textContent = 'Football';
             navLinks.appendChild(footballLink);
+            footballLink.addEventListener('click', () => {
+                Blog.searchTag('football');
+            });
 
             const basketballLink = document.createElement('li');
             basketballLink.classList.add('basketball-link', 'nav-link');
             basketballLink.textContent = 'Basketball';
             navLinks.appendChild(basketballLink);
+            basketballLink.addEventListener('click', () => {
+                Blog.searchTag('basketball');
+            });
 
             const contactLink = document.createElement('li');
             contactLink.classList.add('contact-link', 'nav-link');
             contactLink.textContent = 'Contact';
             navLinks.appendChild(contactLink);
+            contactLink.addEventListener('click', renderContact);
 
             const closeButton = document.createElement('li');
             closeButton.classList.add('close-button', 'nav-link');
             closeButton.textContent = 'X';
             navLinks.appendChild(closeButton);
+            closeButton.addEventListener('click', closeNav);
 
-        
 
         // const displayMode = localStorage.getItem('theme');
         // if (displayMode === 'dark') {
@@ -362,14 +375,20 @@ const Page = (function() {
         // }
     }
 
-    renderNav();
-
     function closeNav() {
         const nav = document.querySelector('.nav');
         nav.remove();
 
         const topMatter = document.querySelector('.top-matter');
         topMatter.classList.remove('hide');
+    }
+
+    function renderAbout() {
+
+    }
+
+    function renderContact() {
+
     }
     
     function goToTwitter() {

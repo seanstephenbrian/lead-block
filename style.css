@@ -294,6 +294,8 @@ header {
 }
 
 .nav-links {
+    background-color: #232323;
+    color: #e2e2e2;
     list-style: none;
     font-family: 'Neoneon';
     display: flex;
@@ -302,7 +304,7 @@ header {
     align-items: center;
     gap: calc(0.2*var(--rvv));
     padding: calc(0.2*var(--rvv));
-    margin: calc(var(--rvv));
+    /* margin: calc(var(--rvv)); */
     border: 0.5px solid #fff;
     border-radius: 1rem;
     box-shadow: 
@@ -652,10 +654,10 @@ main {
     .nav {
         top: calc(0.5*var(--rvv));
         right: calc(0.5*var(--rvv));
-
     }
 
     .nav-links {
+        margin-right: calc(var(--rvv));
         min-width: calc(3.3*var(--rvv));
     }
 
