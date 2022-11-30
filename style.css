@@ -294,6 +294,10 @@ header {
 }
 
 .nav-links {
+    font-size: calc(0.6*var(--rvv));
+    letter-spacing: 1.5px;
+    text-indent: 1.5px;
+    text-align: center;
     background-color: #232323;
     color: #e2e2e2;
     list-style: none;
