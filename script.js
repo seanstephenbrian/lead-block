@@ -200,7 +200,14 @@ const Blog = (function () {
 
         const searchTitle = document.createElement('div');
         searchTitle.classList.add('search-title');
-        searchTitle.textContent = `${results.length} results for "${query}":`;
+        if (results.length > 1) {
+            searchTitle.textContent = `${results.length} results for "${query}":`;
+        } else if (results.length === 1) {
+            searchTitle.textContent = `${results.length} result for "${query}":`;
+        } else {
+            searchTitle.textContent = `No results found.`;
+        }
+        
         postBody.appendChild(searchTitle);
 
         for (const result in results) {
