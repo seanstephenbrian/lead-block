@@ -461,7 +461,8 @@ main {
 }
 
 .search-input:focus {
-    outline: 1px solid var(--input-focus);
+    outline: none;
+    border: 1.5px solid var(--input-focus);
 }
 
 .search-submit {
