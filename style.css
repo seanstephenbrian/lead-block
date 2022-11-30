@@ -322,6 +322,22 @@ header {
     cursor: pointer;
 }
 
+span.contact-link {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.twitter-link {
+    text-decoration: underline;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    color: inherit;
+}
+
 main {
     margin: var(--main-gap) 0 0 calc(0.2*var(--rvv));
     flex: auto;
@@ -424,7 +440,6 @@ main {
     right: calc(var(--rvv)); 
 }
 
-
 .search-input {
     width: calc(6*var(--rvv));
     max-width: 28vw;
@@ -439,6 +454,8 @@ main {
     box-shadow: var(--input-shadow);
     border: none;
     border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
     padding: 0.2rem;
     padding-left: 0.5rem;
 }
@@ -675,7 +692,8 @@ main {
     }
 
     .football-link:hover,
-    .contact-link:hover {
+    .contact-link:hover,
+    .email-link:hover {
         text-shadow:
             0 0 1px #fff,
             0 0 2px rgba(255, 255, 255, 0.795),
@@ -687,7 +705,9 @@ main {
             0 0 15px rgba(255, 145, 0, 0.186);
     }
 
-    .basketball-link:hover {
+    .basketball-link:hover,
+    .twitter-link:hover,
+    .search-submit:hover {
         text-shadow:
             0 0 1px #fff,
             0 0 2px rgba(255, 255, 255, 0.795),
@@ -697,6 +717,16 @@ main {
             0 0 10px rgba(255, 102, 0, 0.405),
             0 0 12px rgba(255, 102, 0, 0.236),
             0 0 15px rgba(255, 102, 0, 0.186);
+    }
+
+    .email-link:hover,
+    .contact-link:hover,
+    .twitter-link:hover {
+        font-style: italic;
+    }
+
+    .nav .contact-link:hover {
+        font-style: normal;
     }
 
     main {

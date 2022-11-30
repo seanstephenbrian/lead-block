@@ -384,10 +384,73 @@ const Page = (function() {
     }
 
     function renderAbout() {
+        // clear out contents of top-info, tags, and previous/next:
+        const title = document.querySelector('.title');
+        title.innerHTML = '';
+        title.textContent = 'About Lead Block';
+        const author = document.querySelector('.author');
+        author.innerHTML = '';
+        const date = document.querySelector('.date');
+        date.innerHTML = '';
+        const tags = document.querySelector('.tags');
+        tags.innerHTML = '';
+
+            // will add the previous/next arrows later:
+                // const previous = document.querySelector('.previous');
+                // if (previous) {
+                //     previous.remove();
+                // }
+                // const next = document.querySelector('.next');
+                // if (next) {
+                //     next.remove();
+                // }
+
+        // clear out post body inner html:
+        const postBody = document.querySelector('.post-body');
+        postBody.innerHTML = `
+            <p>Lead Block Sports is a platform for quality football and 
+            basketball analysis and other exciting updates from the wider world of sports.</p>
+            <p>The blog is maintained by Kevin and based out of northern Illinois.</p>
+            <p>Feel free to <span class="contact-link">reach out</span> if you're interested in
+            collaborating or contributing your content to the site! We're always looking to make new friends.</p>
+            <p>You can find Lead Block on Twitter <a href="https://twitter.com/lbkbear" class="twitter-link" target="_blank" rel="noopener noreferrer">here</a>.</p>
+            `;
+
+        const contactLink = document.querySelector('.contact-link');
+        contactLink.addEventListener('click', renderContact);
 
     }
 
     function renderContact() {
+        // clear out contents of top-info, tags, and previous/next:
+        const title = document.querySelector('.title');
+        title.innerHTML = '';
+        title.textContent = 'Contact Us';
+        const author = document.querySelector('.author');
+        author.innerHTML = '';
+        const date = document.querySelector('.date');
+        date.innerHTML = '';
+        const tags = document.querySelector('.tags');
+        tags.innerHTML = '';
+
+            // will add the previous/next arrows later:
+                // const previous = document.querySelector('.previous');
+                // if (previous) {
+                //     previous.remove();
+                // }
+                // const next = document.querySelector('.next');
+                // if (next) {
+                //     next.remove();
+                // }
+
+        // clear out post body inner html:
+        const postBody = document.querySelector('.post-body');
+        postBody.innerHTML = `
+            <p>You can reach us by email at <a href="mailto:leadblocksports@gmail.com" class="email-link">leadblocksports@gmail.com</a>.</p>
+            <p>We're also on Twitter <a href="https://twitter.com/lbkbear" class="twitter-link" target="_blank" rel="noopener noreferrer">here!</a></p>
+            `;
+
+        const emailLink = document.querySelector('.email-link');
 
     }
     
@@ -445,7 +508,8 @@ const Page = (function() {
         fillCopyright,
         addInitialListeners,
         changeToLight,
-        changeToDark
+        changeToDark,
+        goToTwitter
     }
 })();
 
