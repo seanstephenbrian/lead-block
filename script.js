@@ -340,7 +340,10 @@ const Page = (function() {
             aboutLink.classList.add('about-link', 'nav-link');
             aboutLink.textContent = 'About';
             navLinks.appendChild(aboutLink);
-            aboutLink.addEventListener('click', renderAbout);
+            aboutLink.addEventListener('click', () => {
+                renderAbout();
+                closeNav();
+            });
 
             const footballLink = document.createElement('li');
             footballLink.classList.add('football-link', 'nav-link');
@@ -348,6 +351,7 @@ const Page = (function() {
             navLinks.appendChild(footballLink);
             footballLink.addEventListener('click', () => {
                 Blog.searchTag('football');
+                closeNav();
             });
 
             const basketballLink = document.createElement('li');
@@ -356,13 +360,17 @@ const Page = (function() {
             navLinks.appendChild(basketballLink);
             basketballLink.addEventListener('click', () => {
                 Blog.searchTag('basketball');
+                closeNav();
             });
 
             const contactLink = document.createElement('li');
             contactLink.classList.add('contact-link', 'nav-link');
             contactLink.textContent = 'Contact';
             navLinks.appendChild(contactLink);
-            contactLink.addEventListener('click', renderContact);
+            contactLink.addEventListener('click', () => {
+                renderContact();
+                closeNav();
+            });
 
             const closeButton = document.createElement('li');
             closeButton.classList.add('close-button', 'nav-link');
