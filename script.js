@@ -9,13 +9,13 @@ const Blog = (function () {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
-                const result = blog.find(post => parseInt(post.article) === parseInt(articleNum))
+                const result = blog.find(post => parseInt(post.article) === parseInt(articleNum));
                 console.log(result);
-                post(result);
+                renderPost(result);
             });
     }
 
-    async function searchAuthor(name) {
+    async function searchByAuthor(name) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
@@ -30,7 +30,7 @@ const Blog = (function () {
             });
     }
 
-    async function searchTag(query) {
+    async function searchByTag(query) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
@@ -40,8 +40,9 @@ const Blog = (function () {
                         results.push(blog[post]);
                     }
                 }
+                // if the query doesn't return any results for tags, automatically use the same search input to look for an author:
                 if (results.length === 0) {
-                    searchAuthor(query);
+                    searchByAuthor(query);
                 } else {
                     reverseChron(results);
                     search(results, query.toLowerCase());
@@ -49,41 +50,41 @@ const Blog = (function () {
             });
     }
     
-    // sort an object containing blog items in reverse chronological order:
+    // sort an array of blog articles in reverse chronological order:
     function reverseChron(items) {
         items.sort(function(a, b) {
             return new Date(b.date) - new Date(a.date);
         });
     }
 
-    
-    function showPost(id) {
+    // retrieve a post from blog storage, then fire the renderPost function:
+    function getPost(id) {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
                 reverseChron(blog);
-                post(blog[id]);
+                renderPost(blog[id]);
             });
     }
 
-    function fillRecents() {
+    // retrieve the 6 most recent articles & render them to the recent links section:
+    function getRecents() {
         fetch('blog.json')
             .then((response) => response.json())
             .then((blog) => {
                 reverseChron(blog);
                 for (let i = 0; i < 6; i++) {
                     if (blog[i]) {
-                        recent(blog[i]);
+                        renderRecent(blog[i]);
                     }
                 }
             });
     }
 
-    // methods for rendering the retrieved blog content onto the page:
+    // RENDER METHODS:
     
-
-    // render a blog post to the page:
-    function post(post) {
+    // render a retrieved blog post to the page:
+    function renderPost(post) {
 
         const title = document.querySelector('.title');
         title.textContent = post.title;
@@ -91,7 +92,7 @@ const Blog = (function () {
         const author = document.querySelector('.author');
         author.textContent = post.author;
         author.addEventListener('click', () => {
-            Blog.searchAuthor(post.author);
+            Blog.searchByAuthor(post.author);
         });
 
         const date = document.querySelector('.date');
@@ -109,48 +110,13 @@ const Blog = (function () {
             newTag.textContent = post.tags[tag];
             tags.appendChild(newTag);
             newTag.addEventListener('click', () => {
-                searchTag(post.tags[tag]);
+                searchByTag(post.tags[tag]);
             });
-        }
-
-        // render the previous/next arrows:
-        // const bottomInfo = document.querySelector('.bottom-info');
-        // const theme = localStorage.getItem('theme');
-        
-        //     const previous = document.createElement('div');
-        //     previous.classList.add('previous');
-        //     bottomInfo.appendChild(previous);
-    
-        //         const previousIcon = document.createElement('img');
-        //         previousIcon.classList.add('svg');
-        //         if (theme === 'dark') {
-        //             previousIcon.classList.add('svg-dark-mode');
-        //         }
-        //         previousIcon.setAttribute('src', 'img/svg/previous.svg');
-        //         previousIcon.setAttribute('alt', 'previous post');
-        //         previous.appendChild(previousIcon);
-
-        //     previous.addEventListener('click', () => {
-        //         alert(previousId);
-        //         Blog.showPost(previousId);
-        //     });
-        
-        //     const next = document.createElement('div');
-        //     next.classList.add('next');
-        //     bottomInfo.appendChild(next);
-
-        //         const nextIcon = document.createElement('img');
-        //         nextIcon.classList.add('svg');
-        //         if (theme === 'dark') {
-        //             nextIcon.classList.add('svg-dark-mode');
-        //         }
-        //         nextIcon.setAttribute('src', 'img/svg/next.svg');
-        //         nextIcon.setAttribute('alt', 'next post');
-        //         next.appendChild(nextIcon);        
+        }        
     }
 
-    // render a preview of a recent post to the page:
-    function recent(recentPost) {
+    // render a preview of a recent post:
+    function renderRecent(recentPost) {
 
         const recentLinks = document.querySelector('.recent-links');
 
@@ -171,7 +137,7 @@ const Blog = (function () {
 
         // add a click listener to render the post on click:
         newLink.addEventListener('click', () => {
-            post(recentPost);
+            renderPost(recentPost);
         })
     }
 
@@ -188,21 +154,11 @@ const Blog = (function () {
         const tags = document.querySelector('.tags');
         tags.innerHTML = '';
 
-
-            // will add the previous/next arrows later:
-                // const previous = document.querySelector('.previous');
-                // if (previous) {
-                //     previous.remove();
-                // }
-                // const next = document.querySelector('.next');
-                // if (next) {
-                //     next.remove();
-                // }
-
         // clear out post body inner html:
         const postBody = document.querySelector('.post-body');
         postBody.innerHTML = '';
 
+        // create a title for the search results:
         const searchTitle = document.createElement('div');
         searchTitle.classList.add('search-title');
         if (results.length > 1) {
@@ -230,19 +186,19 @@ const Blog = (function () {
                 resultDescription.textContent = results[result].description;
                 searchResult.appendChild(resultDescription);
 
-            // add click listener to render post:
+            // add click listener to trigger post render function:
             searchResult.addEventListener('click', () => {
-                post(results[result]);
+                renderPost(results[result]);
             })
         }
 
     }
 
     return {
-        showPost,
-        fillRecents,
-        searchTag,
-        searchAuthor,
+        getPost,
+        getRecents,
+        searchByTag,
+        searchByAuthor,
         getArticleByNum
     }
 
@@ -258,7 +214,7 @@ const Page = (function() {
     function addInitialListeners() {
         const logo = document.querySelector('.logo');
         logo.addEventListener('click', () => {
-            Blog.showPost(0);
+            Blog.getPost(0);
         });
 
         const dark = document.querySelector('.dark');
@@ -318,7 +274,7 @@ const Page = (function() {
     function submitSearch() {
         const query = document.querySelector('.search-input').value;
         if (query) {
-            Blog.searchTag(query);
+            Blog.searchByTag(query);
         }
     }
 
@@ -350,7 +306,7 @@ const Page = (function() {
             footballLink.textContent = 'Football';
             navLinks.appendChild(footballLink);
             footballLink.addEventListener('click', () => {
-                Blog.searchTag('football');
+                Blog.searchByTag('football');
                 closeNav();
             });
 
@@ -359,7 +315,7 @@ const Page = (function() {
             basketballLink.textContent = 'Basketball';
             navLinks.appendChild(basketballLink);
             basketballLink.addEventListener('click', () => {
-                Blog.searchTag('basketball');
+                Blog.searchByTag('basketball');
                 closeNav();
             });
 
@@ -377,14 +333,6 @@ const Page = (function() {
             closeButton.textContent = 'X';
             navLinks.appendChild(closeButton);
             closeButton.addEventListener('click', closeNav);
-
-
-        // const displayMode = localStorage.getItem('theme');
-        // if (displayMode === 'dark') {
-        //     nav.style.backgroundColor = 'black';
-        // } else if (displayMode === 'light') {
-        //     nav.style.backgroundColor = 'white';
-        // }
     }
 
     function closeNav() {
@@ -396,6 +344,7 @@ const Page = (function() {
     }
 
     function renderAbout() {
+
         // clear out contents of top-info, tags, and previous/next:
         const title = document.querySelector('.title');
         title.innerHTML = '';
@@ -406,16 +355,6 @@ const Page = (function() {
         date.innerHTML = '';
         const tags = document.querySelector('.tags');
         tags.innerHTML = '';
-
-            // will add the previous/next arrows later:
-                // const previous = document.querySelector('.previous');
-                // if (previous) {
-                //     previous.remove();
-                // }
-                // const next = document.querySelector('.next');
-                // if (next) {
-                //     next.remove();
-                // }
 
         // clear out post body inner html:
         const postBody = document.querySelector('.post-body');
@@ -444,16 +383,6 @@ const Page = (function() {
         date.innerHTML = '';
         const tags = document.querySelector('.tags');
         tags.innerHTML = '';
-
-            // will add the previous/next arrows later:
-                // const previous = document.querySelector('.previous');
-                // if (previous) {
-                //     previous.remove();
-                // }
-                // const next = document.querySelector('.next');
-                // if (next) {
-                //     next.remove();
-                // }
 
         // clear out post body inner html:
         const postBody = document.querySelector('.post-body');
@@ -524,15 +453,10 @@ const Page = (function() {
     }
 })();
 
-
-
-
-
-
-
-// script to run on page load; if URL parameters are present, the correct search function is fired:
+// script to run on page load:
 (function() {
 
+    // if URL parameters are present, the requested page content is rendered:
     let params = (new URL(document.location)).searchParams;
     const articleNum = params.get('article');
     const author = params.get('author');
@@ -547,15 +471,15 @@ const Page = (function() {
             Page.renderContact();
         }
     } else if (author) {
-        Blog.searchAuthor(author);
+        Blog.searchByAuthor(author);
     } else if (tag) {
-        Blog.searchTag(tag);
+        Blog.searchByTag(tag);
     // if there are no search params, just render the homepage:
     } else {
-        Blog.showPost(0);
+        Blog.getPost(0);
     }
     
-    Blog.fillRecents();
+    Blog.getRecents();
 
     Page.fillCopyright();
 
