@@ -36,7 +36,11 @@ const Blog = (function () {
             .then((blog) => {
                 let results = [];
                 for (const post in blog) {
-                    if (blog[post].tags.includes(query.toLowerCase())) {
+                    let processedTags = [];
+                    blog[post].tags.forEach(tag => {
+                        processedTags.push(tag.toLowerCase());
+                    });
+                    if (processedTags.includes(query.toLowerCase())) {
                         results.push(blog[post]);
                     }
                 }
