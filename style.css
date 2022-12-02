@@ -389,6 +389,20 @@ main {
     margin-bottom: calc(0.6*var(--rvv));
 }
 
+h2 {
+    font-weight: 700;
+}
+
+.divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider img {
+    height: 80%;
+}
+
 .search-title {
     width: 100%;
     font-size: calc(0.6*var(--rvv));

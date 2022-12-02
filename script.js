@@ -88,7 +88,7 @@ const Blog = (function () {
     // RENDER METHODS:
     
     // render a retrieved blog post to the page:
-    function renderPost(post) {
+    async function renderPost(post) {
 
         const title = document.querySelector('.title');
         title.textContent = post.title;
@@ -103,7 +103,18 @@ const Blog = (function () {
         date.textContent = post.date;
 
         const postBody = document.querySelector('.post-body');
-        postBody.innerHTML = post.content;
+        fetch(`posts/${post.article}.html`)
+            .then((response) => response.text())
+            .then((content) => {
+                postBody.innerHTML = content;
+                // ensure that the correct theme is applied to post body text & divider imgs:
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark') {
+                    Page.changeToDark();
+                } else if (theme === 'light') {
+                    Page.changeToLight();
+                }  
+            });
 
         const tags = document.querySelector('.tags');
         // empty out any previous tags:
@@ -116,7 +127,7 @@ const Blog = (function () {
             newTag.addEventListener('click', () => {
                 searchByTag(post.tags[tag]);
             });
-        }        
+        }
     }
 
     // render a preview of a recent post:
