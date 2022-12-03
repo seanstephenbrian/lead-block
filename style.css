@@ -395,6 +395,10 @@ p {
     text-indent: calc(0.5*var(--rvv));
 }
 
+.no-indent {
+    text-indent: 0;
+}
+
 h2 {
     font-weight: 600;
     font-size: calc(0.43*var(--rvv));
