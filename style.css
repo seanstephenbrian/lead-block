@@ -343,7 +343,9 @@ a:active {
 }
 
 main {
-    margin: var(--main-gap) 0 0 calc(0.2*var(--rvv));
+    margin-top: var(--main-gap);
+    padding: 0 calc(var(--rvv));
+    /* margin: var(--main-gap) 0 0 calc(0.2*var(--rvv)); */
     flex: auto;
     display: flex;
     flex-direction: column;
@@ -351,7 +353,7 @@ main {
 }
 
 .content {
-    margin: 0 calc(0.5*var(--rvv));
+    /* margin: 0 calc(0.5*var(--rvv)); */
     flex: auto;
     display: flex;
     flex-direction: column;   
@@ -386,7 +388,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: calc(0.5*var(--rvv));
-    margin-bottom: calc(0.6*var(--rvv));
+    margin-bottom: calc(1.5*var(--rvv));
 }
 
 p {
@@ -400,13 +402,15 @@ h2 {
 }
 
 .divider {
+    height: calc(var(--rvv));
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: calc(-0.3*var(--rvv));
 }
 
 .divider img {
-    height: 80%;
+    height: 70%;
 }
 
 .search-title {
@@ -445,12 +449,12 @@ h2 {
 }
 
 .bottom-info {
-    display: grid;
+    /* display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
         "tags tags"
-        "previous next";
+        "previous next"; */
 }
 
 .tag,
@@ -505,7 +509,7 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
     gap: calc(0.3*var(--rvv));
-    margin-bottom: calc(0.25*var(--rvv));
+    margin-bottom: calc(1.6*var(--rvv));
 }
 
 .tag {
