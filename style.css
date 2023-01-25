@@ -392,6 +392,7 @@ main {
 }
 
 p {
+    text-indent: calc(1.2*var(--rvv));
     margin: calc(0.2*var(--rvv)) 0;
     line-height: 1.45;
 }
