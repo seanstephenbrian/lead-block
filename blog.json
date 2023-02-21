@@ -7,6 +7,7 @@
         "description": "Prospective outlook on the future of the Jets",
         "tags": [
             "Football",
+            "NFL",
             "New York Jets", 
             "Jets",
             "Quarterback",
@@ -60,6 +61,23 @@
             "Steve Wilks",
             "Matt Rhule",
             "Scott Fitterer"
+        ]
+    },
+    {
+        "article": 4,
+        "title": "The Denver Disaster & the Path to Recovery",
+        "date": "2023-02-21",
+        "author": "Kevin Leibforth",
+        "description": "",
+        "tags": [
+            "Football",
+            "NFL",
+            "Denver Broncos",
+            "Denver",
+            "Broncos",
+            "Nathaniel Hackett",
+            "Russell Wilson",
+            "Sean Payton"
         ]
     }
 ]
