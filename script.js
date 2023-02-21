@@ -128,6 +128,9 @@ const Blog = (function () {
                 searchByTag(post.tags[tag]);
             });
         }
+
+        // scroll to top of window after new render:
+        window.scrollTo(0, 0);
     }
 
     // render a preview of a recent post:
