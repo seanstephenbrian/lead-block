@@ -6,7 +6,7 @@
 
 i developed the blog site using only vanilla javascript and custom css -- no libraries or frameworks. 
 
-all blog post metadata is stored in a local json file, and the actual mark-up for blog posts lives 
+all blog post metadata is stored in a local json file, and the actual blog post text content lives 
 in html files.
 
 asynchronous methods fetch data from the main blog json file and allow the visitor to search by article 
