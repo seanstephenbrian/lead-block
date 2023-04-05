@@ -15,5 +15,5 @@ displaying the requested article, author history, or tagged content on the page.
 dynamically updated as the user switches between light/dark mode, expands the navigation panel, and
 clicks into the search bar.
 
-this site will soon be refactored and expanded to make it more maintainable and allow the author to 
+this site will soon be refactored and expanded to make it more maintainable, allowing the author to 
 independently post new articles and update blog content.
