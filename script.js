@@ -383,7 +383,7 @@ const Page = (function() {
             <p class="no-indent">Feel free to <span class="contact-link">reach out</span> if you're interested in
             collaborating or contributing your content to the site! We're always looking to make new friends.</p>
             <p class="no-indent">You can find Lead Block on Twitter <a href="https://twitter.com/lbkbear" class="twitter-link" target="_blank" rel="noopener noreferrer">here</a>.</p>
-            `;
+        `;
 
         const contactLink = document.querySelector('.contact-link');
         contactLink.addEventListener('click', renderContact);
@@ -407,7 +407,7 @@ const Page = (function() {
         postBody.innerHTML = `
             <p class="no-indent">You can reach us by email at <a href="mailto:leadblocksports@gmail.com" class="email-link">leadblocksports@gmail.com</a>.</p>
             <p class="no-indent">We're also on Twitter <a href="https://twitter.com/lbkbear" class="twitter-link" target="_blank" rel="noopener noreferrer">here!</a></p>
-            `;
+        `;
     }
     
     function goToTwitter() {
