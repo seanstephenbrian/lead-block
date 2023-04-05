@@ -11,7 +11,7 @@ in html files.
 
 asynchronous methods fetch data from the main blog json file and allow the visitor to search by article 
 author, post title, or tag. render methods rewrite the DOM using the retrieved data/search results, 
-displaying the request article, author history, or tagged content on the page. the document is also 
+displaying the requested article, author history, or tagged content on the page. the document is also 
 dynamically updated as the user switches between light/dark mode, expands the navigation panel, and
 clicks into the search bar.
 
