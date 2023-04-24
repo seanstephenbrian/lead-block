@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/* API index - redirect to admin log-in */
+/* GET admin log-in */
 router.get('/', function(req, res, next) {
-    res.redirect('/admin');
+    res.render('login');
 });
 
 module.exports = router;

@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/style/fonts/fira-code.ttf');
+    font-weight: 300 700;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+:root {
+    --rvv: calc(1rem + 1vmin + 1vmax);
+
+    --blue: #2E5169;
+    --blue-gray: #5E686D;
+    --brown: #6F5746;
+    --brown-muted: #63584C;
+    --brown-tan: #A58F85;
+    --forest-green: #4D663E;
+    --green-brown: #5F563F;
+    --gray-tan: #C9BBA3;
+    --tan-gray: #D1C9BA;
+    --off-white: #E4D9C5;
+    --orange-yellow: #E1B270;
+    --orange-tan: #CDA885;
+    --red: #AC3A3E;
+    --special-red: #824E4A;
+    --tan: #D2BC9B;
+
+    --body-bg: #caa583d3;
+}
+
+body {
+    padding: 50px;
+    font-family: 'Fira Code';
+    display: flex;
+    flex-direction: column;
+    background-color: var(--body-bg);
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: calc(var(--rvv));
+    align-items: center;
+}
+
+.logo {
+    font-size: calc(0.8*var(--rvv));
+}
+
+.nav-links {
+    flex: auto;
+    font-size: calc(0.6*var(--rvv));
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    column-gap: calc(2*var(--rvv));
+    row-gap: 20px;
+}
+
+@media screen and (min-width: 500px) {
+    
+}
