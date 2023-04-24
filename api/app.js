@@ -1,25 +1,67 @@
-var createError = require('http-errors');
 var express = require('express');
-const cors = require('cors');
 var path = require('path');
+require('dotenv').config();
+var createError = require('http-errors');
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const compression = require('compression');
+const helmet = require('helmet');
+const bcrypt = require('bcryptjs');
+const cors = require('cors');
 
+// ROUTERS:
 var indexRouter = require('./routes/index');
 
+// MONGOOSE MODELS:
+
+
 var app = express();
+
+// set up mongoose connection:
+mongoose.set('strictQuery', false);
+const mongoDB = process.env.MONGODB_URI;
+main().catch(err => console.log(err));
+async function main() {
+    await mongoose.connect(mongoDB);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// PASSPORT JS SETUP WILL GO HERE
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000
+    }),
+    secret: "cats", 
+    resave: false,
+    saveUninitialized: true 
+}));
+// PASSPORTJS:
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(function(req, res, next) {
+//     res.locals.currentUser = req.user;
+//     next();
+// });
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
+app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ROUTERS:
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
