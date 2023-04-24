@@ -8,6 +8,11 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'Author',
+        required: true
+    },
     description: {
         type: String,
         required: true
