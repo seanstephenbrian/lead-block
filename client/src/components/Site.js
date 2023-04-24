@@ -10,7 +10,7 @@ export default function Site() {
             return response;
         }
 
-        fetchBlogData(process.env.REACT_APP_API)
+        fetchBlogData(process.env.REACT_APP_ARTICLES)
             .then((response) => { 
                 return response.json();
             })
@@ -18,7 +18,7 @@ export default function Site() {
                 console.log(data);
             })
             .catch((err) => {
-                console.log(err)
+                return err;
             });
 
     }, []);
