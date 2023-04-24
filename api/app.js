@@ -15,7 +15,9 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 
 // ROUTERS:
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
+const articlesRouter = require('./routes/articles');
 
 // MONGOOSE MODELS:
 const Article = require('./models/article');
@@ -64,6 +66,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTERS:
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
+app.use('/articles', articlesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
