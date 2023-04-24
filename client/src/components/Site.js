@@ -10,7 +10,7 @@ export default function Site() {
             return response;
         }
 
-        fetchBlogData('http://localhost:8080/blog')
+        fetchBlogData(process.env.REACT_APP_API)
             .then((response) => { 
                 return response.json();
             })
