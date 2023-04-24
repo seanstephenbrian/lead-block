@@ -5,7 +5,7 @@ var createError = require('http-errors');
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local');
 const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -20,6 +20,7 @@ const adminRouter = require('./routes/admin');
 const articlesRouter = require('./routes/articles');
 
 // MONGOOSE MODELS:
+const User = require('./models/user');
 const Article = require('./models/article');
 const Author = require('./models/author');
 
@@ -37,7 +38,38 @@ async function main() {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// PASSPORT JS SETUP WILL GO HERE
+// passportjs setup:
+
+passport.use(
+    new LocalStrategy(async(username, password, done) => {
+        try {
+            const user = await User.findOne({ username: username });
+            if (!user) {
+                return done(null, false, { message: 'Invalid username' });
+            }
+            if (user.password === password) {
+                return done(null, user);
+            } else {
+                return done(null, false, { message: 'Incorrect password' });
+            }
+        } catch(err) {
+            return done(err);
+        };
+    })
+);
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async function(id, done) {
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch(err) {
+        done(err);
+    }
+});
 
 app.use(cors());
 app.use(logger('dev'));
@@ -51,13 +83,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true 
 }));
-// PASSPORTJS:
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(function(req, res, next) {
-//     res.locals.currentUser = req.user;
-//     next();
-// });
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
