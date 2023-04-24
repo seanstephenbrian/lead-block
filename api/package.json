@@ -7,6 +7,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^3.2.4",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
@@ -17,6 +18,7 @@
     "express-session": "^1.17.3",
     "helmet": "^6.1.5",
     "http-errors": "~1.6.3",
+    "lorem-ipsum": "^2.0.8",
     "luxon": "^3.3.0",
     "memorystore": "^1.6.7",
     "mongoose": "^7.0.4",
