@@ -1,8 +1,10 @@
+import React from 'react';
+
+import Site from './components/Site';
+
 function App() {
   return (
-    <>
-        client
-    </>
+    <Site />
   );
 }
 
