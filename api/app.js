@@ -18,7 +18,8 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 
 // MONGOOSE MODELS:
-
+const Article = require('./models/article');
+const Author = require('./models/author');
 
 var app = express();
 
