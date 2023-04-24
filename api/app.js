@@ -39,37 +39,36 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // passportjs setup:
+// passport.use(
+//     new LocalStrategy(async(username, password, done) => {
+//         try {
+//             const user = await User.findOne({ username: username });
+//             if (!user) {
+//                 return done(null, false, { message: 'Invalid username' });
+//             }
+//             if (user.password === password) {
+//                 return done(null, user);
+//             } else {
+//                 return done(null, false, { message: 'Incorrect password' });
+//             }
+//         } catch(err) {
+//             return done(err);
+//         };
+//     })
+// );
 
-passport.use(
-    new LocalStrategy(async(username, password, done) => {
-        try {
-            const user = await User.findOne({ username: username });
-            if (!user) {
-                return done(null, false, { message: 'Invalid username' });
-            }
-            if (user.password === password) {
-                return done(null, user);
-            } else {
-                return done(null, false, { message: 'Incorrect password' });
-            }
-        } catch(err) {
-            return done(err);
-        };
-    })
-);
+// passport.serializeUser(function(user, done) {
+//     done(null, user.id);
+// });
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(async function(id, done) {
-    try {
-        const user = await User.findById(id);
-        done(null, user);
-    } catch(err) {
-        done(err);
-    }
-});
+// passport.deserializeUser(async function(id, done) {
+//     try {
+//         const user = await User.findById(id);
+//         done(null, user);
+//     } catch(err) {
+//         done(err);
+//     }
+// });
 
 app.use(cors());
 app.use(logger('dev'));
