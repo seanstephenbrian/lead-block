@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../App';
 
 import SearchBar from './SearchBar';
-import SearchContainer from './SearchContainer';
 
 import DarkIcon from '../img/svg/dark.svg';
 import HamburgerIcon from '../img/svg/hamburger.svg';
@@ -44,7 +43,7 @@ export default function HeaderMenu(props) {
             <div className={`menu ${theme}`}>
                 <img className='menu-icon dark-icon hover-grow svg' onClick={handleDarkClick} src={DarkIcon} />
                 <img className='menu-icon light-icon hover-grow svg' onClick={handleLightClick} src={LightIcon} />
-                <SearchContainer />
+                {search}
                 <img className='menu-icon hamburger-icon hover-grow svg' src={HamburgerIcon} />
             </div>
         </>
