@@ -36,6 +36,11 @@ router.get('/dashboard', function(req, res, next) {
         .sort({ timestamp: -1 })
         .populate('author')
         .then((blogArticles) => {
+            blogArticles.forEach((article) => {
+                if (article.author === null) {
+                    article.author = { name: '' };
+                }
+            });
             res.render('dashboard', { articles: blogArticles })
         })
         .catch((err) => {
@@ -161,5 +166,11 @@ router.post('/edit/:articleId',
             });
     }
 );
+
+// GET create new article:
+router.get('/new-article', function(req, res, next) {
+    res.render('article-form');
+});
+
 
 module.exports = router;
