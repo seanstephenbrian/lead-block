@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 
@@ -38,17 +39,37 @@ router.get('/new-user', function(req, res, next) {
 });
 
 // POST new user:
-router.post('/new-user', async (req, res, next) => {
-    try {
-        const user = new User({
-            username: req.body.username,
-            password: req.body.password
+router.post('/new-user', 
+    async (req, res, next) => {
+        try {
+            const user = await User.findOne({ username: req.body.username });
+            if (user) {
+                res.render('new-user');
+            } else if (!user) {
+                return next();
+            }
+        } catch(err) {
+            return next(err);
+        }
+    },
+    (req, res, next) => {
+        bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
+            if (err) {
+                return next(err);
+            } else {
+                try {
+                    const user = new User({
+                        username: req.body.username,
+                        password: hashedPassword
+                    });
+                    const result = await user.save();
+                    res.redirect('/admin');
+                } catch(err) {
+                    return next(err);
+                };
+            }
         });
-        const result = await user.save();
-        res.redirect('/admin');
-    } catch(err) {
-        return next(err);
-    };
-});
+    }
+);
 
 module.exports = router;
