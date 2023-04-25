@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { ThemeContext } from '../App';
 
 import Football from '../img/football.png';
 
 export default function HeaderFootball() {
+
+    const theme = useContext(ThemeContext);
+
     return (
         <div className='football'>
-            <img src={Football} />
+            <img className={theme} src={Football} />
         </div>
     )
 }

@@ -28,7 +28,14 @@ header.header {
 
         img {
             height: 60%;
-            filter: drop-shadow(0 0 10px black);
+        }
+
+        img.dark {
+            filter: drop-shadow(0 0 10px var(--dark-text));
+        }
+
+        img.light {
+            filter: drop-shadow(0 0 10px var(--light-text));
         }
     }
 
