@@ -5,7 +5,6 @@ header.header {
     padding: 20px;
 
     .logo {
-        color: black;
         text-decoration: none;
         cursor: pointer;
         font-family: 'Neoneon';
@@ -17,7 +16,7 @@ header.header {
     }
 
     .logo:visited {
-        color: black;
+        color: inherit;
     }
 
     .football {

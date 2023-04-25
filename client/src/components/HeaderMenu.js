@@ -15,10 +15,10 @@ export default function HeaderMenu(props) {
 
     return (
         <div className={`menu ${theme}`}>
-            <img className='menu-icon dark-icon hover-grow' onClick={handleDarkClick} src={DarkIcon} />
-            <img className='menu-icon light-icon hover-grow' onClick={handleLightClick} src={LightIcon} />
-            <img className='menu-icon search-icon hover-grow' src={SearchIcon} />
-            <img className='menu-icon hamburger-icon hover-grow' src={HamburgerIcon} />
+            <img className='menu-icon dark-icon hover-grow svg' onClick={handleDarkClick} src={DarkIcon} />
+            <img className='menu-icon light-icon hover-grow svg' onClick={handleLightClick} src={LightIcon} />
+            <img className='menu-icon search-icon hover-grow svg' src={SearchIcon} />
+            <img className='menu-icon hamburger-icon hover-grow svg' src={HamburgerIcon} />
         </div>
     )
 }
