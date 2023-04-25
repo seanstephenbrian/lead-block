@@ -1,3 +1,54 @@
-header {
-    
+header.header {
+    height: calc(3*var(--rvv));
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+
+    .logo {
+        color: var(--black);
+        text-decoration: none;
+        cursor: pointer;
+        font-family: 'Neoneon';
+        font-size: calc(0.9*var(--rvv));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo:visited {
+        color: var(--black);
+    }
+
+    .football {
+        height: 100%;
+        margin-left: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 60%;
+            filter: drop-shadow(0 0 10px var(--black));
+        }
+    }
+
+    .menu {
+        margin-left: auto;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    header.header {
+        padding: 20px 40px;
+
+        .football {
+            margin-left: 30px;
+            transition: transform 1.5s ease-in-out;
+        }
+
+        .football:hover {
+            transform: rotate(-2200deg);
+        }
+    }   
 }

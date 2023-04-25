@@ -8,7 +8,7 @@ import '../style/header.scss';
 
 export default function Header() {
     return (
-        <header>
+        <header className='header'>
             <HeaderLogo />
             <HeaderFootball />
             <HeaderMenu />

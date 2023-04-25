@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function HeaderMenu() {
     return (
-        <>menu</>
+        <div className='menu'>
+            menu
+        </div>
     )
 }
