@@ -30,6 +30,9 @@ time, mark, audio, video {
 
     --icon-height: calc(0.85*var(--rvv));
 
+    --light-bg: #ffa73527;
+    --dark-bg: #0d0d0deb;
+
     --black: #171717;
 
 }
@@ -46,6 +49,14 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.site-wrapper.light {
+    background-color: var(--light-bg);
+}
+
+.site-wrapper.dark {
+    background-color: var(--dark-bg);
 }
 
 @media screen and (min-width: 500px) {

@@ -12,7 +12,7 @@ function App() {
 
     return (
         <ThemeContext.Provider value={theme}>
-            <div className='site-wrapper'>
+            <div className={`site-wrapper ${theme}`}>
                 <Site updateTheme={(newTheme) => setTheme(newTheme)} />
             </div>
         </ThemeContext.Provider>
