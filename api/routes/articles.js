@@ -7,7 +7,7 @@ const Article = require('../models/article');
 router.get('/', function(req, res, next) {
     Article.find({}, 'article')
         .sort({ timestamp: -1 })
-        .populate('title author description timestamp body tags')
+        .populate('title author description timestamp body tags published')
         .then((articles) => {
             res.json(articles);
         })
