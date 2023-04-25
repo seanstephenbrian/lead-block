@@ -6,21 +6,22 @@ block content
         p.greeting Hello, #{currentUser.username}!
 
         if articles
-            section.posts.drafts 
-                h2.section-heading Drafts 
-                ul.articles 
+            h1.articles-title Articles
+            section.articles.drafts 
+                h2 Drafts:
+                ul.article-list
                     each article in articles 
                         if !article.published
                             li.edit-link
-                                a(href=('/edit/' + article.id)) #{article.title}
+                                a(href=('/admin/edit/' + article.id)) #{article.title}
                                 |  [#{article.author.name}, #{article.date}]
-            section.posts.published
-                h2.section-heading Published Posts
-                ul.articles 
+            section.articles.published
+                h2 Published:
+                ul.article-list
                     each article in articles 
                         if article.published
                             li.edit-link
-                                a(href=('/edit/' + article.id)) #{article.title}
+                                a(href=('/admin/edit/' + article.id)) #{article.title}
                                 |  [#{article.author.name}, #{article.date}]
         else 
             h2 No articles to display.
