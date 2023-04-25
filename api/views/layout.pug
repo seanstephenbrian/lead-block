@@ -8,11 +8,20 @@ html
     body
         nav
             h1.title 
-                a(href='/') Lead Block Sports CMS
+                if currentUser
+                    a(href='/admin/dashboard') Lead Block Sports CMS
+                else 
+                    | Lead Block Sports CMS
             ul.nav-links
-                li nav 1
-                li nav 2
-                li
-                    a(href='/admin/log-out') Log Out
+                if currentUser
+                    li.button
+                        a(href='/admin/dashboard') Home
+                    li.button Create New Post
+                    li.button View All Posts
+                    li.button
+                        a(href='/admin/log-out') Log Out
+                else 
+                    li.button
+                        a(href='/admin') Log In
         main
             block content

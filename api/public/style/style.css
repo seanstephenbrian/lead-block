@@ -64,6 +64,15 @@ nav {
     padding-bottom: 40px;
 }
 
+nav a {
+    color: black;
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: black;
+}
+
 .title {
     font-size: calc(0.8*var(--rvv));
 }
@@ -73,11 +82,33 @@ nav {
     font-size: calc(0.6*var(--rvv));
     list-style: none;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
     column-gap: calc(2*var(--rvv));
     row-gap: 20px;
 }
+
+.nav-links li {
+    background-color: #7f996e;
+}
+
+.button {
+    cursor: pointer;
+    padding: 5px 8px;
+    font-family: 'Fira Code';
+    font-size: calc(0.5*var(--rvv));
+    font-weight: 350;
+    border: none;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
 
 main {
     display: flex;
@@ -96,7 +127,7 @@ h1.error {
 }
 
 h2 {
-    font-size: calc(0.7*var(--rvv));
+    font-size: calc(0.65*var(--rvv));
 }
 
 .login-form {
@@ -107,6 +138,10 @@ h2 {
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.619);
     border: 1px solid black;
+}
+
+.login-form-title {
+    text-align: center;
 }
 
 .login-form-title,
@@ -137,21 +172,6 @@ h2 {
 }
 
 .form-submit {
-    cursor: pointer;
-    padding: 5px;
-    width: fit-content;
     margin: 0 auto;
-    font-family: 'Fira Code';
-    font-size: calc(0.6*var(--rvv));
-    font-weight: 350;
-    border: none;
-    outline: none;
-    border: 1px solid black;
-    border-radius: 3px;
     background-color: #afc8d7;
-    transition: transform 0.1s ease-in-out;
-}
-
-.form-submit:hover {
-    transform: scale(1.05);
 }
