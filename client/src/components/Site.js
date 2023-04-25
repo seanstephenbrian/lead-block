@@ -8,7 +8,9 @@ import RecentPosts from './RecentPosts';
 
 import '../style/main.scss';
 
-export default function Site() {
+export default function Site(props) {
+
+    const { updateTheme } = props;
 
     // test fetch request from API:
     useEffect(() => {
@@ -33,13 +35,13 @@ export default function Site() {
 
     return (
         <BrowserRouter>
-            <Header />
-            <RecentPosts />
-            <Routes>
-                <Route path='/' element={<Article />} />
-                <Route path='/article/:articleId' element={<Article />} />
-            </Routes>
-            <Footer />
+                <Header handleThemeClick={updateTheme} />
+                <RecentPosts />
+                <Routes>
+                    <Route path='/' element={<Article />} />
+                    <Route path='/article/:articleId' element={<Article />} />
+                </Routes>
+                <Footer />
         </BrowserRouter>        
     )
 }
