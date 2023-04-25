@@ -168,7 +168,7 @@ h2 {
     background-color: rgb(243, 207, 139);
 }
 
-.text-field:valid:not(:placeholder-shown) {
+.login-form .text-field:valid:not(:placeholder-shown) {
     background-color: #bce4b7;
 }
 
@@ -216,11 +216,54 @@ h2 {
     font-size: calc(0.5*var(--rvv));
 }
 
-.article-form {
+.edit-article-title {
+    font-size: calc(0.8*var(--rvv));
+    margin: 0 auto;
+}
 
+.article-form {
+    padding: 0 20px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-form label {
+    font-size: calc(0.6*var(--rvv));
+}
+
+.article-form .text-field {
+    font-size: calc(0.4*var(--rvv));
+}
+
+label[for='body'] {
+    margin-bottom: 10px;
 }
 
 #tinymce-editor {
     width: 1000px;
     max-width: 90vw;
+}
+
+label[for='tags'] {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tags-sublabel1 {
+    font-size: calc(0.5*var(--rvv));
+    margin-top: 5px;
+    text-align: center;
+}
+
+.tags-sublabel2 {
+    font-size: calc(0.5*var(--rvv));
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.published-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
