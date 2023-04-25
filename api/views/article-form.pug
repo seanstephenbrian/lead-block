@@ -8,10 +8,34 @@ block content
     if currentUser
         form.article-form(method='POST') 
             if article
-                textarea(id='tinymce-editor') #{article.body}
+                label(for='title') Title:
+                input(type='text' name='title' id='title' value=(article.title))
+                label(for='author') Author: 
+                input(type='text' name='author' id='author' value=(article.author.name))
+                label(for='description') Description:
+                input(type='text' name='description' id='description' value=(article.description))
+                textarea(id='tinymce-editor' name='body') #{article.body}
+                label(for='tags') Tags:
+                input(type='text' name='tags' id='tags' value=(article.tags))
+                label(for='published') Published:
+                if article.published
+                    input(type='checkbox' name='published' id='published' value='true' checked)
+                else
+                    input(type='checkbox' name='published' id='published' value='true')
+                input(type='submit')
             else
-                textarea(id='tinymce-editor')
-            input(type='submit')
-            
+                label(for='title') Title:
+                input(type='text' name='title' id='title')
+                label(for='author') Author: 
+                input(type='text' name='author' id='author')
+                label(for='description') Description:
+                input(type='text' name='description' id='description')
+                textarea(id='tinymce-editor' name='body') #{article.body}
+                label(for='tags') Tags:
+                input(type='text' name='tags' id='tags')
+                label(for='published') Published:
+                input(type='checkbox' name='published' id='published' value='true')
+                input(type='submit')
+                
     else 
         h1 You are not logged in.
