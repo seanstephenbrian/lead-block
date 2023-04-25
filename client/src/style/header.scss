@@ -78,6 +78,8 @@ header.header {
         .search-bar {
             position: absolute;
             max-width: 27vw;
+            top: calc((var(--icon-height) + var(--icon-padding) )/ 3);
+            right: calc(var(--icon-height) + var(--icon-padding));
         }
     }
 
