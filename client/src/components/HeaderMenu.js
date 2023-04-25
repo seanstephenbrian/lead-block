@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../App';
 
 import SearchBar from './SearchBar';
+import SearchContainer from './SearchContainer';
 
 import DarkIcon from '../img/svg/dark.svg';
 import HamburgerIcon from '../img/svg/hamburger.svg';
@@ -31,17 +32,19 @@ export default function HeaderMenu(props) {
         );
     } else if (searchExpanded) {
         search = (
-            <img className='menu-icon search-icon hover-grow svg' onClick={() => setSearchExpanded(false)} src={CloseIcon} />
+            <div className='search-icon'>
+                <img className='menu-icon hover-grow svg' onClick={() => setSearchExpanded(false)} src={CloseIcon} />
+                <SearchBar />
+            </div>
         )
     }
 
     return (
         <>
-            {searchExpanded ? <SearchBar /> : ''}
             <div className={`menu ${theme}`}>
                 <img className='menu-icon dark-icon hover-grow svg' onClick={handleDarkClick} src={DarkIcon} />
                 <img className='menu-icon light-icon hover-grow svg' onClick={handleLightClick} src={LightIcon} />
-                {search}
+                <SearchContainer />
                 <img className='menu-icon hamburger-icon hover-grow svg' src={HamburgerIcon} />
             </div>
         </>

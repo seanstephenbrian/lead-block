@@ -1,5 +1,6 @@
 header.header {
-    height: calc(3*var(--rvv));
+
+    height: var(--header-height);
     display: flex;
     align-items: center;
     padding: 20px;
@@ -49,11 +50,12 @@ header.header {
         grid-template-areas:
             "dark light"
             "search hamburger";
+        position: relative;
 
         .menu-icon {
             cursor: pointer;
             height: var(--icon-height);
-            padding: calc(0.18*var(--rvv));
+            padding: var(--icon-padding);
         }
 
         .dark-icon {
@@ -66,10 +68,16 @@ header.header {
 
         .search-icon {
             grid-area: search;
+            position: relative;
         }
 
         .hamburger-icon {
             grid-area: hamburger;
+        }
+
+        .search-bar {
+            position: absolute;
+            max-width: 27vw;
         }
     }
 
