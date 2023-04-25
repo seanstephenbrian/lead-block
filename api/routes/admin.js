@@ -71,7 +71,7 @@ router.post('/new-user',
                         password: hashedPassword
                     });
                     const result = await user.save();
-                    res.redirect('/admin');
+                    res.redirect('/admin/dashboard');
                 } catch(err) {
                     return next(err);
                 };
