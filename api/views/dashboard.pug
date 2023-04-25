@@ -14,7 +14,8 @@ block content
                         if !article.published
                             li.edit-link
                                 a(href=('/admin/edit/' + article.id)) #{article.title}
-                                |  [#{article.author.name}, #{article.date}]
+                                if article.author.name !== ''
+                                    |  [#{article.author.name}, #{article.date}]
             section.articles.published
                 h2 Published:
                 ul.article-list
@@ -22,7 +23,8 @@ block content
                         if article.published
                             li.edit-link
                                 a(href=('/admin/edit/' + article.id)) #{article.title}
-                                |  [#{article.author.name}, #{article.date}]
+                                if article.author.name !== ''
+                                    |  [#{article.author.name}, #{article.date}]
         else 
             h2 No articles to display.
 

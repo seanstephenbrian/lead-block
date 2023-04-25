@@ -12,7 +12,7 @@ block content
                 label(for='title') Title
                 input(class='text-field' type='text' name='title' id='title' value=(article.title) required)
                 label(for='author') Author
-                input(class='text-field' type='text' name='author' id='author' value=(article.author.name) required)
+                input(class='text-field' type='text' name='author' id='author' value=(null === article.author ? '' : article.author.name) required)
                 label(for='description') Description
                 input(class='text-field' type='text' name='description' id='description' value=(article.description) required)
                 label(for='body') Article Body
