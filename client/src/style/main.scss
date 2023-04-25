@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Neoneon';
+    src: url('./fonts/neoneon.otf');
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -19,11 +24,20 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+:root {
+
+    --rvv: calc(1rem + 1vmin + 1vmax);
+
+    --black: #171717;
+
+}
+
 html,
 body {
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+    color: var(--black);
 }
 
 .site-wrapper {
