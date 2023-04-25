@@ -47,8 +47,12 @@ time, mark, audio, video {
     --body-bg: #caa583d3;
 }
 
+html,
 body {
-    padding: 40px;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Fira Code';
     display: flex;
     flex-direction: column;
@@ -56,6 +60,7 @@ body {
 }
 
 nav {
+    padding: 40px 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -113,7 +118,7 @@ nav a:visited {
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: 0 auto;
 }
 
 h1 {
@@ -174,4 +179,19 @@ h2 {
 .form-submit {
     margin: 0 auto;
     background-color: #afc8d7;
+}
+
+.greeting {
+    font-size: calc(0.35*var(--rvv));
+    width: fit-content;
+    margin: 0 auto 20px;
+    background-color: #e98b84;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.posts {
+    width: 1000px;
+    max-width: 90vw;
 }

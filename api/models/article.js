@@ -27,11 +27,16 @@ const ArticleSchema = new Schema({
     },
     tags: [{
         type: String
-    }]
+    }],
+    published: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
 });
 
 ArticleSchema.virtual('date').get(function() {
-    return DateTime.fromJSDate(this.timestamp).toLocaleString(DateTime.DATETIME_MED);
+    return DateTime.fromJSDate(this.timestamp).toFormat('MMMM dd, yyyy');
 });
 
 module.exports = mongoose.model('Article', ArticleSchema);

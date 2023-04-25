@@ -3,7 +3,27 @@ extends layout
 block content 
 
     if currentUser 
-        h1 Hello, #{currentUser.username}
+        p.greeting Hello, #{currentUser.username}!
+
+        if articles
+            section.posts.drafts 
+                h2.section-heading Drafts 
+                ul.articles 
+                    each article in articles 
+                        if !article.published
+                            li.edit-link
+                                a(href=('/edit/' + article.id)) #{article.title}
+                                |  [#{article.author.name}, #{article.date}]
+            section.posts.published
+                h2.section-heading Published Posts
+                ul.articles 
+                    each article in articles 
+                        if article.published
+                            li.edit-link
+                                a(href=('/edit/' + article.id)) #{article.title}
+                                |  [#{article.author.name}, #{article.date}]
+        else 
+            h2 No articles to display.
 
     else 
         h1 You are not logged in
