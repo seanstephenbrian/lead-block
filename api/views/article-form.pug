@@ -6,36 +6,53 @@ block content
     script(type='application/javascript' src='/js/tinymce-config.js')
 
     if currentUser
+        h1.edit-article-title Edit Article
         form.article-form(method='POST') 
             if article
-                label(for='title') Title:
-                input(type='text' name='title' id='title' value=(article.title))
-                label(for='author') Author: 
-                input(type='text' name='author' id='author' value=(article.author.name))
-                label(for='description') Description:
-                input(type='text' name='description' id='description' value=(article.description))
-                textarea(id='tinymce-editor' name='body') #{article.body}
-                label(for='tags') Tags:
-                input(type='text' name='tags' id='tags' value=(article.tags))
-                label(for='published') Published:
-                if article.published
-                    input(type='checkbox' name='published' id='published' value='true' checked)
-                else
-                    input(type='checkbox' name='published' id='published' value='true')
-                input(type='submit')
+                label(for='title') Title
+                input(class='text-field' type='text' name='title' id='title' value=(article.title) required)
+                label(for='author') Author
+                input(class='text-field' type='text' name='author' id='author' value=(article.author.name) required)
+                label(for='description') Description
+                input(class='text-field' type='text' name='description' id='description' value=(article.description) required)
+                label(for='body') Article Body
+                textarea(id='tinymce-editor' name='body' required) #{article.body}
+                label(for='tags') Tags
+                p.tags-sublabel1 Tags must be submitted in this exact format:
+                p.tags-sublabel2 Tag 1, Tag 2, Tag 3
+                -
+                    let tagString = '';
+                    article.tags.forEach((tag, index) => {
+                        if (index === article.tags.length - 1) {
+                            tagString = tagString + tag;
+                        } else {
+                            tagString = tagString + tag + ', ';
+                        }
+                    });
+                input(class='text-field' type='text' name='tags' id='tags' value=(tagString))
+                section.published-section
+                    label(for='published') Published:
+                    if article.published
+                        input(type='checkbox' name='published' id='published' value='true' checked)
+                    else
+                        input(type='checkbox' name='published' id='published' value='true')
+                input(class='button form-submit' type='submit')
             else
                 label(for='title') Title:
-                input(type='text' name='title' id='title')
+                input(class='text-field' type='text' name='title' id='title' required)
                 label(for='author') Author: 
-                input(type='text' name='author' id='author')
+                input(class='text-field' type='text' name='author' id='author' required)
                 label(for='description') Description:
-                input(type='text' name='description' id='description')
-                textarea(id='tinymce-editor' name='body') #{article.body}
+                input(class='text-field' type='text' name='description' id='description' required)
+                textarea(id='tinymce-editor' name='body' required) #{article.body}
                 label(for='tags') Tags:
-                input(type='text' name='tags' id='tags')
-                label(for='published') Published:
-                input(type='checkbox' name='published' id='published' value='true')
-                input(type='submit')
+                p.tags-sublabel1 Tags must be submitted in this exact format:
+                p.tags-sublabel2 Tag 1, Tag 2, Tag 3
+                input(class='text-field' type='text' name='tags' id='tags')
+                section.published-section
+                    label(for='published') Published:
+                    input(type='checkbox' name='published' id='published' value='true')
+                input(class='button form-submit' type='submit')
                 
     else 
         h1 You are not logged in.
