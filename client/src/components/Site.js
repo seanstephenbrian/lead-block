@@ -1,4 +1,10 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Article from './Article';
+import Header from './Header';
+import Footer from './Footer';
+import RecentPosts from './RecentPosts';
 
 export default function Site() {
 
@@ -24,8 +30,14 @@ export default function Site() {
     }, []);
 
     return (
-        <>
-            lead block sports
-        </>
+        <BrowserRouter>
+            <Header />
+            <RecentPosts />
+            <Routes>
+                <Route path='/' element={<Article />} />
+                <Route path='/article/:articleId' element={<Article />} />
+            </Routes>
+            <Footer />
+        </BrowserRouter>        
     )
 }

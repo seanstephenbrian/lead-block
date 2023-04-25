@@ -3,9 +3,7 @@ import React from 'react';
 import Site from './components/Site';
 
 function App() {
-  return (
-    <Site />
-  );
+    return <Site />;
 }
 
 export default App;
