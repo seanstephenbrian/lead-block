@@ -7,10 +7,12 @@ html
         link(rel='stylesheet' href='/style/style.css')
     body
         nav
-            h1.title Lead Block Sports CMS
+            h1.title 
+                a(href='/') Lead Block Sports CMS
             ul.nav-links
                 li nav 1
                 li nav 2
-                li nav 3
+                li
+                    a(href='/admin/log-out') Log Out
         main
             block content

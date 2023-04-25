@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+
+    if currentUser 
+        h1 Hello, #{currentUser.username}
+
+    else 
+        h1 You are not logged in
