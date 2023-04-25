@@ -6,9 +6,9 @@ block content
     script(type='application/javascript' src='/js/tinymce-config.js')
 
     if currentUser
-        h1.edit-article-title Edit Article
         form.article-form(method='POST') 
             if article
+                h1.edit-article-title Edit Article
                 label(for='title') Title
                 input(class='text-field' type='text' name='title' id='title' value=(article.title) required)
                 label(for='author') Author
@@ -16,7 +16,7 @@ block content
                 label(for='description') Description
                 input(class='text-field' type='text' name='description' id='description' value=(article.description) required)
                 label(for='body') Article Body
-                textarea(id='tinymce-editor' name='body' required) #{article.body}
+                textarea(id='tinymce-editor' name='body') #{article.body}
                 label(for='tags') Tags
                 p.tags-sublabel1 Tags must be submitted in this exact format:
                 p.tags-sublabel2 Tag 1, Tag 2, Tag 3
@@ -38,13 +38,18 @@ block content
                         input(type='checkbox' name='published' id='published' value='true')
                 input(class='button form-submit' type='submit')
             else
+                h1.edit-article-title New Article
                 label(for='title') Title:
-                input(class='text-field' type='text' name='title' id='title' required)
+                input(class='text-field' type='text' name='title' id='title' placeholder=' ' required)
                 label(for='author') Author: 
-                input(class='text-field' type='text' name='author' id='author' required)
+                input(class='text-field' type='text' name='author' id='author' placeholder=' ' required)
                 label(for='description') Description:
-                input(class='text-field' type='text' name='description' id='description' required)
-                textarea(id='tinymce-editor' name='body' required) #{article.body}
+                input(class='text-field' type='text' name='description' id='description' placeholder=' ' required)
+                .date-section
+                    label(for='timestamp') Date:
+                    input(class='date-input' type='date' name='timestamp' id='timestamp' required)
+                label(for='body') Article Body
+                textarea(id='tinymce-editor' name='body')
                 label(for='tags') Tags:
                 p.tags-sublabel1 Tags must be submitted in this exact format:
                 p.tags-sublabel2 Tag 1, Tag 2, Tag 3
@@ -55,4 +60,6 @@ block content
                 input(class='button form-submit' type='submit')
                 
     else 
-        h1 You are not logged in.
+        h1 Please 
+            a(href='/admin') log in
+            |  to continue.

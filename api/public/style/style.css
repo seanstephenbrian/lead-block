@@ -235,6 +235,17 @@ h2 {
     font-size: calc(0.4*var(--rvv));
 }
 
+.date-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.date-input {
+    width: fit-content;
+}
+
 label[for='body'] {
     margin-bottom: 10px;
 }

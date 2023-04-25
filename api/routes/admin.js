@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const sanitizeHtml = require('sanitize-html');
+const { DateTime } = require('luxon');
 
 const Article = require('../models/article');
 const Author = require('../models/author');
@@ -132,7 +133,6 @@ router.post('/edit/:articleId',
         }
     },
     function(req, res, next) {
-
         // convert tag input to array format:
         let updatedTags = [];
         if (req.body.tags !== '') {
@@ -159,7 +159,7 @@ router.post('/edit/:articleId',
         // update article in db:
         Article.findByIdAndUpdate(req.params.articleId, updatedArticle)
             .then(() => {
-                res.send('updated')
+                res.redirect('/admin/dashboard');
             })
             .catch((err) => {
                 return next(err);
@@ -171,6 +171,69 @@ router.post('/edit/:articleId',
 router.get('/new-article', function(req, res, next) {
     res.render('article-form');
 });
+
+// POST create new article:
+router.post('/new-article',
+    // find existing author or save new author:
+    async function(req, res, next) {
+
+        console.log('posting....')
+
+        // if author exists in db, find author; if not, create new author:
+        const author = await Author.findOne({ name: req.body.author });
+        if (author) {
+            req.articleAuthor = author;
+            next();
+        } else {
+            const newAuthor = new Author({ name: req.body.author });
+            newAuthor.save()
+                .then((savedAuthor) => {
+                    req.articleAuthor = savedAuthor;
+                    next();
+                })
+                .catch((err) => {
+                    return next(err);
+                });
+        }
+    },
+    function(req, res, next) {
+
+        console.log(req.body.timestamp);
+
+        // convert tag input to array format:
+        let articleTags = [];
+        if (req.body.tags !== '') {
+            articleTags = req.body.tags.split(', ');
+        }
+
+        // convert published input to boolean:
+        let publishedStatus;
+        if (req.body.published === 'true') {
+            publishedStatus = true;
+        } else {
+            publishedStatus = false;
+        }
+
+        const newArticle = new Article({
+            title: req.body.title,
+            author: req.articleAuthor,
+            description: req.body.description,
+            timestamp: DateTime.fromISO(req.body.timestamp).plus({ hours: 12 }).toJSDate(),
+            body: sanitizeHtml(req.body.body),
+            tags: articleTags,
+            published: publishedStatus
+        });
+
+        // save new article to db:
+        newArticle.save()
+            .then(() => {
+                res.redirect('/admin/dashboard');
+            })
+            .catch((err) => {
+                return next(err);
+            });
+    }
+)
 
 
 module.exports = router;
