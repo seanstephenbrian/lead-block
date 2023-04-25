@@ -6,6 +6,8 @@ import Header from './Header';
 import Footer from './Footer';
 import RecentPosts from './RecentPosts';
 
+import '../style/main.scss';
+
 export default function Site() {
 
     // test fetch request from API:
