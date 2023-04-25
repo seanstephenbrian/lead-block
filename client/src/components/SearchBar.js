@@ -2,8 +2,6 @@ import React from 'react';
 
 export default function SearchBar() {
     return (
-        <>
-            search bar
-        </>
+        <input className='search-bar' type='text'/>
     )
 }
