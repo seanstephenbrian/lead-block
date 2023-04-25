@@ -103,6 +103,9 @@ app.use(compression());
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// route to tinymce node module:
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+
 // ROUTERS:
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);

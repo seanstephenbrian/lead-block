@@ -191,7 +191,36 @@ h2 {
     border-radius: 10px;
 }
 
-.posts {
+.articles-title {
+    font-size: calc(0.8*var(--rvv));
+    text-decoration: underline;
+}
+
+.articles {
+    width: 750px;
+    max-width: 90vw;
+    margin: 10px 0;
+}
+
+.articles h2 {
+    font-size: calc(0.7*var(--rvv));
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.article-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: calc(0.5*var(--rvv));
+}
+
+.article-form {
+
+}
+
+#tinymce-editor {
     width: 1000px;
     max-width: 90vw;
 }

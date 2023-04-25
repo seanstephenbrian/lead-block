@@ -1,0 +1,17 @@
+extends layout 
+
+block content
+
+    script(type='application/javascript' src='/tinymce/tinymce.min.js')
+    script(type='application/javascript' src='/js/tinymce-config.js')
+
+    if currentUser
+        form.article-form(method='POST') 
+            if article
+                textarea(id='tinymce-editor') #{article.body}
+            else
+                textarea(id='tinymce-editor')
+            input(type='submit')
+            
+    else 
+        h1 You are not logged in.

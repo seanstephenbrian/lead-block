@@ -6,11 +6,20 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const Article = require('../models/article');
 
-/* GET admin log-in */
+// GET admin log-in:
 router.get('/', function(req, res, next) {
     res.render('login');
 });
 
+// POST admin log-in:
+router.post('/',
+    passport.authenticate('local', {
+        successRedirect: '/admin/dashboard',
+        failureRedirect: '/admin/login-error'
+    })
+);
+
+// GET & POST for failed login:
 router.get('/login-error', function(req, res, next) {
     res.render('login', { error: 'Login failed :(' });
 });
@@ -18,14 +27,6 @@ router.get('/login-error', function(req, res, next) {
 router.post('/login-error', function(req, res, next) {
     res.render('login', { error: 'Login failed :(' });
 })
-
-// POST admin log-in
-router.post('/',
-    passport.authenticate('local', {
-        successRedirect: '/admin/dashboard',
-        failureRedirect: '/admin/login-error'
-    })
-);
 
 // GET admin dashboard:
 router.get('/dashboard', function(req, res, next) {
@@ -88,5 +89,22 @@ router.post('/new-user',
         });
     }
 );
+
+// GET article edit:
+router.get('/edit/:articleId', function(req, res, next) {
+    Article.findById(req.params.articleId, 'title author description timestamp body tags published')
+        .populate('author')
+        .then((blogArticle) => {
+            res.render('article-form', { article: blogArticle });
+        })
+        .catch((err) => {
+            return next(err);
+        });
+});
+
+// POST article edit:
+router.post('/edit/:articleId', function(req, res, next) {
+    res.send(req.body);
+});
 
 module.exports = router;
