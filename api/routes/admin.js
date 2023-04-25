@@ -4,6 +4,7 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
+const Article = require('../models/article');
 
 /* GET admin log-in */
 router.get('/', function(req, res, next) {
@@ -28,7 +29,15 @@ router.post('/',
 
 // GET admin dashboard:
 router.get('/dashboard', function(req, res, next) {
-    res.render('dashboard', { user: req.user });
+    Article.find({}, 'title author timestamp published')
+        .sort({ timestamp: -1 })
+        .populate('author')
+        .then((blogArticles) => {
+            res.render('dashboard', { articles: blogArticles })
+        })
+        .catch((err) => {
+            return next(err);
+        });
 });
 
 // GET log out:
