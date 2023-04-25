@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-
-import { ThemeContext } from '../App';
+import React from 'react';
 
 import HeaderFootball from './HeaderFootball';
 import HeaderLogo from './HeaderLogo';
@@ -11,8 +9,6 @@ import '../style/header.scss';
 export default function Header(props) {
 
     const { handleThemeClick } = props;
-
-    const theme = useContext(ThemeContext);
 
     return (
         <header className='header'>
