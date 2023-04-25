@@ -10,11 +10,19 @@ router.get('/', function(req, res, next) {
     res.render('login');
 });
 
+router.get('/login-error', function(req, res, next) {
+    res.render('login', { error: 'Login failed :(' });
+});
+
+router.post('/login-error', function(req, res, next) {
+    res.render('login', { error: 'Login failed :(' });
+})
+
 // POST admin log-in
 router.post('/',
     passport.authenticate('local', {
         successRedirect: '/admin/dashboard',
-        failureRedirect: '/admin'
+        failureRedirect: '/admin/login-error'
     })
 );
 
