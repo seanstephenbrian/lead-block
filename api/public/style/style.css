@@ -85,6 +85,16 @@ main {
     align-items: center;
 }
 
+h1 {
+    font-size: calc(0.5*var(--rvv));
+}
+
+h1.error {
+    max-width: 500px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 h2 {
     font-size: calc(0.7*var(--rvv));
 }

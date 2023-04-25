@@ -2,6 +2,9 @@ extends layout
 
 block content 
 
+    if error 
+        h1.error #{error}
+
     form(class='login-form' method='POST')
         h2.login-form-title Admin Login
         label(for='username') Username:

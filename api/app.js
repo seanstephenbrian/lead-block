@@ -42,10 +42,16 @@ app.set('view engine', 'pug');
 passport.use(
     new LocalStrategy(async(username, password, done) => {
         try {
+            // check if username exists:
             const user = await User.findOne({ username: username });
             if (!user) {
                 return done(null, false, { message: "Incorrect username" });
             }
+            // only allow users with 'admin' property set to 'true' to log in:
+            if (user && !user.admin) {
+                return done(null, false, { message: "Access denied" });
+            }
+            // if all good so far, check password:
             bcrypt.compare(password, user.password, (err, res) => {
                 if (res) {
                     return done(null, user);
