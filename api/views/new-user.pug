@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+
+    form(class='login-form' method='POST')
+        h2.login-form-title Create a New User
+        label(for='username') Username:
+        input(class='text-field' type='text' id='username' name='username' placeholder=' ' required)
+        label(for='password') Password:
+        input(class='text-field' type='password' id='password' name='password' placeholder=' ' required)
+        label(for='confirmPassword') Confirm Password:
+        input(class='text-field' type='password' id='confirmPassword' name='confirmPassword' placeholder=' ' required)
+        input(class='form-submit' type='submit' value='Log In')
