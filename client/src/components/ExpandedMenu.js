@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../style/scss/expanded-menu.scss';
 
@@ -11,10 +12,18 @@ export default function ExpandedMenu(props) {
             <section className='expanded-menu'>
                 <button className='close-menu-button' aria-label='Close' onClick={handleCloseClick}>X</button>
                 <ul className='menu-nav-links'>
-                    <li className='menu-nav-link about-link'>ABOUT</li>
-                    <li className='menu-nav-link football-link'>FOOTBALL</li>
-                    <li className='menu-nav-link basketball-link'>BASKETBALL</li>
-                    <li className='menu-nav-link contact-link'>CONTACT</li>
+                    <li className='menu-nav-link about-link'>
+                        <Link to='../about'>ABOUT</Link>
+                    </li>
+                    <li className='menu-nav-link football-link'>
+                        <Link to='../tag/football'>FOOTBALL</Link>
+                    </li>
+                    <li className='menu-nav-link basketball-link'>
+                        <Link to='../tag/basketball'>BASKETBALL</Link>
+                    </li>
+                    <li className='menu-nav-link contact-link'>
+                        <Link to='../contact'>CONTACT</Link>
+                    </li>
                 </ul>
             </section>
         )
