@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../style/expanded-menu.scss';
+import '../style/scss/expanded-menu.scss';
 
 export default function ExpandedMenu(props) {
 

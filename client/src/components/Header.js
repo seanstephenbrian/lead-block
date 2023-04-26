@@ -4,7 +4,7 @@ import HeaderFootball from './HeaderFootball';
 import HeaderLogo from './HeaderLogo';
 import HeaderMenu from './HeaderMenu';
 
-import '../style/header.scss';
+import '../style/scss/header.scss';
 
 export default function Header(props) {
 
