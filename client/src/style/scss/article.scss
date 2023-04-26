@@ -26,6 +26,14 @@
         
     }
 
+    .article-body {
+        p {
+            font-size: calc(0.46*var(--rvv));
+            text-indent: calc(1*var(--rvv));
+            margin: calc(0.25*var(--rvv)) 0;
+            line-height: 1.45;
+        }
+    }
 
 }
 

@@ -153,7 +153,9 @@ main.main {
     .hover-grow.grow-less:hover {
         transform: scale(1.05);
     }
+}
 
+@media screen and (min-width: 900px) {
     main.main {
         flex-direction: row;
     }
