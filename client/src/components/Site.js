@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Article from './Article';
 import Header from './Header';
 import Footer from './Footer';
-import RecentPosts from './RecentPosts';
+import RecentArticles from './RecentArticles';
 
 import '../style/scss/main.scss';
 
@@ -40,7 +40,7 @@ export default function Site(props) {
                             }
                         />
                     </Routes>
-                    <RecentPosts currentArticle={currentArticle} />
+                    <RecentArticles currentArticle={currentArticle} />
                 </main>
                 <Footer />
         </BrowserRouter>        
