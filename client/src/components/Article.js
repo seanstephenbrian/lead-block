@@ -55,6 +55,7 @@ export default function Article() {
                     timestamp={currentArticle.timestamp}
                 />
                 <ArticleBody body={currentArticle.body} />
+                <ArticleTags tags={currentArticle.tags} />
             </section>
         )
     } else if (error) {
