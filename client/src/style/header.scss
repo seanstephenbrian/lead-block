@@ -3,7 +3,7 @@ header.header {
     height: var(--header-height);
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 20px 13px;
 
     .logo {
         text-decoration: none;
@@ -22,7 +22,7 @@ header.header {
 
     .football {
         height: 100%;
-        margin-left: 20px;
+        margin-left: 12px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -67,6 +67,7 @@ header.header {
         }
 
         .search-icon {
+            height: var(--icon-height);
             grid-area: search;
             position: relative;
         }
@@ -77,9 +78,61 @@ header.header {
 
         .search-bar {
             position: absolute;
-            max-width: 27vw;
-            top: calc((var(--icon-height) + var(--icon-padding) )/ 3);
-            right: calc(var(--icon-height) + var(--icon-padding));
+            width: 200px;
+            max-width: 28vw;
+            height: 1rem;
+            top: calc(0.10*var(--rvv));
+            right: calc(var(--icon-height) + var(--icon-padding) + 5px);
+            border: 1.5px solid var(--light-text);
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            background-color: white;
+            padding: 5px;
+            padding-left: 10px;
+            font-family: 'Interop';
+            outline: none;
+            box-shadow: var(--input-shadow);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border: 1.5px solid var(--input-focus-border);
+            background-color: var(--input-focus-bg);
+        }
+
+        .submit-search {
+            position: absolute;
+            right: calc(var(--icon-height) + var(--icon-padding) + 20px);
+            top: calc(1.35*var(--rvv));
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .submit-search:hover {
+            cursor: pointer;
+            font-style: italic;
+            text-shadow:
+                0 0 1px #fff,
+                0 0 2px rgba(255, 255, 255, 0.795),
+                0 0 3px rgba(255, 255, 255, 0.499),
+                0 0 4px rgb(255, 102, 0),
+                0 0 8px rgba(255, 102, 0, 0.714),
+                0 0 10px rgba(255, 102, 0, 0.405),
+                0 0 12px rgba(255, 102, 0, 0.236),
+                0 0 15px rgba(255, 102, 0, 0.186);
+        }
+    }
+
+    .menu.dark {
+        .search-bar {
+            border-color: var(--dark-text);
+            background-color: rgb(247, 247, 247);
+        }
+        .search-bar:focus {
+            outline: none;
+            border: 1.5px solid var(--input-focus-border);
+            background-color: var(--input-focus-bg);
         }
     }
 
@@ -101,6 +154,28 @@ header.header {
 
         .football:hover {
             transform: rotate(-2200deg);
+        }
+
+        .menu {
+            .search-bar {
+                top: calc(0.20*var(--rvv));
+            }
+            .submit-search {
+                top: calc(1.3*var(--rvv));
+            }
+        }
+    }   
+}
+
+@media screen and (min-width: 1000px) {
+    header.header {
+        .menu {
+            .search-bar {
+                top: calc(0.28*var(--rvv));
+            }
+            .submit-search {
+                top: calc(1.1*var(--rvv));
+            }
         }
     }   
 }
