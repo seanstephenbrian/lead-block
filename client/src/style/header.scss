@@ -3,7 +3,7 @@ header.header {
     height: var(--header-height);
     display: flex;
     align-items: center;
-    padding: 20px 13px;
+    padding: var(--header-padding);
 
     .logo {
         text-decoration: none;
@@ -66,7 +66,7 @@ header.header {
             grid-area: light;
         }
 
-        .search-icon {
+        .search-container {
             height: var(--icon-height);
             grid-area: search;
             position: relative;
@@ -92,13 +92,18 @@ header.header {
             padding-left: 10px;
             font-family: 'Interop';
             outline: none;
-            box-shadow: var(--input-shadow);
+            box-shadow: var(--shadow);
         }
 
         .search-bar:focus {
             outline: none;
             border: 1.5px solid var(--input-focus-border);
             background-color: var(--input-focus-bg);
+            transform: scale(1.01);
+        }
+
+        .search-bar:hover {
+            transform: scale(1.01);
         }
 
         .submit-search {
