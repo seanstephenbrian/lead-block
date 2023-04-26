@@ -75,10 +75,13 @@ time, mark, audio, video {
 :root {
     --rvv: calc(1rem + 1vmin + 1vmax);
 
-    --shadow1: 1.0px 1.9px 1.9px rgba(0, 0, 0, 0.262);
-    --focus-shadow1: 2.0px 4.0px 4.0px rgba(0, 0, 0, 0.337);
+    --shadow: 1.0px 1.9px 1.9px rgba(0, 0, 0, 0.262);
+    --focus-shadow: 2.0px 4.0px 4.0px rgba(0, 0, 0, 0.337);
 
     --header-height: calc(3*var(--rvv));
+    --header-padding-TB: 20px;
+    --header-padding-LR: 13px;
+    --header-padding: var(--header-padding-TB) var(--header-padding-LR);
     --icon-height: calc(0.85*var(--rvv));
     --icon-padding: calc(0.18*var(--rvv));
 
@@ -89,6 +92,11 @@ time, mark, audio, video {
 
     --input-focus-border: #ffab3c;
     --input-focus-bg: #fff3e3;
+
+    --expanded-menu-light-bg: #232323;
+    --expanded-menu-light-text: #e2e2e2;
+    --expanded-menu-dark-bg: #ffffff;
+    --expanded-menu-dark-text: #171717;
 }
 
 html,
