@@ -18,8 +18,8 @@
         
         .recent-article-link {
             color: var(--light-text);
-            min-width: 190px;
-            width: fit-content;
+            width: 75vw;
+            max-width: 350px;
             background-color: var(--article-link-bg);
             cursor: pointer;
             padding: 15px 20px;
@@ -62,6 +62,11 @@
         .recent-article-links {
             width: 100%;
             gap: calc(0.8*var(--rvv));
+
+            .recent-article-link {
+                width: 350px;
+                max-width: 20vw;
+            }
         }
     }
 }
