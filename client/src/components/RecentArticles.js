@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-import '../style/scss/recent-posts.scss';
+import '../style/scss/recent-articles.scss';
 
-export default function RecentPosts(props) {
+export default function RecentArticles(props) {
 
     const { currentArticle } = props;
 
@@ -43,25 +44,26 @@ export default function RecentPosts(props) {
     if (recentArticles) {
         articleElements = recentArticles.map((article) => {
             return (
-                <div className='recent-article' key={uuidv4()}>
-                    {article.title}
-                </div>
+                <Link className='recent-article-link hover-grow grow-less' to={`../articles/` + article.slug} key={uuidv4()}>
+                    <div className='recent-article-link-title'>{article.title}</div>
+                    <div className='recent-article-link-description'>{article.description}</div>
+                </Link>
             );
         });
     }
     
     if (error) {
         return (
-            <section className='recent-posts'>
-                <h1 className='recent-posts-title'>Recent Articles</h1>
-                <div className='recent-post-links'>Sorry, we were unable to retrieve the articles.</div>
+            <section className='recent-articles'>
+                <h1 className='recent-articles-title'>Recent Articles</h1>
+                <div className='recent-article-links'>Sorry, we encountered an error.</div>
             </section>
         )
     } else {
         return (
-            <section className='recent-posts'>
-                <h1 className='recent-posts-title'>Recent Articles</h1>
-                <div className='recent-post-links'>
+            <section className='recent-articles'>
+                <h1 className='recent-articles-title'>Recent Articles</h1>
+                <div className='recent-article-links'>
                     {articleElements}
                 </div>
             </section>
