@@ -7,6 +7,7 @@ import Footer from './Footer';
 import RecentArticles from './RecentArticles';
 
 import '../style/scss/main.scss';
+import SearchResults from './SearchResults';
 
 export default function Site(props) {
 
@@ -22,25 +23,38 @@ export default function Site(props) {
                         <Route 
                             path='/'
                             element={
-                                <Article
-                                    updateCurrentArticle={(newCurrentArticle) => {
-                                        setCurrentArticle(newCurrentArticle);
-                                    }}
-                                />
+                                <>
+                                    <Article
+                                        updateCurrentArticle={(newCurrentArticle) => {
+                                            setCurrentArticle(newCurrentArticle);
+                                        }}
+                                    />
+                                    <RecentArticles currentArticle={currentArticle} />
+                                </>
                             } 
                         />
                         <Route
                             path='/articles/:articleSlug'
                             element={
-                                <Article
-                                    updateCurrentArticle={(newCurrentArticle) => {
-                                        setCurrentArticle(newCurrentArticle);
-                                    }}
-                                />
+                                <>
+                                    <Article
+                                        updateCurrentArticle={(newCurrentArticle) => {
+                                            setCurrentArticle(newCurrentArticle);
+                                        }}
+                                    />
+                                    <RecentArticles currentArticle={currentArticle} />
+                                </>
                             }
                         />
+                        <Route
+                            path='/search/:query'
+                            element={<SearchResults />} 
+                        />
+                        <Route
+                            path='/author/:authorQuery'
+                            element={<SearchResults />}
+                        />
                     </Routes>
-                    <RecentArticles currentArticle={currentArticle} />
                 </main>
                 <Footer />
         </BrowserRouter>        
