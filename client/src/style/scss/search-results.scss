@@ -1,0 +1,50 @@
+.search-results {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.7*var(--rvv));
+
+    .search-title {
+        font-size: calc(0.85*var(--rvv));
+    }
+
+    .found-article-link {
+        max-width: 80vw;
+        color: var(--light-text);
+        background-color: var(--article-link-bg);
+        cursor: pointer;
+        padding: 15px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .found-article-title {
+            font-size: calc(0.6*var(--rvv));
+        }
+        .found-article-description {
+            font-size: calc(0.5*var(--rvv));
+            font-style: italic;
+        }
+    }
+
+    .found-article-link:visited {
+        color: var(--light-text);
+    }
+
+    .found-article-link.dark {
+        background-color: var(--article-link-bg-dark);
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .search-results {
+        padding: calc(var(--rvv));
+    
+        .found-article-link {
+            width: 500px;
+        }
+    }
+}
