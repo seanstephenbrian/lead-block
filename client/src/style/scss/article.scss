@@ -45,11 +45,15 @@
     }
 
     .article-tags {
-        padding: 5px 0 10px;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 10px 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: calc(1*var(--rvv));
+        flex-wrap: wrap;
+        column-gap: calc(1*var(--rvv));
+        row-gap: calc(0.7*var(--rvv));
 
         .tag {
             color: var(--light-text);
