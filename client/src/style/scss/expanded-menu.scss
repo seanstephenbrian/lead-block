@@ -52,17 +52,19 @@
 .expanded-menu {
     z-index: 2;
     position: fixed;
-    top: 3vw;
-    right: 3vw;
+    top: 4vw;
+    right: 4vw;
     height: 225px;
-    width: 94vw;
+    width: 92vw;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(255, 128, 0);
+    color: var(--expanded-menu-light-text);
 
     .close-menu-button {
+        color: var(--expanded-menu-light-text);
         cursor: pointer;
         position: absolute;
         top: 10px;
@@ -154,21 +156,18 @@
 
 .menu.light .expanded-menu {
     background-color: var(--expanded-menu-light-bg);
-    color: var(--expanded-menu-light-text);
 
     .close-menu-button {
         background-color: var(--expanded-menu-light-bg);
-        color: var(--expanded-menu-light-text);
     }
 }
 
 .menu.dark .expanded-menu {
     background-color: var(--expanded-menu-dark-bg);
-    color: var(--expanded-menu-dark-text);
+    border: 2px solid orange;
 
     .close-menu-button {
         background-color: var(--expanded-menu-dark-bg);
-        color: var(--expanded-menu-dark-text);
     }
 }
 

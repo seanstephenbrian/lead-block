@@ -34,6 +34,14 @@ footer.footer {
             }
         }
 
+        .ssbbd-link.dark {
+            color: #20c20e;
+
+            a:visited {
+                color: #20c20e;
+            }
+        }
+
         .ssbbd-link:hover {
             transform: rotate(1080deg);
         }

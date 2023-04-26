@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { ThemeContext } from '../App';
 
 import '../style/scss/footer.scss';
 
 import TwitterIcon from '../img/svg/twitter.svg';
 
 export default function Footer() {
+
+    const theme = useContext(ThemeContext);
+
     return (
         <footer className='footer'>
             <a href='https://twitter.com/lbkbear' className='twitter hover-grow' target='_blank' rel='noopener noreferrer'>
@@ -15,7 +20,7 @@ export default function Footer() {
             </div>
             <div className='ssbbd'>
                 <div>site design by</div>
-                <div className='ssbbd-link'>
+                <div className={`ssbbd-link ${theme}`}>
                     <a href='https://ssbbd.dev/' target='_blank' rel='noopener noreferrer'>ssbbd</a>
                 </div>
             </div>
