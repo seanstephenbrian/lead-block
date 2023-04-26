@@ -1,0 +1,21 @@
+.info-page {
+    max-width: 1100px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h1 {
+        font-size: calc(0.85*var(--rvv));
+    }
+
+    p {
+        font-size: calc(0.5*var(--rvv));
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .info-page {
+        padding: calc(var(--rvv));
+    }
+}
