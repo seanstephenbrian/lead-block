@@ -9,6 +9,12 @@ const Article = require('../models/article');
 const Author = require('../models/author');
 const User = require('../models/user');
 
+const sanitizeConfig = {
+    allowedAttributes: {
+        'p': ['style']
+    }
+}
+
 // GET admin log-in:
 router.get('/', function(req, res, next) {
     res.render('login');
@@ -111,6 +117,7 @@ router.get('/edit/:articleId', function(req, res, next) {
 });
 
 // POST article edit:
+
 router.post('/edit/:articleId', 
     // find existing author or save new author:
     async function(req, res, next) {
@@ -151,7 +158,7 @@ router.post('/edit/:articleId',
             title: req.body.title,
             author: req.articleAuthor,
             description: req.body.description,
-            body: sanitizeHtml(req.body.body),
+            body: sanitizeHtml(req.body.body, sanitizeConfig),
             tags: updatedTags,
             published: publishedStatus
         }
@@ -219,7 +226,7 @@ router.post('/new-article',
             author: req.articleAuthor,
             description: req.body.description,
             timestamp: DateTime.fromISO(req.body.timestamp).plus({ hours: 12 }).toJSDate(),
-            body: sanitizeHtml(req.body.body),
+            body: sanitizeHtml(req.body.body, sanitizeConfig),
             tags: articleTags,
             published: publishedStatus
         });

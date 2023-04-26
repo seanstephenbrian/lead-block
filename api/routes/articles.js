@@ -5,7 +5,7 @@ const Article = require('../models/article');
 
 // GET all articles:
 router.get('/', function(req, res, next) {
-    Article.find({})
+    Article.find({ published: true })
         .sort({ timestamp: -1 })
         .limit(6)
         .populate('title author description timestamp body tags published')
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/newest', function(req, res, next) {
-    Article.find({})
+    Article.find({ published: true })
         .sort({ timestamp: -1 })
         .limit(1)
         .populate('title author description timestamp body tags published')
@@ -31,7 +31,7 @@ router.get('/newest', function(req, res, next) {
 });
 
 router.get('/:slug', function(req, res, next) {
-    Article.findOne({ slug: req.params.slug })
+    Article.findOne({ slug: req.params.slug, published: true })
         .populate('title author description timestamp body tags published')
         .then((article) => {
             res.json(article);

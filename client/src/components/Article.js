@@ -12,6 +12,7 @@ export default function Article() {
     const { articleSlug } = useParams();
 
     const [currentArticle, setCurrentArticle] = useState();
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         async function fetchArticle(url) {
@@ -31,7 +32,9 @@ export default function Article() {
                 return response.json();
             })
             .then((article) => {
-                if (article.length === 1) {
+                if (!article) {
+                    setError(true);
+                } else if (article.length === 1) {
                     setCurrentArticle(article[0]);
                 } else {
                     setCurrentArticle(article);
@@ -51,6 +54,13 @@ export default function Article() {
                     author={currentArticle.author.name}
                     timestamp={currentArticle.timestamp}
                 />
+                <ArticleBody body={currentArticle.body} />
+            </section>
+        )
+    } else if (error) {
+        return (
+            <section className='article'>
+                <h1 className='error'>Sorry, we've encountered an error.</h1>
             </section>
         )
     }

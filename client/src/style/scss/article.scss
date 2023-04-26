@@ -1,6 +1,10 @@
 .article {
     padding: 10px 20px;
 
+    .error {
+        font-size: calc(0.8*var(--rvv));
+    }
+
     .article-top-matter {
         display: flex;
         flex-direction: column;
@@ -21,6 +25,8 @@
         }
         
     }
+
+
 }
 
 @media screen and (min-width: 500px) {
