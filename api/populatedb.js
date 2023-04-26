@@ -86,7 +86,7 @@ function createArticles(cb) {
                     'Description of Article 1',
                     new Date(),
                     lorem.generateParagraphs(7),
-                    ['Tag 1', 'Tag 2', 'Tag 3'],
+                    ['tag 1', 'tag 2', 'tag 3'],
                     callback
                 )
             },
@@ -97,7 +97,7 @@ function createArticles(cb) {
                     'Description of Article 2',
                     new Date(),
                     lorem.generateParagraphs(5),
-                    ['Tag 2', 'Tag 3'],
+                    ['tag 2', 'tag 3'],
                     callback
                 )
             },
@@ -108,7 +108,7 @@ function createArticles(cb) {
                     'Description of Article 3',
                     new Date(),
                     lorem.generateParagraphs(10),
-                    ['Tag 1', 'Tag 3', 'Tag 4', 'Tag 5'],
+                    ['tag 1', 'tag 3', 'tag 4', 'tag 5'],
                     callback
                 )
             },
@@ -119,7 +119,7 @@ function createArticles(cb) {
                     'Description of Article 4',
                     new Date(),
                     lorem.generateParagraphs(6),
-                    ['Tag 1', 'Tag 3', 'Tag 4', 'Tag 5'],
+                    ['tag 1', 'tag 3', 'tag 4', 'tag 5'],
                     callback
                 )
             },

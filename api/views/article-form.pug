@@ -19,7 +19,7 @@ block content
                 textarea(id='tinymce-editor' name='body') #{article.body}
                 label(for='tags') Tags
                 p.tags-sublabel1 Tags must be submitted in this exact format:
-                p.tags-sublabel2 Tag 1, Tag 2, Tag 3
+                p.tags-sublabel2 tag 1, tag 2, tag 3
                 -
                     let tagString = '';
                     article.tags.forEach((tag, index) => {
@@ -52,7 +52,7 @@ block content
                 textarea(id='tinymce-editor' name='body')
                 label(for='tags') Tags:
                 p.tags-sublabel1 Tags must be submitted in this exact format:
-                p.tags-sublabel2 Tag 1, Tag 2, Tag 3
+                p.tags-sublabel2 tag 1, tag 2, tag 3
                 input(class='text-field' type='text' name='tags' id='tags')
                 section.published-section
                     label(for='published') Published:

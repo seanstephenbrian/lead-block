@@ -141,9 +141,12 @@ router.post('/edit/:articleId',
     },
     function(req, res, next) {
         // convert tag input to array format:
-        let updatedTags = [];
+        let processedTags = [];
         if (req.body.tags !== '') {
-            updatedTags = req.body.tags.split(', ');
+            const unprocessedTags = req.body.tags.split(',');
+            unprocessedTags.forEach((tag) => {
+                processedTags.push(tag.trim().toLowerCase());
+            });
         }
 
         // convert published input to boolean:
@@ -159,7 +162,7 @@ router.post('/edit/:articleId',
             author: req.articleAuthor,
             description: req.body.description,
             body: sanitizeHtml(req.body.body, sanitizeConfig),
-            tags: updatedTags,
+            tags: processedTags,
             published: publishedStatus
         }
 
@@ -208,9 +211,12 @@ router.post('/new-article',
         console.log(req.body.timestamp);
 
         // convert tag input to array format:
-        let articleTags = [];
+        let processedTags = [];
         if (req.body.tags !== '') {
-            articleTags = req.body.tags.split(', ');
+            const unprocessedTags = req.body.tags.split(',');
+            unprocessedTags.forEach((tag) => {
+                processedTags.push(tag.trim().toLowerCase());
+            });
         }
 
         // convert published input to boolean:
@@ -227,7 +233,7 @@ router.post('/new-article',
             description: req.body.description,
             timestamp: DateTime.fromISO(req.body.timestamp).plus({ hours: 12 }).toJSDate(),
             body: sanitizeHtml(req.body.body, sanitizeConfig),
-            tags: articleTags,
+            tags: processedTags,
             published: publishedStatus
         });
 
