@@ -49,6 +49,7 @@ export default function Article(props) {
             })
             .catch((err) => {
                 console.log(err);
+                setError(true);
             });
 
     }, [articleSlug]);
@@ -74,7 +75,7 @@ export default function Article(props) {
     } else if (error) {
         return (
             <section className='article'>
-                <h1 className='error'>Sorry, we've encountered an error.</h1>
+                <h1 className='error'>Unable to retrieve article.</h1>
             </section>
         )
     }

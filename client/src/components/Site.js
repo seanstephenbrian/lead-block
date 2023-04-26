@@ -47,11 +47,15 @@ export default function Site(props) {
                             }
                         />
                         <Route
-                            path='/search/:query'
+                            path='/tag/:tagQuery'
                             element={<SearchResults />} 
                         />
                         <Route
                             path='/author/:authorQuery'
+                            element={<SearchResults />}
+                        />
+                        <Route
+                            path='/search/:searchQuery'
                             element={<SearchResults />}
                         />
                     </Routes>

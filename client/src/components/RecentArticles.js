@@ -38,6 +38,7 @@ export default function RecentArticles(props) {
                 }
             })
             .catch((err) => {
+                setError(true);
                 console.log(err);
             });
 
@@ -59,7 +60,7 @@ export default function RecentArticles(props) {
         return (
             <section className='recent-articles'>
                 <h1 className='recent-articles-title'>Recent Articles</h1>
-                <div className='recent-article-links'>Sorry, we encountered an error.</div>
+                <div className='recent-article-links'>Unable to retrieve articles.</div>
             </section>
         )
     } else {

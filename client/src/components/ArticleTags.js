@@ -14,7 +14,7 @@ export default function ArticleTags(props) {
             <Link
                 className={`tag hover-grow ${theme}`}
                 key={uuidv4()}
-                to={`../search/` + tag}
+                to={`../tag/` + tag}
             >
                 {tag}
             </Link>
