@@ -42,6 +42,10 @@
         .recent-article-link:visited {
             color: var(--light-text);
         }
+
+        .recent-article-link.dark {
+            background-color: var(--article-link-bg-dark);
+        }
     }
 }
 
