@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import { ThemeContext } from '../App';
+
+import '../style/scss/search-results.scss';
 
 export default function SearchResults() {
 
     const { query, authorQuery } = useParams();
+    const theme = useContext(ThemeContext);
 
+    const [searchFinished, setSearchFinished] = useState(false);
     const [searchResults, setSearchResults] = useState();
 
     useEffect(() => {
@@ -28,6 +34,7 @@ export default function SearchResults() {
             })
             .then((results) => {
                 setSearchResults(results);
+                setSearchFinished(true);
             })
             .catch((err) => {
                 console.log(err);
@@ -44,7 +51,7 @@ export default function SearchResults() {
                 </h1>
                 {searchResults.map((article) => {
                     return (
-                        <Link className='found-article' to={`../articles/` + article.slug} key={uuidv4()}>
+                        <Link className={`found-article-link hover-grow grow-less ${theme}`} to={`../articles/` + article.slug} key={uuidv4()}>
                             <div className='found-article-title'>{article.title}</div>
                             <div className='found-article-description'>{article.description}</div>
                         </Link>
@@ -60,9 +67,13 @@ export default function SearchResults() {
         )
     }
 
-    return (
-        <section className='search-results'>
-            {foundArticles}
-        </section>
-    );
+    if (searchFinished) {
+        return (
+            <section className='search-results'>
+                {foundArticles}
+            </section>
+        );
+    } else {
+        return;
+    }
 }

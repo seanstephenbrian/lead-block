@@ -69,6 +69,8 @@ export default function Article(props) {
                 <ArticleTags tags={currentArticle.tags} />
             </section>
         )
+    } else if (!currentArticle && !error) {
+        return <section className='article'></section>
     } else if (error) {
         return (
             <section className='article'>

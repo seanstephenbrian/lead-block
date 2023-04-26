@@ -1,5 +1,6 @@
 .article {
     padding: 10px 20px;
+    min-height: 100vh;
 
     .error {
         font-size: calc(0.8*var(--rvv));
