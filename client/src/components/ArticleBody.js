@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Interweave } from 'interweave';
 
 export default function ArticleBody(props) {

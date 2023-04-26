@@ -105,11 +105,16 @@ header.header {
         }
 
         .submit-search {
+            color: inherit;
             position: absolute;
             right: calc(var(--icon-height) + var(--icon-padding) + 20px);
             top: calc(1.35*var(--rvv));
             text-decoration: underline;
             font-weight: 500;
+        }
+
+        .submit-search:visited {
+            color: inherit;
         }
 
         .submit-search:hover {

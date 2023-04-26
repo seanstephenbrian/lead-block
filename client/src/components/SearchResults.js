@@ -8,7 +8,7 @@ import '../style/scss/search-results.scss';
 
 export default function SearchResults() {
 
-    const { query, authorQuery } = useParams();
+    const { tagQuery, authorQuery, searchQuery } = useParams();
     const theme = useContext(ThemeContext);
 
     const [searchFinished, setSearchFinished] = useState(false);
@@ -21,10 +21,12 @@ export default function SearchResults() {
         }
 
         let apiUrl;
-        if (query) {
-            apiUrl = process.env.REACT_APP_ARTICLES + '/search/' + query;
+        if (tagQuery) {
+            apiUrl = process.env.REACT_APP_ARTICLES + '/tag/' + tagQuery;
         } else if (authorQuery) {
             apiUrl = process.env.REACT_APP_ARTICLES + '/author/' + authorQuery;
+        } else if (searchQuery) {
+            apiUrl = process.env.REACT_APP_ARTICLES + '/search/' + searchQuery;
         }
 
         // find articles containing query in title, tags, or body:
@@ -39,15 +41,16 @@ export default function SearchResults() {
             .catch((err) => {
                 console.log(err);
             });
-    }, [authorQuery, query]);
+    }, [authorQuery, tagQuery, searchQuery]);
 
     let foundArticles;
     if (searchResults && searchResults.length > 0) {
         foundArticles = (
             <>  
                 <h1 className='search-title'>
-                    {query ? `Results for '${query}'` : ''}
+                    {tagQuery ? `Results for '${tagQuery}'` : ''}
                     {authorQuery ? `Results for '${authorQuery}'` : ''}
+                    {searchQuery ? `Results for '${searchQuery}'` : ''}
                 </h1>
                 {searchResults.map((article) => {
                     return (
