@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function SearchResults() {
 
@@ -26,7 +27,6 @@ export default function SearchResults() {
                 return response.json();
             })
             .then((results) => {
-                console.log(results);
                 setSearchResults(results);
             })
             .catch((err) => {
@@ -34,9 +34,35 @@ export default function SearchResults() {
             });
     }, [authorQuery, query]);
 
+    let foundArticles;
+    if (searchResults && searchResults.length > 0) {
+        foundArticles = (
+            <>  
+                <h1 className='search-title'>
+                    {query ? `Results for '${query}'` : ''}
+                    {authorQuery ? `Results for '${authorQuery}'` : ''}
+                </h1>
+                {searchResults.map((article) => {
+                    return (
+                        <Link className='found-article' to={`../articles/` + article.slug} key={uuidv4()}>
+                            <div className='found-article-title'>{article.title}</div>
+                            <div className='found-article-description'>{article.description}</div>
+                        </Link>
+                    );
+                })}
+            </>
+        )
+    } else {
+        foundArticles = (
+            <h1 className='search-title'>
+                Sorry, we couldn't find anything... please search again.
+            </h1>
+        )
+    }
+
     return (
         <section className='search-results'>
+            {foundArticles}
         </section>
-    )
-    
+    );
 }
