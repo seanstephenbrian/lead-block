@@ -15,6 +15,12 @@ export default function Article(props) {
     const [currentArticle, setCurrentArticle] = useState();
     const [error, setError] = useState(false);
 
+    // scroll to top whenever current article changes:
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentArticle]);
+
+    // fetch correct article:
     useEffect(() => {
         async function fetchArticle(url) {
             const article = await fetch(url, { method: 'GET' });
