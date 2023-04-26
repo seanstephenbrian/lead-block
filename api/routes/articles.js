@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const _ = require('lodash');
 
 const Article = require('../models/article');
 const Author = require('../models/author');
@@ -45,8 +46,8 @@ router.get('/:slug', function(req, res, next) {
 });
 
 // GET all articles matching search query:
-router.get('/search/:query', function(req, res, next) {
-    Article.find( { tags: req.params.query, published: true })
+router.get('/tag/:tagQuery', function(req, res, next) {
+    Article.find( { tags: req.params.tagQuery, published: true })
         .populate('title author description timestamp body tags published slug')
         .then((articles) => {
             res.json(articles);
@@ -63,7 +64,7 @@ router.get('/author/:authorQuery',
         Author.findOne({ name: req.params.authorQuery})
             .then((author) => {
                 req.foundAuthor = author;
-                next()
+                next();
             })
             .catch((err) => {
                 return next(err);
@@ -78,8 +79,50 @@ router.get('/author/:authorQuery',
             })
             .catch((err) => {
                 return next(err);
-            })
+            });
     }
 );
+
+// GET general search results:
+router.get('/search/:query',
+    // find all results for tag query:
+    function(req, res, next) {
+        Article.find( { tags: req.params.query, published: true })
+            .populate('title author description timestamp body tags published slug')
+            .then((articles) => {
+                if (articles) req.results = articles;
+                next();
+            })
+            .catch((err) => {
+                return next(err);
+            });
+    },
+    // find results for author query:
+    function(req, res, next) {
+        Author.findOne({ name: _.startCase(_.toLower(req.params.query)) })
+            .then((author) => {
+                req.foundAuthor = author;
+                next();
+            })
+            .catch((err) => {
+                return next(err);
+            });
+    },
+    // find articles by author:
+    function(req, res, next) {
+        Article.find({ author: req.foundAuthor, published: true })
+            .populate('title author description timestamp body tags published slug')
+            .then((articles) => {
+                if (articles) {
+                    res.json(req.results.concat(articles));
+                } else {
+                    res.json(req.results);
+                }
+            })
+            .catch((err) => {
+                return next(err);
+            });
+    }
+)
 
 module.exports = router;
