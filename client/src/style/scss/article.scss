@@ -1,0 +1,38 @@
+.article {
+    padding: 10px 20px;
+
+    .article-top-matter {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .article-title {
+            font-size: calc(0.85*var(--rvv));
+        }
+
+        .author-date {
+            display: flex;
+            gap: 10px;
+            font-size: calc(0.6*var(--rvv));
+
+            .article-date {
+                font-weight: 200;
+            }
+        }
+        
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .article {
+        padding: calc(var(--rvv));
+
+        .article-top-matter {
+            gap: calc(0.25*var(--rvv));
+
+            .author-date {
+                gap: calc(0.25*var(--rvv));
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../App';
 
-import '../style/logo-shadow.scss';
+import '../style/scss/logo-shadow.scss';
 
 export default function HeaderLogo() {
 
