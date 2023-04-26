@@ -1,0 +1,13 @@
+.recent-posts {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .recent-posts-title {
+        font-size: calc(0.8*var(--rvv));
+    }
+    .recent-post-links {
+
+    }
+}

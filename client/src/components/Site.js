@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Article from './Article';
@@ -12,15 +12,35 @@ export default function Site(props) {
 
     const { updateTheme } = props;
 
+    const [currentArticle, setCurrentArticle] = useState();
+
     return (
         <BrowserRouter>
                 <Header handleThemeClick={updateTheme} />
                 <main className='main'>
                     <Routes>
-                        <Route path='/' element={<Article />} />
-                        <Route path='/articles/:articleSlug' element={<Article />} />
+                        <Route 
+                            path='/'
+                            element={
+                                <Article
+                                    updateCurrentArticle={(newCurrentArticle) => {
+                                        setCurrentArticle(newCurrentArticle);
+                                    }}
+                                />
+                            } 
+                        />
+                        <Route
+                            path='/articles/:articleSlug'
+                            element={
+                                <Article
+                                    updateCurrentArticle={(newCurrentArticle) => {
+                                        setCurrentArticle(newCurrentArticle);
+                                    }}
+                                />
+                            }
+                        />
                     </Routes>
-                    <RecentPosts />
+                    <RecentPosts currentArticle={currentArticle} />
                 </main>
                 <Footer />
         </BrowserRouter>        
