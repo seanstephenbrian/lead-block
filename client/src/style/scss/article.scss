@@ -64,6 +64,10 @@
         .tag:visited {
             color: var(--light-text);
         }
+
+        .tag.dark {
+            background-color: var(--tag-bg-dark);
+        }
     }
 
 }

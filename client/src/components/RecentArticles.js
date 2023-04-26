@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import { ThemeContext } from '../App';
 
 import '../style/scss/recent-articles.scss';
 
 export default function RecentArticles(props) {
 
     const { currentArticle } = props;
+    const theme = useContext(ThemeContext);
 
     const [error, setError] = useState(false);
     const [recentArticles, setRecentArticles] = useState();
@@ -44,7 +47,7 @@ export default function RecentArticles(props) {
     if (recentArticles) {
         articleElements = recentArticles.map((article) => {
             return (
-                <Link className='recent-article-link hover-grow grow-less' to={`../articles/` + article.slug} key={uuidv4()}>
+                <Link className={`recent-article-link hover-grow grow-less ${theme}`} to={`../articles/` + article.slug} key={uuidv4()}>
                     <div className='recent-article-link-title'>{article.title}</div>
                     <div className='recent-article-link-description'>{article.description}</div>
                 </Link>
