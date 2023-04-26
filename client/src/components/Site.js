@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import About from './About';
 import Article from './Article';
-import Header from './Header';
+import Contact from './Contact';
 import Footer from './Footer';
+import Header from './Header';
 import RecentArticles from './RecentArticles';
 
 import '../style/scss/main.scss';
@@ -57,6 +59,14 @@ export default function Site(props) {
                         <Route
                             path='/search/:searchQuery'
                             element={<SearchResults />}
+                        />
+                        <Route
+                            path='/about'
+                            element={<About />}
+                        />
+                        <Route
+                            path='/contact'
+                            element={<Contact />}
                         />
                     </Routes>
                 </main>

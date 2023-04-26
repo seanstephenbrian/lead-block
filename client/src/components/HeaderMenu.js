@@ -29,12 +29,12 @@ export default function HeaderMenu(props) {
     let search;
     if (!searchExpanded) {
         search =(
-            <img className='menu-icon search-icon hover-grow svg' onClick={() => setSearchExpanded(true)} src={SearchIcon} />
+            <img className='menu-icon search-icon hover-grow svg' onClick={() => setSearchExpanded(true)} src={SearchIcon} alt='Search' />
         );
     } else if (searchExpanded) {
         search = (
             <div className='search-container'>
-                <img className='menu-icon search-icon hover-grow svg' onClick={() => setSearchExpanded(false)} src={CloseIcon} />
+                <img className='menu-icon search-icon hover-grow svg' onClick={() => setSearchExpanded(false)} src={CloseIcon} alt='Close search bar' />
                 <SearchBar />
             </div>
         )
@@ -44,10 +44,10 @@ export default function HeaderMenu(props) {
         <>
             <div className={`menu ${theme}`}>
                 <ExpandedMenu expanded={menuExpanded} handleCloseClick={() => setMenuExpanded(false)} />
-                <img className='menu-icon dark-icon hover-grow svg' onClick={handleDarkClick} src={DarkIcon} />
-                <img className='menu-icon light-icon hover-grow svg' onClick={handleLightClick} src={LightIcon} />
+                <img className='menu-icon dark-icon hover-grow svg' onClick={handleDarkClick} src={DarkIcon} alt='Switch to dark theme' />
+                <img className='menu-icon light-icon hover-grow svg' onClick={handleLightClick} src={LightIcon} alt='Switch to light theme' />
                 {search}
-                <img className='menu-icon hamburger-icon hover-grow svg' onClick={() => setMenuExpanded(true)} src={HamburgerIcon} />
+                <img className='menu-icon hamburger-icon hover-grow svg' onClick={() => setMenuExpanded(true)} src={HamburgerIcon} alt='Expand menu' />
             </div>
         </>
     )
