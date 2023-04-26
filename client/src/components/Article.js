@@ -7,8 +7,9 @@ import ArticleTopMatter from '../components/ArticleTopMatter';
 
 import '../style/scss/article.scss';
 
-export default function Article() {
+export default function Article(props) {
     
+    const { updateCurrentArticle } = props;
     const { articleSlug } = useParams();
 
     const [currentArticle, setCurrentArticle] = useState();
@@ -44,7 +45,11 @@ export default function Article() {
                 console.log(err);
             });
 
-    }, [articleSlug])
+    }, [articleSlug]);
+
+    useEffect(() => {
+        updateCurrentArticle(currentArticle);
+    }, [currentArticle, updateCurrentArticle]);
 
     if (currentArticle) {
         return (
