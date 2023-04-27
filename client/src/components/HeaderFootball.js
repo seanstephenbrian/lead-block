@@ -10,7 +10,7 @@ export default function HeaderFootball() {
 
     return (
         <div className='football'>
-            <img className={theme} src={Football} />
+            <img className={theme} src={Football} alt='' />
         </div>
     )
 }
