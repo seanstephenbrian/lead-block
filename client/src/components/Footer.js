@@ -19,7 +19,7 @@ export default function Footer() {
                 Copyright © Lead Block Sports {new Date().getFullYear()}
             </div>
             <div className='ssbbd'>
-                <div>site design by</div>
+                <div>site by</div>
                 <div className={`ssbbd-link ${theme}`}>
                     <a href='https://ssbbd.dev/' target='_blank' rel='noopener noreferrer'>ssbbd</a>
                 </div>
