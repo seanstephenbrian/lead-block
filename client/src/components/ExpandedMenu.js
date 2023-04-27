@@ -13,16 +13,16 @@ export default function ExpandedMenu(props) {
                 <button className='close-menu-button' aria-label='Close' onClick={handleCloseClick}>X</button>
                 <ul className='menu-nav-links'>
                     <li className='menu-nav-link about-link'>
-                        <Link to='../about'>ABOUT</Link>
+                        <Link to='../about' onClick={handleCloseClick}>ABOUT</Link>
                     </li>
                     <li className='menu-nav-link football-link'>
-                        <Link to='../tag/football'>FOOTBALL</Link>
+                        <Link to='../tag/football' onClick={handleCloseClick}>FOOTBALL</Link>
                     </li>
                     <li className='menu-nav-link basketball-link'>
-                        <Link to='../tag/basketball'>BASKETBALL</Link>
+                        <Link to='../tag/basketball' onClick={handleCloseClick}>BASKETBALL</Link>
                     </li>
                     <li className='menu-nav-link contact-link'>
-                        <Link to='../contact'>CONTACT</Link>
+                        <Link to='../contact' onClick={handleCloseClick}>CONTACT</Link>
                     </li>
                 </ul>
             </section>
