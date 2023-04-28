@@ -13,7 +13,9 @@ export default function Article(props) {
     const { articleSlug } = useParams();
 
     // check for 'article' search param to handle legacy routes:
+    /* eslint-disable no-unused-vars */
     const [searchParams, setSearchParams] = useSearchParams();
+    /* eslint-enable no-unused-vars */
 
     const [currentArticle, setCurrentArticle] = useState();
     const [error, setError] = useState(false);
@@ -69,7 +71,7 @@ export default function Article(props) {
                 setError(true);
             });
 
-    }, [articleSlug]);
+    }, [articleSlug, searchParams]);
 
     useEffect(() => {
         updateCurrentArticle(currentArticle);
