@@ -19,58 +19,58 @@ export default function Site(props) {
 
     return (
         <BrowserRouter>
-                <Header handleThemeClick={updateTheme} />
-                <main className='main'>
-                    <Routes>
-                        <Route 
-                            path='/'
-                            element={
-                                <>
-                                    <Article
-                                        updateCurrentArticle={(newCurrentArticle) => {
-                                            setCurrentArticle(newCurrentArticle);
-                                        }}
-                                    />
-                                    <RecentArticles currentArticle={currentArticle} />
-                                </>
-                            } 
-                        />
-                        <Route
-                            path='/articles/:articleSlug'
-                            element={
-                                <>
-                                    <Article
-                                        updateCurrentArticle={(newCurrentArticle) => {
-                                            setCurrentArticle(newCurrentArticle);
-                                        }}
-                                    />
-                                    <RecentArticles currentArticle={currentArticle} />
-                                </>
-                            }
-                        />
-                        <Route
-                            path='/tag/:tagQuery'
-                            element={<SearchResults />} 
-                        />
-                        <Route
-                            path='/author/:authorQuery'
-                            element={<SearchResults />}
-                        />
-                        <Route
-                            path='/search/:searchQuery'
-                            element={<SearchResults />}
-                        />
-                        <Route
-                            path='/about'
-                            element={<About />}
-                        />
-                        <Route
-                            path='/contact'
-                            element={<Contact />}
-                        />
-                    </Routes>
-                </main>
-                <Footer />
+            <Header handleThemeClick={updateTheme} />
+            <main className='main'>
+                <Routes>
+                    <Route 
+                        path='/'
+                        element={
+                            <>
+                                <Article
+                                    updateCurrentArticle={(newCurrentArticle) => {
+                                        setCurrentArticle(newCurrentArticle);
+                                    }}
+                                />
+                                <RecentArticles currentArticle={currentArticle} />
+                            </>
+                        } 
+                    />
+                    <Route
+                        path='/articles/:articleSlug'
+                        element={
+                            <>
+                                <Article
+                                    updateCurrentArticle={(newCurrentArticle) => {
+                                        setCurrentArticle(newCurrentArticle);
+                                    }}
+                                />
+                                <RecentArticles currentArticle={currentArticle} />
+                            </>
+                        }
+                    />
+                    <Route
+                        path='/tag/:tagQuery'
+                        element={<SearchResults />} 
+                    />
+                    <Route
+                        path='/author/:authorQuery'
+                        element={<SearchResults />}
+                    />
+                    <Route
+                        path='/search/:searchQuery'
+                        element={<SearchResults />}
+                    />
+                    <Route
+                        path='/about'
+                        element={<About />}
+                    />
+                    <Route
+                        path='/contact'
+                        element={<Contact />}
+                    />
+                </Routes>
+            </main>
+            <Footer />
         </BrowserRouter>        
     )
 }
