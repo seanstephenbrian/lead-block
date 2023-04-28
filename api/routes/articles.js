@@ -47,7 +47,9 @@ router.get('/:slug', function(req, res, next) {
 
 // GET all articles matching search query:
 router.get('/tag/:tagQuery', function(req, res, next) {
+    console.log('ran')
     Article.find( { tags: req.params.tagQuery, published: true })
+        .sort({ timestamp: -1 })
         .populate('title author description timestamp body tags published slug')
         .then((articles) => {
             res.json(articles);
@@ -73,6 +75,7 @@ router.get('/author/:authorQuery',
     // then find articles by author:
     function(req, res, next) {
         Article.find({ author: req.foundAuthor, published: true })
+            .sort({ timestamp: -1 })
             .populate('title author description timestamp body tags published slug')
             .then((articles) => {
                 res.json(articles);
@@ -88,6 +91,7 @@ router.get('/search/:query',
     // find all results for tag query:
     function(req, res, next) {
         Article.find( { tags: req.params.query, published: true })
+            .sort({ timestamp: -1 })
             .populate('title author description timestamp body tags published slug')
             .then((articles) => {
                 if (articles) req.results = articles;
@@ -111,6 +115,7 @@ router.get('/search/:query',
     // find articles by author:
     function(req, res, next) {
         Article.find({ author: req.foundAuthor, published: true })
+            .sort({ timestamp: -1 })
             .populate('title author description timestamp body tags published slug')
             .then((articles) => {
                 if (articles) {
