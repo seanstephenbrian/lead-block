@@ -15,6 +15,8 @@ function App() {
         const storedTheme = localStorage.getItem('theme');
         if (storedTheme) {
             setTheme(storedTheme);
+        } else {
+            localStorage.setItem('theme', 'light');
         }
     }, []);
 
