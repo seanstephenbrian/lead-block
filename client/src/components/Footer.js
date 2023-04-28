@@ -12,7 +12,7 @@ export default function Footer() {
 
     return (
         <footer className='footer'>
-            <a href='https://twitter.com/lbkbear' className='twitter hover-grow' target='_blank' rel='noopener noreferrer'>
+            <a href='https://twitter.com/leadblocksports' className='twitter hover-grow' target='_blank' rel='noopener noreferrer'>
                 <img src={TwitterIcon} alt='Lead Block Sports Twitter' />
             </a>
             <div className='copyright'>
