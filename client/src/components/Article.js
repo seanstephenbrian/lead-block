@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 import ArticleBody from '../components/ArticleBody';
 import ArticleTags from '../components/ArticleTags';
@@ -11,6 +11,9 @@ export default function Article(props) {
     
     const { updateCurrentArticle } = props;
     const { articleSlug } = useParams();
+
+    // check for 'article' search param to handle legacy routes:
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [currentArticle, setCurrentArticle] = useState();
     const [error, setError] = useState(false);
@@ -27,9 +30,23 @@ export default function Article(props) {
             return article;
         }
 
+        const articleQuery = searchParams.get('article');
+
         let apiUrl;
-        if (articleSlug === undefined) {
+        // if no article slug is specified, get the newest article:
+        if (articleSlug === undefined && !articleQuery) {
             apiUrl = process.env.REACT_APP_ARTICLES + '/newest';
+        // this if statement is necessary to support legacy links from V1 of the site:
+        } else if (articleSlug === undefined && articleQuery) {
+            let slugToUse;
+            if (articleQuery === '1') slugToUse = 'zach-wilson-diaries';
+            if (articleQuery === '2') slugToUse = 'how-did-the-bears-get-here';
+            if (articleQuery === '3') slugToUse = 'frank-reich-has-the-tools';
+            if (articleQuery === '4') slugToUse = 'the-denver-disaster-and-the-path-to-recovery';
+            if (articleQuery === '5') slugToUse = 'post-super-bowl-pre-combine-mock-draft';
+            if (articleQuery === '6') slugToUse = 'jalen-carter-changed-nfl-history-maybe';
+            apiUrl = process.env.REACT_APP_ARTICLES + '/' + slugToUse;
+        // otherwise request the article corresponding to the specified slug:
         } else {
             apiUrl = process.env.REACT_APP_ARTICLES + '/' + articleSlug;
         }
