@@ -29,7 +29,7 @@ export default function ArticleTopMatter(props) {
                         }, 5000);
                     }}
                 >
-                    <img className='svg' src={LinkIcon} alt='Article link'></img>
+                    <img className='hover-grow svg' src={LinkIcon} alt='Article link'></img>
                     <div className='copy-alert'>
                         {linkCopied ? 'Link copied!' : ''}
                     </div>
@@ -40,14 +40,14 @@ export default function ArticleTopMatter(props) {
                     target='_blank'
                     rel='noopener noreferrer'
                 >
-                    <img src={TwitterIcon} alt='Share article on Twitter'></img>
+                    <img className='hover-grow' src={TwitterIcon} alt='Share article on Twitter'></img>
                 </Link>
             </>
         );
     } else if (!shareExpanded) {
         shareArticle = (
             <>
-                <img className='svg' src={ShareIcon} alt='Share article' onClick={() => setShareExpanded(true)}></img>
+                <img className='hover-grow svg' src={ShareIcon} alt='Share article' onClick={() => setShareExpanded(true)}></img>
             </>
         );
     }
