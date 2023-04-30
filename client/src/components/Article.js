@@ -84,6 +84,7 @@ export default function Article(props) {
                     title={currentArticle.title}
                     author={currentArticle.author.name}
                     timestamp={currentArticle.timestamp}
+                    slug={currentArticle.slug}
                 />
                 <ArticleBody body={currentArticle.body} />
                 <ArticleTags tags={currentArticle.tags} />
