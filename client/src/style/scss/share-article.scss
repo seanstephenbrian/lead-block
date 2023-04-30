@@ -1,0 +1,37 @@
+.share-article {
+    margin: 0 20px 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+        cursor: pointer;
+        padding: 5px;
+        width: calc(0.8*var(--rvv));
+    }
+
+    .share-link {
+        position: relative;
+
+        .copy-alert {
+            border-radius: 5px;
+            position: absolute;
+            top: 2rem;
+            width: 150px;
+            font-size: calc(0.4*var(--rvv));
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .share-article {
+        margin: 0;
+        margin-left: calc(1*var(--rvv));
+
+        .share-link {
+            .copy-alert {
+                top: 3rem;
+            }
+        }
+    }
+}
