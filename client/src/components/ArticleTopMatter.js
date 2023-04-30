@@ -29,7 +29,7 @@ export default function ArticleTopMatter(props) {
                         }, 5000);
                     }}
                 >
-                    <img src={LinkIcon} alt='Article link'></img>
+                    <img className='svg' src={LinkIcon} alt='Article link'></img>
                     <div className='copy-alert'>
                         {linkCopied ? 'Link copied!' : ''}
                     </div>
