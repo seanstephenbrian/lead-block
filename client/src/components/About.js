@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../style/scss/info-page.scss';
 
 export default function About() {
+
+    useEffect(() => {
+        document.title = 'About | Lead Block Sports';
+    }, []);
+
     return (
         <section className='about-page info-page'>
             <h1>About Lead Block Sports</h1>

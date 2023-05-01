@@ -20,8 +20,9 @@ export default function Article(props) {
     const [currentArticle, setCurrentArticle] = useState();
     const [error, setError] = useState(false);
 
-    // scroll to top whenever current article changes:
+    // update page title & scroll to top whenever current article changes:
     useEffect(() => {
+        document.title = currentArticle.title + ' | Lead Block Sports';
         window.scrollTo(0, 0);
     }, [currentArticle]);
 
