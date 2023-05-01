@@ -15,6 +15,18 @@ export default function SearchResults() {
     const [searchResults, setSearchResults] = useState();
 
     useEffect(() => {
+        if (tagQuery || searchQuery) {
+            document.title = `Results for '${tagQuery || searchQuery}' | Lead Block Sports`;
+        } else if (authorQuery) {
+            document.title = `Articles by ${authorQuery} | Lead Block Sports`;
+        } else {
+            document.title = 'Lead Block Sports';
+        }
+        
+        window.scrollTo(0, 0);
+    }, [tagQuery, searchQuery, authorQuery]);
+
+    useEffect(() => {
         async function fetchSearchResults(url) {
             const results = await fetch(url, { method: 'GET' });
             return results;
