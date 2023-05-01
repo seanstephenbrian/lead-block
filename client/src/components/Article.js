@@ -22,7 +22,12 @@ export default function Article(props) {
 
     // update page title & scroll to top whenever current article changes:
     useEffect(() => {
-        document.title = currentArticle.title + ' | Lead Block Sports';
+        if (currentArticle && currentArticle.title) {
+            document.title = currentArticle.title + ' | Lead Block Sports';
+        } else {
+            document.title = 'Lead Block Sports';
+        }
+        
         window.scrollTo(0, 0);
     }, [currentArticle]);
 
