@@ -44,7 +44,12 @@ time, mark, audio, video {
     --special-red: #824E4A;
     --tan: #D2BC9B;
 
-    --body-bg: #caa583d3;
+    --article-link-bg: #a5b8c5;
+    --body-bg: #ffedcf;
+    --greeting-bg: #708da1;
+    --login-bg: #98a5ad;
+    --nav-bg: #893a34b9;
+    --nav-button-bg: #93b37e;
 }
 
 html,
@@ -60,13 +65,16 @@ body {
 }
 
 nav {
-    padding: 40px 20px 0;
+    padding: 60px 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: calc(var(--rvv));
     align-items: center;
     padding-bottom: 40px;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid black;
+    margin-bottom: calc(var(--rvv));
 }
 
 nav a {
@@ -79,7 +87,7 @@ nav a:visited {
 }
 
 .title {
-    font-size: calc(0.8*var(--rvv));
+    font-size: calc(1*var(--rvv));
 }
 
 .nav-links {
@@ -94,7 +102,7 @@ nav a:visited {
 }
 
 .nav-links li {
-    background-color: #7f996e;
+    background-color: var(--nav-button-bg);
 }
 
 .button {
@@ -141,7 +149,7 @@ h2 {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.619);
+    background-color: var(--login-bg);
     border: 1px solid black;
 }
 
@@ -182,10 +190,13 @@ h2 {
 }
 
 .greeting {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     font-size: calc(0.35*var(--rvv));
     width: fit-content;
     margin: 0 auto 20px;
-    background-color: #e98b84;
+    background-color: var(--greeting-bg);
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
@@ -199,21 +210,59 @@ h2 {
 .articles {
     width: 750px;
     max-width: 90vw;
-    margin: 10px 0;
+    margin-top: 20px;
+}
+
+.published {
+    margin-bottom: 50px;
 }
 
 .articles h2 {
     font-size: calc(0.7*var(--rvv));
     font-weight: 300;
-    margin-bottom: 5px;
+    margin-bottom: calc(0.5*var(--rvv));
 }
 
 .article-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: calc(0.5*var(--rvv));
     font-size: calc(0.5*var(--rvv));
+}
+
+.article-link {
+    padding: 10px;
+    background-color: var(--article-link-bg);
+    border: 1px solid black;
+    border-radius: 3px;
+    display: flex;
+    gap: 20px;
+}
+
+.edit-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease-in-out;
+}
+
+.edit-icon:hover {
+    transform: scale(1.1);
+}
+
+.edit-icon img {
+    max-height: calc(0.7*var(--rvv));
+}
+
+.article-title-link {
+    color: inherit;
+}
+
+.article-title-link:visited {
+    color: inherit;
 }
 
 .edit-article-title {
@@ -277,4 +326,11 @@ label[for='tags'] {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+@media screen and (min-width: 900px) {
+    .greeting {
+        top: calc(var(--rvv));
+        right: calc(var(--rvv));
+    }   
 }
