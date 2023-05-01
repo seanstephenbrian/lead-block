@@ -10,21 +10,39 @@ block content
             section.articles.drafts 
                 h2 Drafts:
                 ul.article-list
-                    each article in articles 
-                        if !article.published
-                            li.edit-link
-                                a(href=('/admin/edit/' + article.id)) #{article.title}
-                                if article.author.name !== ''
-                                    |  [#{article.author.name}, #{article.date}]
+                    -
+                        let unpublishedCount = 0;
+                        articles.forEach((article) => {
+                            if (!article.published) {
+                                unpublishedCount++;
+                            }
+                        });
+                    if (unpublishedCount > 0)
+                        each article in articles 
+                            if !article.published
+                                li.article-link
+                                    .edit-icon
+                                        a(href=('/admin/edit/' + article.id))
+                                            img(src='/img/edit.svg' alt='Edit article')
+                                    .article-info
+                                        a(class='article-title-link' href=('/admin/edit/' + article.id)) #{article.title}
+                                        if article.author.name !== ''
+                                            p #{article.author.name} (#{article.date})
+                    else
+                        p No drafts to display.
             section.articles.published
                 h2 Published:
                 ul.article-list
                     each article in articles 
                         if article.published
-                            li.edit-link
-                                a(href=('/admin/edit/' + article.id)) #{article.title}
-                                if article.author.name !== ''
-                                    |  [#{article.author.name}, #{article.date}]
+                            li.article-link
+                                .edit-icon
+                                    a(href=('/admin/edit/' + article.id))
+                                        img(src='/img/edit.svg' alt='Edit article')
+                                .article-info
+                                    a(class='article-title-link' href=('/admin/edit/' + article.id)) #{article.title}
+                                    if article.author.name !== ''
+                                        p #{article.author.name} (#{article.date})
         else 
             h2 No articles to display.
 
