@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const sanitizeHtml = require('sanitize-html');
 const { DateTime } = require('luxon');
 
+const ArchivedArticle = require('../models/archived-article');
 const Article = require('../models/article');
 const Author = require('../models/author');
 const User = require('../models/user');
@@ -117,7 +118,6 @@ router.get('/edit/:articleId', function(req, res, next) {
 });
 
 // POST article edit:
-
 router.post('/edit/:articleId', 
     // find existing author or save new author:
     async function(req, res, next) {
@@ -186,9 +186,6 @@ router.get('/new-article', function(req, res, next) {
 router.post('/new-article',
     // find existing author or save new author:
     async function(req, res, next) {
-
-        console.log('posting....')
-
         // if author exists in db, find author; if not, create new author:
         const author = await Author.findOne({ name: req.body.author });
         if (author) {
@@ -207,9 +204,6 @@ router.post('/new-article',
         }
     },
     function(req, res, next) {
-
-        console.log(req.body.timestamp);
-
         // convert tag input to array format:
         let processedTags = [];
         if (req.body.tags !== '') {
@@ -246,7 +240,58 @@ router.post('/new-article',
                 return next(err);
             });
     }
-)
+);
 
+// GET delete article page:
+router.get('/delete/:articleId', async function(req, res, next) {
+    Article.findById(req.params.articleId, 'title author description timestamp body tags published')
+        .populate('author')
+        .then((foundArticle) => {
+            res.render('delete', { article: foundArticle });
+        })
+        .catch((err) => {
+            return next(err);
+        });
+});
+
+// POST confirmed article deletion:
+router.post('/confirmed-delete/:articleId',
+    // save archived version of article:
+    async function(req, res, next) {
+        Article.findById(req.params.articleId, 'title author description timestamp body tags published slug')
+            .populate('author')
+            .then((article) => {
+                return new ArchivedArticle({
+                    archivedTimestamp: new Date(),
+                    title: article.title,
+                    author: article.author.name,
+                    description: article.description,
+                    timestamp: article.timestamp,
+                    body: article.body,
+                    tags: article.tags,
+                    published: article.published,
+                    slug: article.slug
+                });
+            })
+            .then((archivedArticle) => {
+                archivedArticle.save()
+                    .then(() => next())
+                    .catch((err) => {
+                        return next(err);
+                    });
+            })
+            .catch((err) => {
+                return next(err);
+            });
+    },
+    // then delete actual article:
+    function(req, res, next) {
+        Article.findByIdAndDelete(req.params.articleId)
+            .then(() => res.redirect('/admin/dashboard'))
+            .catch((err) => {
+                return next(err);
+            });
+    }
+);
 
 module.exports = router;
