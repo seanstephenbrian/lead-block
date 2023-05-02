@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+    if currentUser && article
+        .delete-warnings
+            h1 Deleting '#{article.title}'
+            p This action cannot be undone.
+            p Are you sure you want to proceed?
+            form.delete-article(method='POST' action=('/admin/confirmed-delete/' + article.id))
+                input(class='button delete-button' type='submit' value='Yes - Delete Article')
+            a(href='/admin/dashboard' class='button go-back-button') No - Go Home
+    else 
+        h1 Please 
+            a(href='/admin') log in
+            |  to continue.

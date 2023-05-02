@@ -58,6 +58,9 @@ block content
                     label(for='published') Published:
                     input(type='checkbox' name='published' id='published' value='true')
                 input(class='button form-submit' type='submit')
+
+        if article 
+            a(href=('/admin/delete/' + article.id) class='button') Delete Article
                 
     else 
         h1 Please 
