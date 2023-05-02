@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import LinkIcon from '../img/svg/link.svg';
@@ -13,6 +13,10 @@ export default function ArticleTopMatter(props) {
 
     const [linkCopied, setLinkCopied] = useState(false);
     const [shareExpanded, setShareExpanded] = useState(false);
+
+    useEffect(() => {
+        setShareExpanded(false);
+    }, [author, timestamp, title, slug]);
 
     let shareArticle;
 
