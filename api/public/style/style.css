@@ -46,6 +46,7 @@ time, mark, audio, video {
 
     --article-link-bg: #a5b8c5;
     --body-bg: #ffedcf;
+    --delete-link-bg: #e1484dd6;
     --delete-p: #d0b4a8;
     --greeting-bg: #708da1;
     --login-bg: #98a5ad;
@@ -186,8 +187,9 @@ h2 {
 }
 
 .form-submit {
-    margin: 0 auto;
+    margin: 20px auto;
     background-color: #afc8d7;
+    font-size: calc(0.6*var(--rvv));
 }
 
 .greeting {
@@ -272,7 +274,7 @@ h2 {
 }
 
 .article-form {
-    padding: 0 20px 50px;
+    padding: 0 20px 20px;
     display: flex;
     flex-direction: column;
 }
@@ -327,6 +329,16 @@ label[for='tags'] {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.delete-page-link {
+    width: fit-content;
+    padding: 10px 20px;
+    margin: 0 auto 50px;
+    font-size: calc(0.5*var(--rvv));
+    background-color: var(--delete-link-bg);
+    color: black;
+    text-decoration: none;
 }
 
 .delete-warnings {
