@@ -6,7 +6,7 @@ i developed the api with node.js and express, and i used pug as the templating e
 to render pages for the custom admin dashboard.
 
 the express api is set up to handle traffic to the root directory and to /admin and
-/articles routes/sub-routes and various other one-off paths.
+/articles routes and various other one-off paths.
 
 the api uses mongoose middleware to make the appropriate requests to mongodb. 
 if requesting content, it processes the results and returns them to the react front-end for rendering.
@@ -23,5 +23,5 @@ deletes the article from mongodb. however, when the article is deleted,
 a copy of the document is automatically saved to a separate 'archived' collection in the database, 
 ensuring that no blog content is ever accidentally lost.
 
-basic css styles applied to the pug-generated html ensure an uncluttered and pleasant user
+basic css styles applied to the pug-generated html create an uncluttered and pleasant user
 experience.
